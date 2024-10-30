@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.box1}>
-        <img src="./public/Vector.svg" alt="" />
+        <img src="./Vector.svg" alt="" />
       </div>
       <div className={styles.box2}>
         URBAN CART
@@ -19,14 +19,14 @@ const Navbar = () => {
       <div className={styles.box4}>
         <div className={styles.INPUT}>
           <button className={styles.button}>
-            <img src="./public/SEARCH1.svg" alt="search" className={styles.search} />
+            <img src="./SEARCH1.svg" alt="search" className={styles.search} />
           </button>
           <input type="text" placeholder='Search items here' className={styles.input}/>
         </div>
       </div>
       <div className={styles.box5}>
-        <img src="./public/cart.svg" alt="cart" className='cart'/>
-        <img src="./public/noavatar.png" alt="n0_avtar"  className='avatar'/>
+        <img src="./cart.svg" alt="cart" className='cart'/>
+        <img src="./noavatar.png" alt="n0_avtar"  className='avatar'/>
       </div>
     </div>
   )
