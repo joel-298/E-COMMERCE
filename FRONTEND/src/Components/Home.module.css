@@ -1,0 +1,9 @@
+/* Home.module.css */
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    background: linear-gradient(black,rgb(6, 75, 58)); 
+    box-sizing: border-box; /* Include padding in height calculation */
+}
