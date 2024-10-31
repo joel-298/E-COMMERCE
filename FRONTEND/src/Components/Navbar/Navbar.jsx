@@ -1,15 +1,24 @@
-import React from 'react' ;
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
-
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleCartClick = () => {
+    navigate('/cart');
+  };
+  const handleAvatarClick = () => {
+    navigate('/auth');
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.box1}>
-        <img src="./Vector.svg" alt="" />
-      </div>
       <div className={styles.box2}>
-        URBAN CART
+        <div className={styles.box1}>
+          <img src="./Vector.svg" alt="nav_icon" className={styles.nav_icon}/>
+        </div>
+        <h1><img src="./Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
       </div>
       <div className={styles.box3}>
         <div className={styles.items}>On Sale</div>
@@ -23,13 +32,16 @@ const Navbar = () => {
           </button>
           <input type="text" placeholder='Search items here' className={styles.input}/>
         </div>
+        <img src="./cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
+        <img src="./noavatar.png" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
       </div>
       <div className={styles.box5}>
-        <img src="./cart.svg" alt="cart" className='cart'/>
-        <img src="./noavatar.png" alt="n0_avtar"  className='avatar'/>
+      <div className={styles.items}>On Sale</div>
+        <div className={styles.items}>New Arrivals</div>
+        <div className={styles.items}>Brands</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar ;
+export default Navbar;
