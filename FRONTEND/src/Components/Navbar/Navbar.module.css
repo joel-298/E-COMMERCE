@@ -1,5 +1,4 @@
 .container {
-    /* background: linear-gradient(black, transparent); */
     /* background-color: red; */
     display: flex;
     width: 95%;
@@ -29,7 +28,6 @@
     color: white;
     margin: auto;
     align-items: end;
-    /* font-size:5vh ; */
 }
 .logo{
     /* background-color: brown; */
@@ -83,8 +81,8 @@
     border-radius: 5vh ;
 }
 .button{
-    background-color:transparent ;
     /* background-color: red; */
+    background-color:transparent ;
     border: 0px transparent;
     display: flex;
     width:10%;
@@ -199,8 +197,8 @@
         margin-right: 0vh;
    }
    .box3 div{
-        align-items: center;
         /* background-color: brown; */
+        align-items: center;
         margin-bottom: 0vh;
    }
    .box2{
@@ -227,13 +225,14 @@
     .box2{
         column-gap: 30%;
     }
+    /*---------------*/
     .box2 h1 {
         font-size: 0; /* Hides the text without removing it */
     }
-    
     .box2 h1 img {
         font-size: initial; /* Retains the logo image size */
     }
+    /*---------------*/
     .box4{
         align-items: end;
         width: 70%;

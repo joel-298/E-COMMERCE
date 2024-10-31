@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <div className={styles.container}>
         <Navbar/> 
-        {/* <div>THIS IS HOME</div>
-        <Footer/> */}
+        {/* <div>THIS IS HOME</div> */}
+        <Footer/>
     </div>
   )
 }
