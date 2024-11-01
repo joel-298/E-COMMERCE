@@ -15,8 +15,6 @@
     overflow-y: scroll;  /* Enables vertical scrolling */
     scroll-behavior: smooth;  /* Smooth scrolling */
 }
-
-
 /* Hide scrollbar */
 .container::-webkit-scrollbar {
     display: none;  /* For Chrome, Safari, and Opera */
@@ -24,4 +22,8 @@
 .container {
     -ms-overflow-style: none;  /* For Internet Explorer and Edge */
     scrollbar-width: none;  /* For Firefox */
+}
+
+.content {
+    padding: 2vh 5vh;
 }
