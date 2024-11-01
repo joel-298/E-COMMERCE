@@ -1,0 +1,12 @@
+THURSAY : Navigation , Footer                                         -> Completed
+FRIDAY : Admin , Item 
+SATURDAY : Cart , Transaction
+
+Karan : Signup / Login :- data will get fetched and protected routes will get Setup -> navigating user to Home , Form or Admin page 
+
+Kashish : Form(Seller) page and API : (this api will be fetched in Home page)
+
+
+
+
+Urban Cart © 2000-2023, All Rights Reserved
