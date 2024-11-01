@@ -6,4 +6,24 @@
     margin: 0%; 
     background: linear-gradient(black,rgb(6, 75, 58)); 
     box-sizing: border-box; /* Include padding in height calculation */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+
+
+    overflow-y: scroll;  /* Enables vertical scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+/* Hide scrollbar */
+.container::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+.container {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+}
+
+.content {
+    padding: 2vh 5vh;
 }
