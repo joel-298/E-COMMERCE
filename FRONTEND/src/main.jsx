@@ -8,6 +8,7 @@ import Admin from './Components/Admin/Admin'
 import X from './Components/Home/X/x'
 import Brands from './Components/Home/BRANDS/Brands'
 import Item from './Components/Home/ITEM/Item'
+import Profile from './Components/Profile/Profile'
 // import Forms from './Components/Forms/Forms'
 // import Add from './Components/Forms/add/Add'
 // import Edit from './Components/Forms/edit/Edit'
@@ -16,7 +17,8 @@ import Item from './Components/Home/ITEM/Item'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/cart" element={<Cart/>} />            {/* for User  */}
+      <Route path='/profile' element={<Profile/>} />  {/* for User  */}
+      <Route path="/cart" element={<Cart/>} />           
       <Route path="/" element={<Home/>} />
       <Route path="/x" element={<X/>} />                                                              
       <Route path="/brands" element={<Brands/>} />
