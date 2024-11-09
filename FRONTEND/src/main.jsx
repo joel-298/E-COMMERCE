@@ -9,9 +9,9 @@ import X from './Components/Home/X/x'
 import Brands from './Components/Home/BRANDS/Brands'
 import Item from './Components/Home/ITEM/Item'
 import Profile from './Components/Profile/Profile'
-// import Forms from './Components/Forms/Forms'
-// import Add from './Components/Forms/add/Add'
-// import Edit from './Components/Forms/edit/Edit'
+import Forms from './Components/Forms/Forms'
+import Add from './Components/Forms/add/Add'
+import Edit from './Components/Forms/edit/Edit'
 
 
 createRoot(document.getElementById('root')).render(
@@ -27,9 +27,9 @@ createRoot(document.getElementById('root')).render(
 
       <Route path="/auth" element={<Auth/>} />
 
-      {/*<Route path="/seller" element={<Forms/>} />       
+      <Route path="/seller" element={<Forms/>} />       
       <Route path="/seller/add" element={<Add />} />
-      <Route path="/seller/edit" element={<Edit />} />*/}
+      <Route path="/seller/edit" element={<Edit />} />
  
       <Route path="/admin" element={<Admin/>} />         
     </Routes>
