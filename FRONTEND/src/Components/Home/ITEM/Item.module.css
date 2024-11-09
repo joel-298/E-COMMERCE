@@ -227,6 +227,8 @@
         width: 100%; 
     }
     .child2 {
+        /* background-color: red; */
+        margin-top: 30px;
         width: 100%;
     }
     .box2{

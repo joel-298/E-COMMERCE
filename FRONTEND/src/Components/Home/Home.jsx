@@ -64,7 +64,8 @@ const Home = () => {
 
   // PRODUCTS API : 
   const arr = [
-    {
+    { 
+      id: 0,
       image: "https://i.pinimg.com/564x/12/4b/7d/124b7d3152cd27be504694c9e3e5d40e.jpg",
       image2 : "https://i.pinimg.com/564x/1c/62/33/1c6233171e1dedd7c319fbee9a715f7a.jpg" , 
       image3 : "https://i.pinimg.com/564x/5c/d2/25/5cd2253551159c0ba12478db674fa43d.jpg" , 
@@ -81,7 +82,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 1000 left",
       category: "Bottomwear" // options: Bottomwear, Footwear, Topwear, Accessories
     },
-    {
+    { 
+      id: 1,
       image: "https://i.pinimg.com/564x/37/30/85/3730851186fae0919b6493108c81ea49.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -98,7 +100,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 500 left",
       category: "Bottomwear"
     },
-    {
+    { 
+      id: 2,
       image: "https://i.pinimg.com/564x/f7/bd/94/f7bd94a4919c4ae7e503d66be618c337.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -115,7 +118,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 300 left",
       category: "Bottomwear"
     },
-    {
+    { 
+      id: 3,
       image: "https://i.pinimg.com/564x/8e/5a/86/8e5a86c1393bed2d9e763328fbd333d3.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -132,7 +136,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 150 left",
       category: "Topwear"
     },
-    {
+    { 
+      id: 4,
       image: "https://i.pinimg.com/564x/92/35/61/9235611967d35d89d4c2e456bec32652.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -149,7 +154,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 200 left",
       category: "Accessories"
     },
-    {
+    { 
+      id: 5,
       image: "https://i.pinimg.com/736x/3c/7b/e6/3c7be6aaa532d5b2956ed4dc70c5ce21.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -166,7 +172,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 50 left",
       category: "Accessories"
     },
-    {
+    { 
+      id: 6,
       image: "https://i.pinimg.com/564x/17/2f/fe/172ffe0a42107e3a4f31722878da9d07.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -183,7 +190,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 40 left",
       category: "Accessories"
     },
-    {
+    { 
+      id: 7,
       image: "https://i.pinimg.com/564x/b4/83/c2/b483c2cd69e04c414f2d39ae51256002.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -200,7 +208,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 250 left",
       category: "Footwear"
     },
-    {
+    { 
+      id: 8,
       image: "https://i.pinimg.com/564x/c5/e6/d0/c5e6d0459c3ccab2f9f5e40bc8131c50.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -217,7 +226,8 @@ const Home = () => {
       totalQuantityAvailable: "Only 300 left",
       category: "Footwear"
     },
-    {
+    { 
+      id: 9,
       image: "https://i.pinimg.com/564x/94/c2/99/94c2996c75ec58b3d07fb663255cd0ff.jpg",
       image2 : "https://i.pinimg.com/564x/09/f0/a2/09f0a2cb400391a159bb34263e9d8c4c.jpg" , 
       image3 : "https://i.pinimg.com/736x/07/b0/c7/07b0c72f766de9c5b0477d470980fd12.jpg" , 
@@ -386,7 +396,7 @@ const Home = () => {
             {/* <h1>{`<`}</h1> */}
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {onSale.slice(0, 6).map(item => (
-                  <div key={item.name} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -408,7 +418,7 @@ const Home = () => {
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {topwears.slice(0, 6).map(item => (
-                  <div key={item.name} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -428,7 +438,7 @@ const Home = () => {
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {bottomwears.slice(0, 6).map(item => (
-                  <div key={item.name} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -448,7 +458,7 @@ const Home = () => {
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {footwears.slice(0, 6).map(item => (
-                  <div key={item.name} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -468,7 +478,7 @@ const Home = () => {
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {accessories.slice(0, 6).map(item => (
-                  <div key={item.name} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
