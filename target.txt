@@ -1,0 +1,18 @@
+Priority : Item(media query), X (filter , radio), Admin ,  Add to Cart , Search 
+
+Karan : Profile page, Signup / Login :- data will get fetched and protected routes will get Setup -> navigating user to Home , Form or Admin page 
+Kashish : Form(Seller) page and API :
+
+
+
+
+// Add to cart and Search functionality can only be done once the backend is completed ..... 
+// add to cart will not hit the quantity deduction : it will only be done once the order is placed ..... 
+
+
+
+// ST3 : 1) reviews and ratings through user , 
+//       2) Seller & Users can see the review of all the users 
+//       3) ONLY SELLER will be able to see the ratings of the each user 
+//       4) RECOMENDATION BASED ON reviews
+//       5) ADVANCE AUTHENTICATION SYSTEM

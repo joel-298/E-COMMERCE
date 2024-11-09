@@ -1,0 +1,184 @@
+.contanier {
+    width: 96%;
+    background-color: #1F2421;
+    margin: 0vh auto;
+    display: flex;
+    padding: 2%;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    position: static;         /*Keeping the footer element down along with the margin top auto*/
+    margin-top: auto;
+    bottom: 0vh;
+
+}
+hr{
+    width: 100%;
+}
+
+.child1{
+    /* background-color: rgb(89, 0, 0); */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+.box1{
+    /* background-color: blue; */
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+.heading{
+    /* background-color: purple; */
+    width: 100%;
+    height: auto;
+}
+.heading h1{
+    /* background-color: red; */
+    display: flex ;
+    font-size:x-large;
+    align-items: center;
+
+}
+.heading h2{
+    /* background-color: red; */
+    font-size:small;
+    font-weight:100;
+}
+.social{
+    /* background-color: aqua; */
+    margin-top: 2vh;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    column-gap: 5%;
+}
+.social img {
+    background-color: rgb(48, 48, 48);
+    border-radius: 1vh;
+    height: 50px;
+    padding: 0.5vh;
+}
+.logo{
+    /* background-color: black; */
+    height: 56px;
+    width: 28px;
+}
+.box2{
+    /* background-color: rgb(242, 255, 0); */
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+}
+.items{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: 22%;
+    justify-content: center;
+}
+.items h2 , .items h3 {
+    /* background-color: black; */
+    display: flex ;
+    justify-content: start;
+    align-items: center;
+}
+.items h2{
+    font-size: larger;
+    font-weight: 200;
+}
+.items h3{
+    font-size: small;
+    font-weight:100;
+}
+
+.child2{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sub_box1{
+    /* background-color: brown; */
+    align-items: center;
+    font-size: 13px
+}
+.sub_box2{
+    /* background-color: brown; */
+    display: flex;
+    align-items: center;
+}
+.sub_box2 img {
+    height: 60px ;
+    width: 50px;
+}
+
+/*HOVER EFFECTS*/
+img:hover{
+    cursor: pointer;
+    transition:0.3s;
+}
+
+
+/*MEDIA QUERY*/
+@media screen and (max-width: 1023px) {
+    .child2{
+        flex-direction: column;
+    }
+    .child1{
+        flex-direction: column;
+    }
+    .box1{
+        /* background-color: red; */
+        margin: auto;
+        width: 100%;
+    }
+    .heading h1 , .heading h2{
+        /* background-color: black; */
+        display: flex ;
+        justify-content: center;
+    }
+    .heading h2{
+        padding: 0vh 2vh;
+        font-size: medium;
+    }
+    .social{
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        row-gap: 1vh;
+        padding: 2vh;
+    }
+    .social img{
+        height: 30px;
+    }
+    .box2{
+        /* background-color: red; */
+        margin-top: 3vh;
+        width: 100%;
+        row-gap: 2vh;
+        flex-wrap: wrap;
+        column-gap: 2vh;
+        justify-content: center;
+    }
+    .items{
+        /* background-color: brown; */
+        width: 20vh;
+        height: 30vh;
+        display: flex;
+   }
+    .items h2 , .items h3{
+        /* background-color: black; */
+        justify-content: center;
+        height: 20%;
+        margin-top: -1vh;
+    } 
+}
+
+@media screen and (min-width: 1023px) {
+    .social img {
+        /* background-color: black; */
+        height: 35px;
+    }
+}
+

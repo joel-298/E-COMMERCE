@@ -1,0 +1,88 @@
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    background-color: #d8e6f3fd;
+    box-sizing: border-box; /* Include padding in height calculation */
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    /* background-color: rgba(6, 116, 95, 0.458); */
+
+    overflow-y: scroll;  /* Enables vertical scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+/* Hide scrollbar */
+.container::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+.container {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+}
+
+.content {
+    /* background-color: red; */
+    padding:0vh 2vh;
+    margin-top: 10vh;
+    margin-bottom: 7vh;
+}
+.p {
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 100;
+    margin-top: 60px;
+    color: black;
+}
+
+.child{
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap:10px;
+    row-gap: 50px;
+    overflow: hidden;
+    padding-top: 1vh;
+}
+
+
+.child img{
+    height: 350px ;
+    width: 350px;
+    border: 1vh solid rgba(116, 116, 120, 0.546);
+}
+.child p {
+    /* background-color: black; */
+    margin: 0vh;
+    font-size: 30px;
+    font-weight: 100;
+    justify-content: start;
+    padding-left: 50px;
+    margin-top: 20px;
+    color: black;
+}
+
+/*MEDIA QUERY FOR TABS*/
+@media screen and (min-width: 700px) and (min-height: 901px) {
+    .content {
+        margin-top: 8vh;
+        padding-top: 1vh;
+    }
+}
+/*MEDIA QUERY FOR PHONES*/
+@media screen and (max-width: 767px) {
+    .child img{
+        height: 280px;
+        width: 250px;
+    }    
+    .p {
+        margin-top: 30px;
+    }
+}

@@ -1,0 +1,144 @@
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    background-color: #d8e6f3fd;
+    box-sizing: border-box; /* Include padding in height calculation */
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    /* background-color: rgba(6, 116, 95, 0.458); */
+
+    overflow-y: scroll;  /* Enables vertical scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+/* Hide scrollbar */
+.container::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+.container {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+}
+
+.content {
+    /* background-color: red; */
+    padding: 2vh 0vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+
+.content h1{
+    /* background-color: rgb(206, 103, 0); */
+    font-size: 50px;
+    font-weight: 500;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+.content .p{
+    background-color: rgba(116, 116, 120, 0.546);
+    font-size: 20px;
+    font-weight: 100;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin: auto;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    width: 150px;
+    border-radius: 1vh;
+}
+.p:hover{
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.onSale {
+    /* background-color: rgba(116, 116, 120, 0.546); */
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 0vh 3vh;
+    margin: 0vh 2vh;
+    margin-bottom: 2vh;
+    border-radius: 2vh;
+    margin-top: -10px;
+
+}
+
+.onSale .box1 {
+    /* background-color: brown; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center ;
+    column-gap: 3vh;
+    row-gap: 3vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.onSale .box1 .productCard {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width:auto;
+    height: 460px;
+    padding: 4px;
+    border-radius: 2vh;
+    color: rgb(0, 0, 0);
+}
+.productImage{
+    height: 300px ;
+    width: 248px;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+.productCard .productName {
+    /* background-color: blue; */
+    display: flex;
+    width: 218px;
+    padding: 0px 15px;
+    font-weight: 100;
+}
+.productCard .productDescription {
+    /* background-color: purple; */
+    width: 218px;
+    padding: 0px 15px;
+    margin-top: -5px;
+    font-weight: 100;
+}
+.productPrice {
+    /* background-color: purple; */
+    width: 218px;
+    padding: 0px 15px;
+    margin-top: -2px;
+    width: auto;
+}
+.productCard .productPrice span {
+    /* background-color: green; */
+    font-weight: 100;
+}
+.productPrice .originalPrice{
+    /* color: rgba(250, 39, 35, 0.752); */
+    text-decoration: line-through;
+    font-size: 13px;
+}
+.productPrice .discountPrice{
+    font-size: 17px;
+}
+.discountPercent {
+    background-color: rgba(210, 119, 119, 0.603);
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.box1 .productCard:hover{
+    transition: 0.3s;
+    cursor: pointer;
+    /* background-color: #ffffff; */
+}

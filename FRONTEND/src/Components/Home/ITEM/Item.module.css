@@ -1,0 +1,249 @@
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    background-color: #d8e6f3fd;
+    box-sizing: border-box; /* Include padding in height calculation */
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    /* background-color: rgba(6, 116, 95, 0.458); */
+
+    overflow-y: scroll;  /* Enables vertical scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+/* Hide scrollbar */
+.container::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+.container {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+}
+
+.content {
+    /* background-color: red; */
+    padding: 2vh;
+    margin-top: 10vh;
+    display: flex;
+}
+.child1 {
+    /* background-color: purple; */
+    margin: 0vh;
+    width: 50%;
+}
+
+.box2 {
+    /* background-color: yellow; */
+    display: flex;
+    column-gap: 20px;  /* Adjusted to px for better control */
+    height: 600px;
+    overflow: hidden;
+    justify-content: center;
+    padding: 0 20px;  /* Adjusted to px for consistency */
+}
+
+.box2 img {
+    border: 8px solid grey;  
+    height: calc(100% - 16px); 
+    max-width: 100%;
+}
+.next_prev {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    column-gap: 2vh;
+    margin-top: 15px;
+}
+.next_prev img {
+    background-color:rgb(255, 255, 255) ;
+    display: flex ;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%; 
+    padding: 1.2vh; 
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 50px -0px black;
+} 
+.next_prev img:hover {
+    background-color:  rgba(128, 128, 128, 0.506);
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px -15px rgb(255, 255, 255);
+}
+.child2 {
+    /* background-color: greenyellow; */
+    margin: 0vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh auto;
+}
+.child2 .heading {
+    /* background-color: red; */
+    width: 95%;
+    margin: 0px auto;
+    margin: 0vh;
+}
+.child2 .heading h1{
+    /* background-color: rgb(32, 1, 1); */
+    width: 95%;
+    margin: 0px auto;
+    font-size: 50px;
+    font-weight: 100;
+    color: black;
+}
+.child2 .heading h2{
+    /* background-color: rgb(0, 89, 255); */
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 10px;
+    font-size: 35px;
+    font-weight: 100;
+    color: rgb(57, 56, 56);
+}
+.child2 .heading h3{
+    /* background-color: rgb(166, 0, 255); */
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 100;
+    color: black;
+}
+.child2 .p {
+    /* background-color: red; */
+    width: 95%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+}
+.span1 {
+    font-size: 30px;
+    color: black;
+}
+.span2{ 
+  font-size: 25px;
+  text-decoration: line-through;
+  color: rgb(118, 118, 118);
+}
+.span3{
+    font-size: 28px;
+    color: rgb(255, 102, 0);
+}
+.child2 .size {
+    /* background-color: brown; */
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 3vh;
+}
+.child2 .size h3{
+    /* background-color: black; */
+    margin: 0vh;
+    font-size: 25px;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: black;
+}
+.child2 .size .label {
+    /* background-color: red; */
+    display: flex;
+    column-gap: 2vh;
+}
+.child2 .size label {
+    background-color: rgb(255, 255, 255);
+    margin: 0vh;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10px;
+    min-width: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 1vh;
+    color:black ; 
+}
+.child2 .size label:hover {
+    transition: 0.3s; 
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.506);
+}
+.child2 .buttons{
+    /* background-color: red; */
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+}
+.cart_button {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.cart_button:hover {
+    transition: 0.3s; 
+    cursor: pointer;
+}
+.child2 .product_details {
+    /* background-color: brown; */
+    width: 95%;
+    margin: 0px auto;
+    margin-top: 3vh;
+}
+.child2 .product_details h2 {
+    /* background-color: black;  */
+    font-size: 30px;
+    font-weight: 100; 
+    color: black;
+    margin: 0vh;
+    margin-top: 30px;
+}
+.child2 .product_details p {
+    /* background-color: black; */
+    font-size: 20px;
+    font-weight: 100;
+    color: black;
+}
+
+/*MEDIA QUERY FOR TABS*/
+@media screen and (min-width: 700px) and (min-height: 901px) {
+    .content {
+        margin-top: 8vh;
+    }
+}
+/*MEDIA QUERY FOR PHONES*/
+@media screen and (max-width : 767px) {
+    .content {
+        flex-direction: column;
+    }
+    .child1 {
+        width: 100%; 
+    }
+    .child2 {
+        width: 100%;
+    }
+    .box2{
+        height: 400px;
+    }
+    .label{
+        /* background-color: red; */
+        row-gap: 15px;
+        flex-wrap: wrap;
+    }
+    .span1 {
+        font-size: 28px;
+    }
+    .span2{ 
+      font-size: 22px;
+    }
+    .span3{
+        font-size: 22px;
+    }
+}

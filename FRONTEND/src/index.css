@@ -1,0 +1,11 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+#root {
+    height: 100%; /* Ensures the root takes full height */
+    width: 100%;
+}
