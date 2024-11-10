@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Item.module.css';
-import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
+import SUBNavbar from '../../Navbar/SUBNavbar';
 
 const Item = () => {
   const location = useLocation();
@@ -58,7 +58,7 @@ const Item = () => {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
+      <SUBNavbar/>
             {/* <p>
               <a href="/">Home/</a>
               <a href='/'>{companyName}/</a>

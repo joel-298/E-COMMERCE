@@ -3,7 +3,6 @@
     width: 100%;
     padding: 0vh; 
     margin: 0%; 
-    background-color: #d8e6f3fd;
     box-sizing: border-box; /* Include padding in height calculation */
     color: rgb(0, 0, 0);
     display: flex;

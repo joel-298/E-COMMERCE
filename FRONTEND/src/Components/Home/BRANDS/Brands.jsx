@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Brands.module.css' 
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-import Item from '../ITEM/Item';
+import SUBNavbar from '../../Navbar/SUBNavbar';
 
 const Brands = () => {
   const location = useLocation();
@@ -190,6 +190,24 @@ const Brands = () => {
       gender: "Male",
       totalQuantityAvailable: "Only 600 left",
       category: "Topwear"
+    },
+    { 
+      id: 10,
+      image: "https://cdn.shopify.com/s/files/1/2049/2073/files/Martin-Boy_s-Running-Shoes-uss-seller-shoes-2_1024x1024.png?v=1647038997",
+      image2 : "https://cdn.shopify.com/s/files/1/2049/2073/files/Martin-Boy_s-Running-Shoes-uss-seller-shoes-4_1024x1024.png?v=1647039049" , 
+      image3 : "https://ultrasellershoes.com/cdn/shop/products/Martin-Boy_s-Running-Shoes-color-white-uss-seller-shoes_1800x1800.png?v=1647039409" , 
+      image4 : "https://ultrasellershoes.com/cdn/shop/products/Martin-Boy_s-Running-Shoes-color-gray-uss-seller-shoes_1800x1800.png?v=1647039409" ,
+      image5 : "https://i.pinimg.com/564x/86/19/b7/8619b7b31b57b013aa859a2bbbac8cbe.jpg",
+      name: "Fashion Sneaker",
+      originalPrice: 1500,
+      discountPercent: 30,
+      companyName: "Zara",
+      description: "Comfortable shoes for your kid ..... ",
+      type: "Casual",
+      availableSizes: ["XS", "S", "M", "L", "XL"],
+      gender: "Kids",
+      totalQuantityAvailable: "Only 600 left",
+      category: "Footwear"
     }
   ]
 
@@ -204,7 +222,7 @@ const Brands = () => {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
+      <SUBNavbar/>
       <div className={styles.content}>
         <p className={styles.p}>BRANDS ASSOCIATED WITH US</p>
         <div className={styles.child}>

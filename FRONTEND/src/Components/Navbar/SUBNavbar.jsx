@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { Link } from 'react-scroll';
 
-const Navbar = () => {
-  const location = useLocation() ;
-    // Handling navigation items to display or not
-    // if (location.pathname === '/x' || location.pathname === '/item' || location.pathname === '/brands') {
-    //   document.querySelector(`.${styles.display}`).classList.add(styles.display_none);
-    // }
 
+const SUBNavbar = () => {
   // PRODUCTS API : 
   const arr = [
     { 
@@ -298,7 +292,7 @@ const Navbar = () => {
           <div className={styles.items} onClick={()=> { navigate('/y', { state: { arr : Women, title: 'WOMEN' } }) }}>Women</div>
           <div className={styles.items} onClick={()=> { navigate('/y', { state: { arr : Men, title: 'MEN' } }) }}>Men</div>
           <div className={styles.items} onClick={()=> { navigate('/y', { state: { arr : Kids, title: 'KIDS' } }) }}>Kids</div>
-          <div className={styles.items}> <Link to="brands_section" smooth={true} duration={100}>Brands</Link></div>
+          <div className={styles.items}><a href="/#brands_section">Brands</a></div>
         </div>
 
         <div className={styles.box4}>
@@ -323,13 +317,7 @@ const Navbar = () => {
             <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: { arr : Women, title: 'WOMEN' } }) , closeSideBar}}>Women</div></a>
             <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: { arr : Men, title: 'MEN' } }) , closeSideBar}}>Men</div></a>
             <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: { arr : Kids, title: 'KIDS' } }) , closeSideBar}}>Kids</div></a>
-            <Link to="brands_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>Brands</div></Link>
-            <Link to="newArrival_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>New Arrivals</div></Link>
-            <Link to="topwears_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>Tops & Sweaters</div></Link>
-            <Link to="bottomwears_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>Pants & Jeans</div></Link>
-            <Link to="footwears_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>Shoes & Bags</div></Link>
-            <Link to="accessories_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}>Accessories</div></Link>
-            <Link to="onSale_section" smooth={true} duration={100} className={styles.display}><div className={styles.items_box5} onClick={closeSideBar}><span>Sale</span></div></Link>
+            <a  href="/#brands_section"><div className={styles.items_box5} onClick={closeSideBar}>Brands</div></a>
           </div>
         </div>
 
@@ -339,19 +327,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
-
-
-
-// THIS WAS A GOOD APPROACH : 
-// PROBLEM : only works when reloads the page : 
-// SOLUTION : we will have to add event listner 
-  // const [width, setWidth] = useState(window.innerWidth) ;
-  // useEffect(() => {
-  //   const box5 = document.querySelector(`.${styles.box5}`);
-  //   if ( width > 1022) {
-  //     box5.classList.add(styles.remove); // Show box5 if width > 1024px
-  //   } else {
-  //     box5.classList.remove(styles.remove); // Hide box5 if width <= 1024px
-  //   }
-  // }, [width]);
+export default SUBNavbar;

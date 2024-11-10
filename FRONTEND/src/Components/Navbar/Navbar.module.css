@@ -389,3 +389,9 @@ a{
 }
 
 
+
+
+/*ADDING DISPLAY NONE*/
+.display_none {
+    display: none; 
+}

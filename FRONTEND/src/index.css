@@ -2,8 +2,18 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Prevent scrollbars from appearing */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+    /* background-color: #d8e6f3fd; */
 }
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+display: none;  /* For Chrome, Safari, and Opera */
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+-ms-overflow-style: none;  /* For Internet Explorer and Edge */
+scrollbar-width: none;  /* For Firefox */
+}
+
 
 #root {
     height: 100%; /* Ensures the root takes full height */

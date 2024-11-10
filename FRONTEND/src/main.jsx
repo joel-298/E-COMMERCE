@@ -12,6 +12,7 @@ import Profile from './Components/Profile/Profile'
 import Forms from './Components/Forms/Forms'
 import Add from './Components/Forms/add/Add'
 import Edit from './Components/Forms/edit/Edit'
+import Y from './Components/Home/Y/Y'
 
 
 createRoot(document.getElementById('root')).render(
@@ -20,7 +21,8 @@ createRoot(document.getElementById('root')).render(
       <Route path='/profile' element={<Profile/>} />  {/* for User  */}
       <Route path="/cart" element={<Cart/>} />           
       <Route path="/" element={<Home/>} />
-      <Route path="/x" element={<X/>} />                                                              
+      <Route path="/x" element={<X/>} />          
+      <Route path="/y" element={<Y/>} />          {/* home page filtered on the basis of women , men and kids */}                                                 
       <Route path="/brands" element={<Brands/>} />
       <Route path="/item" element={<Item/>} />
 
@@ -31,7 +33,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/seller/add" element={<Add />} />
       <Route path="/seller/edit" element={<Edit />} />
  
-      <Route path="/admin" element={<Admin/>} />         
+      <Route path="/admin" element={<Admin/>} />     
     </Routes>
   </BrowserRouter>,
 );

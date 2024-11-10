@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer';
 import styles from './Home.module.css' ;
 import { useNavigate } from 'react-router-dom';
+import { Link, Element } from 'react-scroll';
 
 
 const Home = () => {
@@ -243,6 +244,24 @@ const Home = () => {
       gender: "Male",
       totalQuantityAvailable: "Only 600 left",
       category: "Topwear"
+    },
+    { 
+      id: 10,
+      image: "https://cdn.shopify.com/s/files/1/2049/2073/files/Martin-Boy_s-Running-Shoes-uss-seller-shoes-2_1024x1024.png?v=1647038997",
+      image2 : "https://cdn.shopify.com/s/files/1/2049/2073/files/Martin-Boy_s-Running-Shoes-uss-seller-shoes-4_1024x1024.png?v=1647039049" , 
+      image3 : "https://ultrasellershoes.com/cdn/shop/products/Martin-Boy_s-Running-Shoes-color-white-uss-seller-shoes_1800x1800.png?v=1647039409" , 
+      image4 : "https://ultrasellershoes.com/cdn/shop/products/Martin-Boy_s-Running-Shoes-color-gray-uss-seller-shoes_1800x1800.png?v=1647039409" ,
+      image5 : "https://i.pinimg.com/564x/86/19/b7/8619b7b31b57b013aa859a2bbbac8cbe.jpg",
+      name: "Fashion Sneaker",
+      originalPrice: 1500,
+      discountPercent: 30,
+      companyName: "Zara",
+      description: "Comfortable shoes for your kid ..... ",
+      type: "Casual",
+      availableSizes: ["XS", "S", "M", "L", "XL"],
+      gender: "Kids",
+      totalQuantityAvailable: "Only 600 left",
+      category: "Footwear"
     }
   ]
 
@@ -305,201 +324,201 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-        <Navbar/> 
-        <div className={styles.content}>
-          <div className={styles.container2}>
-            <a href="/#newArrival_section"><div className={styles.items_container2} >New Arrivlas</div></a>
-            <a href="/#topwears_section"><div className={styles.items_container2} >Tops & Sweaters</div></a>
-            <a href="/#bottomwears_section"><div className={styles.items_container2}>Pants & Jeans</div></a>
-            <a href="/#footwears_section"><div className={styles.items_container2}>Shoes & Bags</div></a>
-            <a href="/#accessories_section"><div className={styles.items_container2}>Accessories</div></a>
-            <a href="/#onSale_section"><div className={styles.items_container2}><span>Sale</span></div></a>
+      <Navbar/> 
+      <div className={styles.content}>
+        <div className={styles.container2}>
+          <Link to="newArrival_section" smooth={true} duration={100} ><div className={styles.items_container2} >New Arrivlas</div></Link>
+          <Link to="topwears_section" smooth={true} duration={100} ><div className={styles.items_container2} >Tops & Sweaters</div></Link>
+          <Link to="bottomwears_section" smooth={true} duration={100} ><div className={styles.items_container2}>Pants & Jeans</div></Link>
+          <Link to="footwears_section" smooth={true} duration={100} ><div className={styles.items_container2}>Shoes & Bags</div></Link>
+          <Link to="accessories_section" smooth={true} duration={100} ><div className={styles.items_container2}>Accessories</div></Link>
+          <Link to="onSale_section" smooth={true} duration={100} ><div className={styles.items_container2}><span>Sale</span></div></Link>
+        </div>
+
+        <div className={styles.shop_now}>
+          <img src="./Background.png" alt="background image" />
+          <div className={styles.shop_now_sub_div}>
+            <h1>Your Cozy Era</h1>
+            <p>Get peak comfy-chic with new winter essentials.</p>
+            <button><Link to="category" smooth={true} duration={100}>SHOP NOW</Link></button>
           </div>
+        </div>
 
-          <div className={styles.shop_now}>
-            <img src="./Background.png" alt="background image" />
-            <div className={styles.shop_now_sub_div}>
-              <h1>Your Cozy Era</h1>
-              <p>Get peak comfy-chic with new winter essentials.</p>
-              <button><a href="/#category">SHOP NOW</a></button>
-            </div>
+
+        <h1 className={styles.category}><Element  id='category' >SHOP BY CATEGORY</Element></h1>
+        <div className={styles.dressing}>
+          <div className={styles.box1}> 
+            {brr.map((item, index) => (                                                         // create a map function on arr (PRODUCTS)and display imge , name of the product and its description here  
+              <div
+                key={index}
+                className={styles.productCard}
+                onClick={() => {
+                  // Navigate to '/x' with appropriate state based on category
+                  let filteredProducts = [];
+                  let title = '';
+
+                  // Check category and set filteredProducts and title
+                  if (item.category === 'Casual') {
+                    filteredProducts = Casual; // or setProducts_casual if you need to fetch data on click
+                    title = 'CASUAL';
+                  } else if (item.category === 'Formal') {
+                    filteredProducts = Formal; // or setProducts_formal if you need to fetch data on click
+                    title = 'FORMAL';
+                  } else if (item.category === 'Party') {
+                    filteredProducts = Party; // or setProducts_party if you need to fetch data on click
+                    title = 'PARTY';
+                  } else if (item.category === 'Sports') {
+                    filteredProducts = Sports; // or setProducts_sports if you need to fetch data on click
+                    title = 'SPORTS';
+                  }
+                  navigate('/x', { state: { products: filteredProducts, title } });
+                }}
+              >
+                <img src={item.image} alt={item.name} className={styles.productImage} />
+                <h2 className={styles.category}>{item.category}</h2>
+              </div>
+            ))}
           </div>
+        </div>
 
 
-          <h1 id='category' className={styles.category}>SHOP BY CATEGORY</h1>
-          <div className={styles.dressing}>
-            <div className={styles.box1}> 
-              {brr.map((item, index) => (                                                         // create a map function on arr (PRODUCTS)and display imge , name of the product and its description here  
-                <div
-                  key={index}
-                  className={styles.productCard}
-                  onClick={() => {
-                    // Navigate to '/x' with appropriate state based on category
-                    let filteredProducts = [];
-                    let title = '';
 
-                    // Check category and set filteredProducts and title
-                    if (item.category === 'Casual') {
-                      filteredProducts = Casual; // or setProducts_casual if you need to fetch data on click
-                      title = 'CASUAL';
-                    } else if (item.category === 'Formal') {
-                      filteredProducts = Formal; // or setProducts_formal if you need to fetch data on click
-                      title = 'FORMAL';
-                    } else if (item.category === 'Party') {
-                      filteredProducts = Party; // or setProducts_party if you need to fetch data on click
-                      title = 'PARTY';
-                    } else if (item.category === 'Sports') {
-                      filteredProducts = Sports; // or setProducts_sports if you need to fetch data on click
-                      title = 'SPORTS';
-                    }
-                    navigate('/x', { state: { products: filteredProducts, title } });
-                  }}
-                >
+
+        <div className={styles.Brands}>
+          <div className={styles.box1}>                                              
+            <Element className={styles.productCard} id="newArrival_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <img src="./newArrivals.png" alt="new-arrivals" className={styles.productImage} />
+              <div className={styles.button_and_headings}>
+                <p>NEW ARRIVALS</p>
+                <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
+              </div>
+            </Element>
+            <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <img src="./BestSellers.png" alt="best-sellers" className={styles.productImage} />
+              <div className={styles.button_and_headings}>
+                <p>BEST-SELLERS</p>
+                <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
+              </div>
+            </Element>
+            <Element className={styles.productCard}  id="brands_section" onClick={()=> { navigate('/brands', { state: { products : brands, title: 'BRANDS' } }) }}>
+              <img src="./Brands.png" alt="brands" className={styles.productImage} />
+              <div className={styles.button_and_headings}>
+                <p>BRANDS</p>
+                <button onClick={()=> { navigate('/brands', { state: { products : brands} }) }}>DISCOVER BRANDS</button>
+              </div>
+            </Element>
+          </div>
+        </div>
+        
+        <h1 className={styles.on_sale_heading}><Element id="onSale_section">ON SALE</Element></h1>
+        <div className={styles.onSale}>
+          {/* <h1>{`<`}</h1> */}
+            <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
+              {onSale.slice(0, 6).map(item => (
+                <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
                   <img src={item.image} alt={item.name} className={styles.productImage} />
-                  <h2 className={styles.category}>{item.category}</h2>
+                  <h2 className={styles.productName}>{item.companyName}</h2>
+                  <p className={styles.productDescription}>{item.name}</p>
+                  <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
+                    <span className={styles.discountPrice}>
+                      ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
+                    </span>&nbsp;&nbsp;
+                    <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
+                    <span className={styles.discountPercent}>{item.discountPercent}%</span>
+                  </p>
                 </div>
               ))}
             </div>
-          </div>
-
-
-
-  
-          <div className={styles.Brands}>
-            <div className={styles.box1}>                                              
-              <div className={styles.productCard} id="newArrival_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
-                <img src="./newArrivals.png" alt="new-arrivals" className={styles.productImage} />
-                <div className={styles.button_and_headings}>
-                  <p>NEW ARRIVALS</p>
-                  <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
-                </div>
-              </div>
-              <div className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
-                <img src="./BestSellers.png" alt="best-sellers" className={styles.productImage} />
-                <div className={styles.button_and_headings}>
-                  <p>BEST-SELLERS</p>
-                  <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
-                </div>
-              </div>
-              <div className={styles.productCard}  id="brands_section" onClick={()=> { navigate('/brands', { state: { products : brands, title: 'BRANDS' } }) }}>
-                <img src="./Brands.png" alt="brands" className={styles.productImage} />
-                <div className={styles.button_and_headings}>
-                  <p>BRANDS</p>
-                  <button onClick={()=> { navigate('/brands', { state: { products : brands} }) }}>DISCOVER BRANDS</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <h1 id="onSale_section" className={styles.on_sale_heading}>ON SALE</h1>
-          <div className={styles.onSale}>
-            {/* <h1>{`<`}</h1> */}
-              <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
-                {onSale.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
-                    <img src={item.image} alt={item.name} className={styles.productImage} />
-                    <h2 className={styles.productName}>{item.companyName}</h2>
-                    <p className={styles.productDescription}>{item.name}</p>
-                    <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
-                      <span className={styles.discountPrice}>
-                        ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
-                      </span>&nbsp;&nbsp;
-                      <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
-                      <span className={styles.discountPercent}>{item.discountPercent}%</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-              {/* <h1>{`>`}</h1> */}
-              <button onClick={()=> { navigate('/x', { state: { products : onSale, title: 'ON SALE' } }) }}>View All</button>
-          </div>
-
-          <h1 id="topwears_section">TOPS & SWEATERS</h1>
-          <div className={styles.onSale}>
-              <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
-                {topwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
-                    <img src={item.image} alt={item.name} className={styles.productImage} />
-                    <h2 className={styles.productName}>{item.companyName}</h2>
-                    <p className={styles.productDescription}>{item.name}</p>
-                    <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
-                      <span className={styles.discountPrice}>
-                        ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
-                      </span>&nbsp;&nbsp;
-                      <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
-                      <span className={styles.discountPercent}>{item.discountPercent}%</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button onClick={()=> { navigate('/x', { state: { products : topwears, title: 'TOPS & SWEATERS' } }) }}>View All</button>
-          </div>
-          <h1 id="bottomwears_section">PANTS & JEANS</h1>
-          <div className={styles.onSale}>
-              <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
-                {bottomwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
-                    <img src={item.image} alt={item.name} className={styles.productImage} />
-                    <h2 className={styles.productName}>{item.companyName}</h2>
-                    <p className={styles.productDescription}>{item.name}</p>
-                    <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
-                      <span className={styles.discountPrice}>
-                        ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
-                      </span>&nbsp;&nbsp;
-                      <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
-                      <span className={styles.discountPercent}>{item.discountPercent}%</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button onClick={()=> { navigate('/x', { state: { products : bottomwears, title: 'PANTS & JEANS' } }) }}>View All</button>
-          </div>
-          <h1 id="footwears_section">SHOES & BAGS</h1>
-          <div className={styles.onSale}>
-              <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
-                {footwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
-                    <img src={item.image} alt={item.name} className={styles.productImage} />
-                    <h2 className={styles.productName}>{item.companyName}</h2>
-                    <p className={styles.productDescription}>{item.name}</p>
-                    <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
-                      <span className={styles.discountPrice}>
-                        ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
-                      </span>&nbsp;&nbsp;
-                      <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
-                      <span className={styles.discountPercent}>{item.discountPercent}%</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button onClick={()=> { navigate('/x', { state: { products : footwears, title: 'SHOES & BAGS' } }) }}>View All</button>
-          </div>
-          <h1 id="accessories_section">ACCESSORIES</h1>
-          <div className={styles.onSale}>
-              <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
-                {accessories.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
-                    <img src={item.image} alt={item.name} className={styles.productImage} />
-                    <h2 className={styles.productName}>{item.companyName}</h2>
-                    <p className={styles.productDescription}>{item.name}</p>
-                    <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
-                      <span className={styles.discountPrice}>
-                        ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
-                      </span>&nbsp;&nbsp;
-                      <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
-                      <span className={styles.discountPercent}>{item.discountPercent}%</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button onClick={()=> { navigate('/x', { state: { products : accessories, title: 'ACCESSORIES' } }) }}>View All</button>
-          </div>
-
-          <div className={styles.search_content}>
-            Result of search content
-          </div>
+            {/* <h1>{`>`}</h1> */}
+            <button onClick={()=> { navigate('/x', { state: { products : onSale, title: 'ON SALE' } }) }}>View All</button>
         </div>
-        <Footer/>
+
+        <h1><Element id="topwears_section">TOPS & SWEATERS</Element></h1>
+        <div className={styles.onSale}>
+            <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
+              {topwears.slice(0, 6).map(item => (
+                <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <img src={item.image} alt={item.name} className={styles.productImage} />
+                  <h2 className={styles.productName}>{item.companyName}</h2>
+                  <p className={styles.productDescription}>{item.name}</p>
+                  <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
+                    <span className={styles.discountPrice}>
+                      ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
+                    </span>&nbsp;&nbsp;
+                    <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
+                    <span className={styles.discountPercent}>{item.discountPercent}%</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <button onClick={()=> { navigate('/x', { state: { products : topwears, title: 'TOPS & SWEATERS' } }) }}>View All</button>
+        </div>
+        <h1><Element id="bottomwears_section">PANTS & JEANS</Element></h1>
+        <div className={styles.onSale}>
+            <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
+              {bottomwears.slice(0, 6).map(item => (
+                <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <img src={item.image} alt={item.name} className={styles.productImage} />
+                  <h2 className={styles.productName}>{item.companyName}</h2>
+                  <p className={styles.productDescription}>{item.name}</p>
+                  <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
+                    <span className={styles.discountPrice}>
+                      ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
+                    </span>&nbsp;&nbsp;
+                    <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
+                    <span className={styles.discountPercent}>{item.discountPercent}%</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <button onClick={()=> { navigate('/x', { state: { products : bottomwears, title: 'PANTS & JEANS' } }) }}>View All</button>
+        </div>
+        <h1><Element id="footwears_section">SHOES & BAGS</Element></h1>
+        <div className={styles.onSale}>
+            <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
+              {footwears.slice(0, 6).map(item => (
+                <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <img src={item.image} alt={item.name} className={styles.productImage} />
+                  <h2 className={styles.productName}>{item.companyName}</h2>
+                  <p className={styles.productDescription}>{item.name}</p>
+                  <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
+                    <span className={styles.discountPrice}>
+                      ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
+                    </span>&nbsp;&nbsp;
+                    <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
+                    <span className={styles.discountPercent}>{item.discountPercent}%</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <button onClick={()=> { navigate('/x', { state: { products : footwears, title: 'SHOES & BAGS' } }) }}>View All</button>
+        </div>
+        <h1><Element id="accessories_section">ACCESSORIES</Element></h1>
+        <div className={styles.onSale}>
+            <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
+              {accessories.slice(0, 6).map(item => (
+                <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <img src={item.image} alt={item.name} className={styles.productImage} />
+                  <h2 className={styles.productName}>{item.companyName}</h2>
+                  <p className={styles.productDescription}>{item.name}</p>
+                  <p className={styles.productPrice}>Rs:&nbsp;&nbsp;
+                    <span className={styles.discountPrice}>
+                      ₹{(item.originalPrice - (item.originalPrice * (item.discountPercent / 100))).toFixed(2)}
+                    </span>&nbsp;&nbsp;
+                    <span className={styles.originalPrice}>₹{item.originalPrice}</span>&nbsp;&nbsp;
+                    <span className={styles.discountPercent}>{item.discountPercent}%</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <button onClick={()=> { navigate('/x', { state: { products : accessories, title: 'ACCESSORIES' } }) }}>View All</button>
+        </div>
+
+        <div className={styles.search_content}>
+          Result of search content
+        </div>
+      </div>
+      <Footer/>
     </div>
   )
 }
