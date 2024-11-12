@@ -371,7 +371,7 @@ const Home = () => {
                     filteredProducts = Sports; // or setProducts_sports if you need to fetch data on click
                     title = 'SPORTS';
                   }
-                  navigate('/x', { state: { products: filteredProducts, title } });
+                  navigate('/x', { state: { arr: arr, products: filteredProducts, title } });
                 }}
               >
                 <img src={item.image} alt={item.name} className={styles.productImage} />
@@ -390,14 +390,14 @@ const Home = () => {
               <img src="./newArrivals.png" alt="new-arrivals" className={styles.productImage} />
               <div className={styles.button_and_headings}>
                 <p>NEW ARRIVALS</p>
-                <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
+                <button onClick={()=> { navigate('/x', { state: { arr: arr, products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
               </div>
             </Element>
             <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
               <img src="./BestSellers.png" alt="best-sellers" className={styles.productImage} />
               <div className={styles.button_and_headings}>
                 <p>BEST-SELLERS</p>
-                <button onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
+                <button onClick={()=> { navigate('/x', { state: { arr: arr, products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
               </div>
             </Element>
             <Element className={styles.productCard}  id="brands_section" onClick={()=> { navigate('/brands', { state: { products : brands, title: 'BRANDS' } }) }}>
@@ -430,7 +430,7 @@ const Home = () => {
               ))}
             </div>
             {/* <h1>{`>`}</h1> */}
-            <button onClick={()=> { navigate('/x', { state: { products : onSale, title: 'ON SALE' } }) }}>View All</button>
+            <button onClick={()=> { navigate('/x', { state: { arr: arr, products : onSale, title: 'ON SALE' } }) }}>View All</button>
         </div>
 
         <h1><Element id="topwears_section">TOPS & SWEATERS</Element></h1>
@@ -451,7 +451,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <button onClick={()=> { navigate('/x', { state: { products : topwears, title: 'TOPS & SWEATERS' } }) }}>View All</button>
+            <button onClick={()=> { navigate('/x', { state: { arr: arr, products : topwears, title: 'TOPS & SWEATERS' } }) }}>View All</button>
         </div>
         <h1><Element id="bottomwears_section">PANTS & JEANS</Element></h1>
         <div className={styles.onSale}>
@@ -471,7 +471,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <button onClick={()=> { navigate('/x', { state: { products : bottomwears, title: 'PANTS & JEANS' } }) }}>View All</button>
+            <button onClick={()=> { navigate('/x', { state: { arr: arr, products : bottomwears, title: 'PANTS & JEANS' } }) }}>View All</button>
         </div>
         <h1><Element id="footwears_section">SHOES & BAGS</Element></h1>
         <div className={styles.onSale}>
@@ -491,7 +491,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <button onClick={()=> { navigate('/x', { state: { products : footwears, title: 'SHOES & BAGS' } }) }}>View All</button>
+            <button onClick={()=> { navigate('/x', { state: { arr: arr, products : footwears, title: 'SHOES & BAGS' } }) }}>View All</button>
         </div>
         <h1><Element id="accessories_section">ACCESSORIES</Element></h1>
         <div className={styles.onSale}>
@@ -511,7 +511,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <button onClick={()=> { navigate('/x', { state: { products : accessories, title: 'ACCESSORIES' } }) }}>View All</button>
+            <button onClick={()=> { navigate('/x', { state: { arr: arr, products : accessories, title: 'ACCESSORIES' } }) }}>View All</button>
         </div>
 
         <div className={styles.search_content}>

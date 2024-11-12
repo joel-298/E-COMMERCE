@@ -40,21 +40,19 @@
     margin-top: 60px;
     color: black;
 }
-.content .p{
+.content .p1, .content .p2{
     background-color: rgba(116, 116, 120, 0.546);
     font-size: 20px;
     font-weight: 100;
-    display: flex ;
-    justify-content: center;
-    align-items: center;
     padding: 10px 20px;
     margin: auto;
     margin-top: -10px;
     margin-bottom: 30px;
     width: 150px;
-    border-radius: 1vh;
+    border-radius: 2px;
+    text-align: center;
 }
-.p:hover{
+.p1:hover , .p2:hover{
     cursor: pointer;
     transition: 0.3s;
 }
@@ -67,13 +65,12 @@
     padding: 0vh 3vh;
     margin: 0vh 2vh;
     margin-bottom: 2vh;
-    border-radius: 2vh;
     margin-top: -10px;
 
 }
 
 .onSale .box1 {
-    background-color: brown;
+    /* background-color: brown; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center ;

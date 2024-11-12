@@ -215,7 +215,7 @@ const Brands = () => {
   const navigate = useNavigate() ;
   const handleClick_Brand = (brand_name) => {
     const filterArray = arr.filter(item => item.companyName === brand_name) ;
-    navigate('/x', { state: { products : filterArray , title: brand_name } })
+    navigate('/x', { state: { arr: filterArray , products : filterArray , title: brand_name } })
   }
 
 
