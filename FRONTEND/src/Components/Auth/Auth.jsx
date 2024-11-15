@@ -1,74 +1,47 @@
-import React, { useState } from 'react';
-import './Auth.css'; // Import the CSS file
-
+import React from 'react'
+import { useState } from 'react'
+import "./Auth.css"
 const Auth = () => {
-  const [current, setCurrent] = useState("Login");
-
+  const [current, setcurrent] = useState("Login")
   return (
-    <div className='auth-container'>
-      <div className='auth-card'>
-        <div className='welcome-message'>
-          <div className='welcome-text'>
-            Welcome back to Urban Cart! Log in to explore the latest trends and exclusive deals just for you.
-          </div>
-        </div>
-
-        <div className='form-container'>
-          <div className='form-content'>
-            <div className='form-header'>
-              <h1>{current}</h1>
-              <div className='header-border'></div>
+    <div className='main'>
+      <div className='left'>
+        <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BS1x3W8mVGPbyty4BYx6EmQKxcKf4pXqgUBA3jAumYDKpjtN0s-mAZoPSm1Y3k8VF~QcsWkkEW7QifihBER4eGvFu2wwz9J9~6r9Mi09Fmb0SCCZnKLLNobzS8bj9yRZRn9XEIPqlehonrOg-neXTn3GubMQYP5sagiGFAa3gTRS9h~s1~uItwoQS8CjbYxzuo8RNbRErNHxgfByS7QdALsp-QtL7duSd6~eR1gbhWCF3Sj1xQwK4U2Pk~SYN2N9gSquG5A5POIkqOV2XjcS20i47TIY29qJ747FF2FtldXLdqiRkChGdxDkoQ6mRtWLvnzwL2nQc1pGJFeCzPXT7A__" alt="Welcome" />
+      </div>
+      <div className='right'>
+        <div>
+          <h1 className='heading'>{current}</h1>
+          <div className='inputs'>
+            {current === "Login" ? <div></div> : <div className='name'>
+              <label>UserName</label><br />
+              <input type="text" />
+            </div>}
+            <div className='email'>
+              <label>Email</label><br />
+              <input type="email" name="" />
             </div>
-
-            {current === "Sign up" && (
-              <div className='input-group'>
-                <div>
-                  <label>Username</label><br />
-                  <input className='input-field' type="text" />
-                  <div className='input-border'></div>
+            <div className='password'>
+              <label>Password</label><br />
+              <input type="password" name="" /><br />
+              {current === "Sign Up" ? <div className='cont'><span>It must be a combination of minimum 8 letters,numbers and symbols</span></div> : <span></span>}
+              {current === "Login" ? <div className='check1'>
+                <div className='check'>
+                  <input type="checkbox" name="" />
+                  <label>Remember me</label>
                 </div>
-                <img className='hidden-icon' src="User.svg" alt="" />
-              </div>
-            )}
-
-            <div className='input-group'>
-              <div>
-                <label>Email</label><br />
-                <input className='input-field' type="email" />
-                <div className='input-border'></div>
-              </div>
-              <img className='hidden-icon' src="Email.svg" alt="" />
+                <div className='forg'>
+                  <button className='forgot'>Forgot Password?</button>
+                </div>
+              </div> : <div></div>}
             </div>
-
-            <div className='input-group'>
-              <div>
-                <label>Password</label><br />
-                <input className='input-field' type="password" />
-                <div className='input-border'></div>
-              </div>
-              <img className='hidden-icon' src="Password.svg" alt="" />
-            </div>
-
-            <div className='button-container'>
-              <button className='submit-button'>{current}</button>
-            </div>
-
-            {current === "Sign up" ? (
-              <div className='toggle-auth'>
-                <span>Already have an account? </span>
-                <button className='toggle-button' onClick={() => setCurrent("Login")}>Login</button>
-              </div>
-            ) : (
-              <div className='toggle-auth'>
-                <span>Create a new account? </span>
-                <button className='toggle-button' onClick={() => setCurrent("Sign up")}>Sign up</button>
-              </div>
-            )}
+            <button className='btn'>Sign UP</button>
           </div>
+
+          {current === "Sign Up"?<button className='acc' onClick={()=>setcurrent("Login")}>Already have an account?</button>:<button className='acc' onClick={()=>setcurrent("Sign Up")}>No account yet?Sign Up</button>}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Auth;
+export default Auth

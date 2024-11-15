@@ -1,115 +1,115 @@
-.auth-container {
+.main{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .auth-card {
-    background-color: #333333; /* Dark background for the card */
+    height:100vh;
+    background-color: rgba(220, 225, 222, 1);
+    padding-right: 60px;
+    padding-left: 60px;
+}
+
+.left{
     display: flex;
-    width: 66.67%; /* 2/3 of the container */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-  }
-  
-  .welcome-message {
-    display: none; /* Initially hidden */
-    color: white;
-    font-size: 1.5rem;
+    justify-content: center;
     width: 50%;
-  }
-  
-  .welcome-text {
-    margin-top: 6rem;
-    margin-left: 1rem;
-  }
-  
-  .form-container {
-    color: white; /* For dark mode */
+    overflow: hidden;
+}
+.right{
+    width: 50%;
+    padding-left: 40px;
+}
+.heading{
+    font-size:50px;
+}
+.name{
+    width: 100%;
+}
+.name input{
+    width:80%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.email{
+    width: 100%;
+}
+.email input{
+    width:80%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.password input{
+    width:80%;
+    height: 30px;
+}
+.btn{
+    width: 81%;
     display: flex;
     justify-content: center;
-    width: 100%;
-    padding: 1.25rem; /* 5 */
-  }
-  
-  .form-content {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-header {
-    display: flex;
-    flex-direction: column;
+    height: 40px;
     align-items: center;
-    font-size: 3rem; /* 5xl */
-    margin-bottom: 2rem; /* mb-8 */
-  }
-  
-  .header-border {
-    border: 2px solid white; /* For the border */
-    width: 3.5rem; /* 14 */
-  }
-  
-  .input-group {
-    display: flex;
-    margin-bottom: 1.5rem; /* mb-6 */
-  }
-  
-  .input-field {
-    outline: none;
-    background: transparent;
-    font-size: 1.5rem; /* 2xl */
-    padding-left: 0.5rem; /* px-2 */
-  }
-  
-  .input-border {
-    border: 1px solid white; /* Initial border color */
-    width: 100%;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .submit-button {
-    background-color: #4b5563; /* Slate-600 */
+    background-color: rgb(28, 27, 27);
     color: white;
-    padding: 0.25rem 0; /* py-1 */
-    font-size: 1.5rem; /* 2xl */
-    border-radius: 9999px; /* Full round */
-    width: 100%;
-  }
-  
-  .toggle-auth {
+    cursor: pointer;
+    font-size: 20px;
+}
+.check1{
+    margin-top: 30px;
+    width: 82%;
     display: flex;
-    justify-content: center;
-  }
-  
-  .toggle-button {
-    color: #f87171; /* Text-red-600 */
-  }
-  
-  /* Responsive Styles */
-  @media (min-width: 768px) {
-    .welcome-message {
-      display: block; /* Show on medium screens */
+    justify-content: space-between;
+    gap: 40px;
+}
+.check{
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+    white-space: nowrap;
+}
+.forg{
+    display: flex;
+    align-items: center;
+
+}
+.forgot{
+    background: transparent;
+    border: none;
+    color: rgb(27, 49, 147);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.acc{
+    margin-top: 13%;
+    background: transparent;
+    border: none;
+    color: rgb(27, 49, 147);
+}
+.cont{
+    margin-bottom: 15px;
+}
+@media (max-width: 1200px) {
+    .left{
+        display:none;
     }
-  
-    .auth-card {
-      background: linear-gradient(135deg, #333333 50%, white 50%);
+    .right{
+        width: 100%;
+        padding-left: 0px;
+        display: flex;
+        justify-content: center;
     }
-  
-    .form-container {
-      color: black; /* Change text color on medium screens */
+    .main{
+        padding-left: 0px;
+        padding-right: 0px;
     }
-  
-    .input-border {
-      border: 1px solid black; /* Change border color on medium screens */
+    .name input{
+        width: 90%;
     }
-  }
-  
+    .email input{
+        width: 90%;
+    }
+    .password input{
+        width: 90%;
+    }
+    .btn{
+        width: 90%;
+    }
+}
