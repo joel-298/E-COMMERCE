@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose=require("mongoose");
-const productModel = require('../models/userModels');
+const productModel = require('../models/productModels');
 
 
 const seller = express.Router();

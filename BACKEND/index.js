@@ -1,6 +1,6 @@
 const express = require("express");
 require('./models/connections');
-const products = require('./models/userModels');
+const products = require('./models/productModels');
 const seller = require("./middlewares/seller");
 const app = express();
 const cors = require('cors');
