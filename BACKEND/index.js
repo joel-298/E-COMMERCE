@@ -13,8 +13,7 @@ app.use(express.json());
 // PRODUCTS
 app.use('/seller',seller);
 
-
-const PORT = 5000 ;
+const PORT = 4000 ;
 app.listen(PORT,(err)=>{
     if(err) console.log(err) ;
     else {
