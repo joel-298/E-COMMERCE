@@ -40,7 +40,7 @@
     margin-top: 60px;
     color: black;
 }
-.content .p1, .content .p2{
+.content .p1{
     background-color: rgba(116, 116, 120, 0.546);
     font-size: 20px;
     font-weight: 100;
@@ -48,11 +48,11 @@
     margin: auto;
     margin-top: -10px;
     margin-bottom: 30px;
-    width: 150px;
+    width: 500px;
     border-radius: 2px;
     text-align: center;
 }
-.p1:hover , .p2:hover{
+.p1:hover{
     cursor: pointer;
     transition: 0.3s;
 }

@@ -189,18 +189,18 @@ const Y = () => {
   
           <div className={styles.Brands}>
             <div className={styles.box1}>                                              
-              <Element className={styles.productCard} id="newArrival_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <Element className={styles.productCard} id="newArrival_section" onClick={()=> { navigate('/x', { state: { arr: newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
                 <img src="./newArrivals.png" alt="new-arrivals" className={styles.productImage} />
                 <div className={styles.button_and_headings}>
                   <p>NEW ARRIVALS</p>
-                  <button onClick={()=> { navigate('/x', { state: { arr:arr, products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
+                  <button onClick={()=> { navigate('/x', { state: { arr:newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
                 </div>
               </Element>
-              <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { arr: newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
                 <img src="./BestSellers.png" alt="best-sellers" className={styles.productImage} />
                 <div className={styles.button_and_headings}>
                   <p>BEST-SELLERS</p>
-                  <button onClick={()=> { navigate('/x', { state: { arr:arr, products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
+                  <button onClick={()=> { navigate('/x', { state: { arr:newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
                 </div>
               </Element>
               <Element className={styles.productCard}  id="brands_section" onClick={()=> { navigate('/brands', { state: { products : brands, title: 'BRANDS' } }) }}>
@@ -233,7 +233,7 @@ const Y = () => {
                 ))}
               </div>
               {/* <h1>{`>`}</h1> */}
-              <button onClick={()=> { navigate('/x', { state: { arr:arr, products : onSale, title: 'ON SALE' } }) }}>View All</button>
+              <button onClick={()=> { navigate('/x', { state: { arr: onSale , products : onSale, title: 'ON SALE' } }) }}>View All</button>
           </div>
 
           <h1><Element id="topwears_section">TOPS & SWEATERS</Element></h1>

@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import "./Auth.css"
+import SUBNavbar from '../Navbar/SUBNavbar'
 const Auth = () => {
   const [current, setcurrent] = useState("Login")
   return (
+    <>
+    <SUBNavbar/>
     <div className='main'>
       <div className='left'>
         <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BS1x3W8mVGPbyty4BYx6EmQKxcKf4pXqgUBA3jAumYDKpjtN0s-mAZoPSm1Y3k8VF~QcsWkkEW7QifihBER4eGvFu2wwz9J9~6r9Mi09Fmb0SCCZnKLLNobzS8bj9yRZRn9XEIPqlehonrOg-neXTn3GubMQYP5sagiGFAa3gTRS9h~s1~uItwoQS8CjbYxzuo8RNbRErNHxgfByS7QdALsp-QtL7duSd6~eR1gbhWCF3Sj1xQwK4U2Pk~SYN2N9gSquG5A5POIkqOV2XjcS20i47TIY29qJ747FF2FtldXLdqiRkChGdxDkoQ6mRtWLvnzwL2nQc1pGJFeCzPXT7A__" alt="Welcome" />
@@ -41,6 +44,7 @@ const Auth = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

@@ -23,20 +23,60 @@ const X = () => {
     }
   }
   useEffect(() => {
+    let filteredProducts = [...arr]; // Start with all products in filteredProducts
+  
+    // Show all products if no filters are selected
     if (filters.length === 0) {
-      setArr([...products]); // No filters selected, show all products
-    } else {
-      const filteredProducts = arr.filter((product) => {
-        // Check if the product matches any selected filter in category, style, or size
-        return (
-          filters.includes(product.category) ||       // CATEGORY filter
-          filters.includes(product.type) ||           // STYLE filter
-          product.availableSizes.some(size => filters.includes(size)) // SIZE filter
+      setArr([...products]);
+      return;
+    } 
+  
+    // Step 1: Check if any style (type) is selected
+    if (!filters.some((filter) => filteredProducts.some((e) => e.type === filter))) {
+      // Check if any size is selected and no matching items are found for style and size
+      if (filters.some((filter) => arr.some((e) => e.availableSizes.includes(filter)))) {
+        filteredProducts = filteredProducts.filter((e) =>
+          e.availableSizes.some((size) => filters.includes(size))
         );
-      });
-      setArr(filteredProducts);
+  
+        // If filtering by size results in no items, set filteredProducts to empty
+        if (filteredProducts.length === 0) {
+          setArr([]);
+          return;
+        }
+      } else {
+        // Reset to all products if no style is selected and no size filters match
+        filteredProducts = [...arr];
+      }
+    } else {
+      // If style filters are selected, filter by style (type)
+      filteredProducts = filteredProducts.filter((e) => filters.includes(e.type));
     }
+  
+    // Step 2: If category is selected, filter by category
+    if (filters.some((filter) => arr.some((e) => e.category === filter))) {
+      filteredProducts = filteredProducts.filter((e) => filters.includes(e.category));
+  
+      // If filtering by category results in no items, set filteredProducts to empty
+      if (filteredProducts.length === 0) {
+        setArr([]);
+        return;
+      }
+    }
+  
+    // Step 3: If sizes are selected, filter by size
+    if (filters.some((filter) => arr.some((e) => e.availableSizes.includes(filter)))) {
+      filteredProducts = filteredProducts.filter((e) =>
+        e.availableSizes.some((size) => filters.includes(size))
+      );
+    }
+  
+    // Apply the final filtered result
+    setArr(filteredProducts);
   }, [filters]);
+  
+  
+  
 
   return (
     <div className={styles.container}>
@@ -46,28 +86,20 @@ const X = () => {
         <div className={styles.p1}>
           <h3>FILTERS</h3>
           <div className={styles.filter_box1}>
-            <h4>CATEGORY</h4>
-            <label><input type="checkbox" value="Topwear" onChange={handleFilterChange}/>Topwears</label>
-            <label><input type="checkbox" value="Bottomwear" onChange={handleFilterChange}/>Bottomwears</label>
-            <label><input type="checkbox" value="Footwear" onChange={handleFilterChange}/>Footwears</label>
-            <label><input type="checkbox" value="Accessories" onChange={handleFilterChange}/>Accessories</label>
-          </div>
-          <div className={styles.filter_box2}>
             <h4>STYLE</h4>
             <label><input type="checkbox" value="Casual" onChange={handleFilterChange}/>Casual</label>
             <label><input type="checkbox" value="Formal" onChange={handleFilterChange}/>Formal</label>
             <label><input type="checkbox" value="Party" onChange={handleFilterChange}/>Party</label>
-            <label><input type="checkbox" value="Sports" onChange={handleFilterChange}/>Sports</label>            
+            <label><input type="checkbox" value="Sports" onChange={handleFilterChange}/>Sports</label>      
+          </div>
+          <div className={styles.filter_box2}>
+            <h4>CATEGORY</h4>
+            <label><input type="checkbox" value="Topwear" onChange={handleFilterChange}/>Topwears</label>
+            <label><input type="checkbox" value="Bottomwear" onChange={handleFilterChange}/>Bottomwears</label>
+            <label><input type="checkbox" value="Footwear" onChange={handleFilterChange}/>Footwears</label>
+            <label><input type="checkbox" value="Accessories" onChange={handleFilterChange}/>Accessories</label>      
           </div>
           <div className={styles.filter_box3}>
-            {/* <h4>Featured</h4>
-            <label><input type="checkbox" value="OnSale" onChange={handleFilterChange}/>On Sale</label>
-            <label><input type="checkbox" value="NewArrivals" onChange={handleFilterChange}/>New Arrivals</label>             */}
-          </div>
-          <div className={styles.filter_box4}>
-            <h4>PRICE</h4>
-          </div>
-          <div className={styles.filter_box5}>
             <h4>SIZE</h4>
             <label><input type="checkbox" value="XS" onChange={handleFilterChange}/>XS</label>
             <label><input type="checkbox" value="S" onChange={handleFilterChange}/>S</label>
@@ -76,6 +108,9 @@ const X = () => {
             <label><input type="checkbox" value="XL" onChange={handleFilterChange}/>XL</label> 
             <label><input type="checkbox" value="XXL" onChange={handleFilterChange}/>XXL</label> 
             <label><input type="checkbox" value="One Size" onChange={handleFilterChange}/>One Size</label> 
+          </div>
+          <div className={styles.filter_box4}>
+            <h4>PRICE</h4>
           </div>
         </div>
 
@@ -105,29 +140,3 @@ const X = () => {
 };
 
 export default X;
-
-
-
-
-  // // Function to handle filter change
-  // const handleFilterChange = (event) => {
-  //   const value = event.target.value;
-
-  //   setFilters((prevFilters) =>
-  //     event.target.checked
-  //       ? [...prevFilters, value] // Add filter if checked
-  //       : prevFilters.filter((filter) => filter !== value) // Remove filter if unchecked
-  //   );
-  // };
-
-  // useEffect(() => {
-    
-  //   const filteredProducts = products.filter((product) => {
-  //     return filters.every((filter) => {
-  //       return (
-  //         product.category === filter || product.style === filter || product.size.includes(filter) || product.tags.includes(filter)
-  //       );
-  //     });
-  //   });
-  //   setArr(filteredProducts);
-  // }, [filters, products]);

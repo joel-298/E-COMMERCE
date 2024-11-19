@@ -6,7 +6,7 @@
     position: fixed;
     width: 100vw;
     z-index:2;
-    box-shadow: 0px 5px 70px -15px black;
+    box-shadow: 0px 5px 30px -15px black;
     row-gap: 10%;
 }
 .container {
