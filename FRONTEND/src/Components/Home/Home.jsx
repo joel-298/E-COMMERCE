@@ -32,7 +32,6 @@ const Home = () => {
 
 
   // use state 
-  const [newArrivals,setProducts_newArrivals] = useState([]) ;
   const [topwears,setProducts_topwears] = useState([]) ;
   const [bottomwears,setProducts_bottomwears] = useState([]) ;
   const [footwears,setProducts_footwears] = useState([]) ;
@@ -47,7 +46,6 @@ const Home = () => {
         // console.log(response.data.arr) ;
         setArr(response.data.arr) ;
 
-        setProducts_newArrivals(arr.map(product => product));
         const filterTopwears = arr.filter(product => product.category === 'Topwear') ; 
         setProducts_topwears(filterTopwears) ;
         const filterBottomwear = arr.filter(product => product.category === 'Bottomwear') ; 
