@@ -1,24 +1,18 @@
-const express = require("express") ;
-const cors = require("cors") ;
-
-const app = express() ; 
-
-app.get("/", (req,res)=> {
-    res.send("HELLO WORLD") ;
-});
-
-// FUNCTION TO FETCH THE FULL DATA OF KASHISH'S API :         const products = [data fetch only one time]
-    // SUB FUNCTIONS : 
-    // const men = [] ; 
-    // const women = [] ;
-    // const kids = [] 
-    // and many more according to the requests ...
-    // men , jeans , trowsers, etc etc .. []
+const express = require("express");
+require('./models/connections');
+const products = require('./models/userModels');
+const seller = require("./middlewares/seller");
+const app = express();
+const cors = require('cors');
+app.use(cors());
 
 
-    // app.get("/men" , (req,res) => {
-    //     res.json({array : men}) ;
-    // });
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
+// PRODUCTS
+app.use('/seller',seller);
+
 
 const PORT = 5000 ;
 app.listen(PORT,(err)=>{
