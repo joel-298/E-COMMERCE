@@ -4,72 +4,9 @@ import styles from './Y.module.css' ;
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-
+import axios from 'axios' ;
 
 const Y = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-  
-    // Access the data passed via navigate
-    const { arr = [], title = '' } = location.state || {};
-
-    // receive in arr 
-  // SELLER API : 
-  const Sellers = [
-    {
-      name: "Denim",
-      image: "https://img.freepik.com/premium-vector/classic-denim-jeans-logo_23-2147524034.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "H&M",
-        image: "https://i.pinimg.com/736x/f9/a4/bd/f9a4bdde730745e53482e902543464a5.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Zara",
-        image: "https://i.pinimg.com/564x/48/64/fd/4864fd205ac63a7663224b8c1f8baed2.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Ray-Ban",
-        image: "https://i.pinimg.com/564x/cb/7d/d1/cb7dd109945429d8dbe498b57f237bdf.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Rolex",
-        image: "https://i.pinimg.com/564x/33/85/6e/33856e7db9c9149ac4174ef49f43c74a.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Nike",
-        image: "https://i.pinimg.com/564x/34/c3/57/34c357ee31431b6cd13fe1ebe1d47980.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "RedTape",
-        image: "https://i.pinimg.com/564x/34/21/c7/3421c788618c4487a7b1e338cf03d273.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Linen Club",
-        // image: "https://mma.prnewswire.com/media/1227507/Linen_Club_Logo.jpg?p=facebook",
-        image : "https://indiantextilejournal.com/wp-content/uploads/2021/11/linen-club-unveils-new-brand-identity-and-logo.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Diesel",
-        image: "https://i.pinimg.com/564x/0d/06/1f/0d061fede089c3b4b2b639c3af84b3a8.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    },
-    {
-        name: "Gucci",
-        image: "https://i.pinimg.com/564x/62/76/32/6276327ee9ee965cfe426561a9b14ff7.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus aperiam cumque nemo dignissimos, dolores magnam consequatur atque quam molestias corrupti adipisci quisquam, blanditiis quos voluptatum possimus ad tempore corporis!" 
-    }
-  ]
-
-
   // PRODUCTS CATEGORY API :
   const brr = [
     {
@@ -90,40 +27,46 @@ const Y = () => {
     }
   ] 
 
+  // const navigate = useNavigate() ;
+  const location = useLocation() ;
+  const { title = "" } = location.state || {} ;
+  const navigate = useNavigate() ;
+  const [arr,setArr] = useState([]) ;
 
   // use state 
-  const [Casual,setProducts_casual] = useState([]) ;
-  const [Formal,setProducts_formal] = useState([]) ;
-  const [Sports,setProducts_sports] = useState([]) ;
-  const [Party,setProducts_party] = useState([]) ;
-  const [newArrivals,setProducts_newArrivals] = useState([]) ;
+  // const [newArrivals,setProducts_newArrivals] = useState([]) ;
   const [topwears,setProducts_topwears] = useState([]) ;
   const [bottomwears,setProducts_bottomwears] = useState([]) ;
   const [footwears,setProducts_footwears] = useState([]) ;
   const [accessories,setProducts_accessories] = useState([]) ;
   const [onSale,setProducts_Onsale] = useState([]) ; 
-  const [brands,setBrands] = useState([]) ;
+
 
   useEffect(() => {
-    // Confirm that `arr` has data before filtering
-    if (arr.length === 0) {
-      console.log("No data in `arr`.");
-      return;
-    }
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.post("http://localhost:4000/seller/y" , {title}); 
+        setArr(response.data.arr);
+        // setProducts_newArrivals(arr.map(product => product));
+        const filterTopwears = arr.filter(product => product.category === 'Topwear') ; 
+        setProducts_topwears(filterTopwears) ;
+        const filterBottomwear = arr.filter(product => product.category === 'Bottomwear') ; 
+        setProducts_bottomwears(filterBottomwear) ;
+        const filterFootwear = arr.filter(product => product.category === 'Footwear') ; 
+        setProducts_footwears(filterFootwear) ;
+        const filterAccessories = arr.filter(product => product.category === 'Accessories') ; 
+        setProducts_accessories(filterAccessories) ;
+        const filteredOnSale = arr.filter(product => product.discountPercent > 50);
+        setProducts_Onsale(filteredOnSale);
+      } catch (error) {
+        console.error("Error while fetching data", error);
+      }
+    };
+    fetchProducts();
+
     
-    // Filter products based on type and category
-    setProducts_casual(arr.filter(product => product.type === 'Casual'));
-    setProducts_formal(arr.filter(product => product.type === 'Formal'));
-    setProducts_sports(arr.filter(product => product.type === 'Sports'));
-    setProducts_party(arr.filter(product => product.type === 'Party'));
-    setProducts_newArrivals([...arr]);
-    setProducts_topwears(arr.filter(product => product.category === 'Topwear'));
-    setProducts_bottomwears(arr.filter(product => product.category === 'Bottomwear'));
-    setProducts_footwears(arr.filter(product => product.category === 'Footwear'));
-    setProducts_accessories(arr.filter(product => product.category === 'Accessories'));
-    setProducts_Onsale(arr.filter(product => product.discountPercent > 50));
-    setBrands(Sellers);
-  }, [arr]); // Ensure `useEffect` runs whenever `arr` changes
+
+  }, [arr]);
 
   return (
     <div className={styles.container}>
@@ -156,25 +99,19 @@ const Y = () => {
                   key={index}
                   className={styles.productCard}
                   onClick={() => {
-                    // Navigate to '/x' with appropriate state based on category
-                    let filteredProducts = [];
-                    let title = '';
+                    let title2 = '';
 
                     // Check category and set filteredProducts and title
                     if (item.category === 'Casual') {
-                      filteredProducts = Casual; // or setProducts_casual if you need to fetch data on click
-                      title = 'CASUAL';
+                      title2 = item.category;
                     } else if (item.category === 'Formal') {
-                      filteredProducts = Formal; // or setProducts_formal if you need to fetch data on click
-                      title = 'FORMAL';
+                      title2 = item.category;
                     } else if (item.category === 'Party') {
-                      filteredProducts = Party; // or setProducts_party if you need to fetch data on click
-                      title = 'PARTY';
+                      title2 = item.category;
                     } else if (item.category === 'Sports') {
-                      filteredProducts = Sports; // or setProducts_sports if you need to fetch data on click
-                      title = 'SPORTS';
+                      title2 = item.category;
                     }
-                    navigate('/x', { state: { arr:arr, products: filteredProducts, title } });
+                    navigate('/x', {state: { title1 : title , title2 } } );  // title1 represents : home , women , men , kids  // title2 represents : brand's name, new arrivals , onSale etc ..
                   }}
                 >
                   <img src={item.image} alt={item.name} className={styles.productImage} />
@@ -189,25 +126,25 @@ const Y = () => {
   
           <div className={styles.Brands}>
             <div className={styles.box1}>                                              
-              <Element className={styles.productCard} id="newArrival_section" onClick={()=> { navigate('/x', { state: { arr: newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <Element className={styles.productCard} id="newArrival_section" onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "NewArrivals"}})}}>
                 <img src="./newArrivals.png" alt="new-arrivals" className={styles.productImage} />
                 <div className={styles.button_and_headings}>
                   <p>NEW ARRIVALS</p>
-                  <button onClick={()=> { navigate('/x', { state: { arr:newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>EXPLORE THE LATEST</button>
+                  <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "NewArrivals"}})}}>EXPLORE THE LATEST</button>
                 </div>
               </Element>
-              <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> { navigate('/x', { state: { arr: newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>
+              <Element className={styles.productCard}  id="bestSeller_section" onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "NewArrivals"}})}}>
                 <img src="./BestSellers.png" alt="best-sellers" className={styles.productImage} />
                 <div className={styles.button_and_headings}>
                   <p>BEST-SELLERS</p>
-                  <button onClick={()=> { navigate('/x', { state: { arr:newArrivals , products : newArrivals, title: 'NEW ARRIVALS' } }) }}>SHOP YOUR FAVOURITES</button>
+                  <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "NewArrivals"}})}}>SHOP YOUR FAVOURITES</button>
                 </div>
               </Element>
-              <Element className={styles.productCard}  id="brands_section" onClick={()=> { navigate('/brands', { state: { products : brands, title: 'BRANDS' } }) }}>
+              <Element className={styles.productCard}  id="brands_section" onClick={() => { navigate('/brands') } }>
                 <img src="./Brands.png" alt="brands" className={styles.productImage} />
                 <div className={styles.button_and_headings}>
                   <p>BRANDS</p>
-                  <button onClick={()=> { navigate('/brands', { state: { products : brands} }) }}>DISCOVER BRANDS</button>
+                  <button onClick={() => { navigate('/brands') } }>DISCOVER BRANDS</button>
                 </div>
               </Element>
             </div>
@@ -218,7 +155,7 @@ const Y = () => {
             {/* <h1>{`<`}</h1> */}
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {onSale.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item._id} className={styles.productCard} onClick={() => { navigate('/item', { state: { _id: item._id } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -233,14 +170,14 @@ const Y = () => {
                 ))}
               </div>
               {/* <h1>{`>`}</h1> */}
-              <button onClick={()=> { navigate('/x', { state: { arr: onSale , products : onSale, title: 'ON SALE' } }) }}>View All</button>
+              <button  onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "OnSale"}})}}>View All</button>
           </div>
 
           <h1><Element id="topwears_section">TOPS & SWEATERS</Element></h1>
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {topwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item._id} className={styles.productCard} onClick={() => { navigate('/item', { state: { _id: item._id } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -254,13 +191,13 @@ const Y = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={()=> { navigate('/x', { state: { arr:arr, products : topwears, title: 'TOPS & SWEATERS' } }) }}>View All</button>
+              <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "Topwear"}})}}>View All</button>
           </div>
           <h1><Element id="bottomwears_section">PANTS & JEANS</Element></h1>
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {bottomwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item._id} className={styles.productCard} onClick={() => { navigate('/item', { state: { _id: item._id } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -274,13 +211,13 @@ const Y = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={()=> { navigate('/x', { state: { arr:arr, products : bottomwears, title: 'PANTS & JEANS' } }) }}>View All</button>
+              <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "Bottomwear"}})}}>View All</button>
           </div>
           <h1><Element id="footwears_section">SHOES & BAGS</Element></h1>
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {footwears.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item._id} className={styles.productCard} onClick={() => { navigate('/item', { state: { _id: item._id } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -294,13 +231,13 @@ const Y = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={()=> { navigate('/x', { state: { arr:arr, products : footwears, title: 'SHOES & BAGS' } }) }}>View All</button>
+              <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "Footwear"}})}}>View All</button>
           </div>
           <h1><Element id="accessories_section">ACCESSORIES</Element></h1>
           <div className={styles.onSale}>
               <div className={styles.box1}>                                                        {/*  map function below for items discount > 50 % */}
                 {accessories.slice(0, 6).map(item => (
-                  <div key={item.id} className={styles.productCard} onClick={()=> { navigate('/item', { state: { obj :item } }) }}>
+                  <div key={item._id} className={styles.productCard} onClick={() => { navigate('/item', { state: { _id: item._id } }) }}>
                     <img src={item.image} alt={item.name} className={styles.productImage} />
                     <h2 className={styles.productName}>{item.companyName}</h2>
                     <p className={styles.productDescription}>{item.name}</p>
@@ -314,7 +251,7 @@ const Y = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={()=> { navigate('/x', { state: { arr:arr, products : accessories, title: 'ACCESSORIES' } }) }}>View All</button>
+              <button onClick={()=> {navigate('/x', {state : {title1 : title, title2 : "Accessories"}})}}>View All</button>
           </div>
 
           <div className={styles.search_content}>
