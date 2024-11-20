@@ -5,18 +5,18 @@ const products = express.Router();
 products.get("/get", async (req,res)=>{              // displaying all the products                                 
     try {
         const all = await productModel.find();
-        res.status(200).json({arr: all});
+        return res.status(200).json({arr: all});
       } catch (error) {
-        res.status(500).json({message: "An error occurred while fetching products ..... ", error });
+        return res.status(500).json({message: "An error occurred while fetching products ..... ", error });
       }
 })
 products.post("/y", async (req, res) => {            // displaying for y page
     const { title } = req.body;
     try {
       const FILTER = await productModel.find({gender: title});
-      res.status(200).json({ arr: FILTER });
+      return res.status(200).json({ arr: FILTER });
     } catch (error) {
-      res.status(500).json({ message: "Error fetching products !", error });
+      return res.status(500).json({ message: "Error fetching products !", error });
     }
 });
 
@@ -26,12 +26,12 @@ products.post("/item", async (req,res)=>{           // display for item
     try {
          const item = await productModel.findOne({ _id : _id});
          if (item) {
-             res.status(200).json({ obj: item });
+            return  res.status(200).json({ obj: item });
          } else {
-             res.status(404).json({ message: "Item not found!" });
+            return  res.status(404).json({ message: "Item not found!" });
          }       
     } catch(error) {
-        res.status(500).json({message: "Error fetching item !", error }) ;
+        return res.status(500).json({message: "Error fetching item !", error }) ;
     } 
 });
 
@@ -47,10 +47,10 @@ products.post("/x", async (req, res) => {
 
       // Step 1: Filter by `title1`
       if (["female", "male", "kids"].includes(title1.toLowerCase())) { // Filter by gender
-          FILTER = await productModel.find({ gender: title1.toLowerCase() });
+          FILTER = await productModel.find({ gender: title1 });
       } 
       if (!["home", "female", "male", "kids"].includes(title1.toLowerCase())) { // Filter by companyName
-          FILTER = await productModel.find({ companyName: title1.toLowerCase() });
+          FILTER = await productModel.find({ companyName: title1 });
       }
 
       // Step 2: Additional filtering logic for `title2`
@@ -89,9 +89,9 @@ products.post("/x", async (req, res) => {
 
       // Send the response
       console.log(FILTER2);
-      res.status(200).json({ arr: FILTER2 });
+      return res.status(200).json({ arr: FILTER2 });
   } catch (error) {
-      res.status(500).json({ message: "Error fetching products", error });
+      return res.status(500).json({ message: "Error fetching products", error });
   }
 });
 

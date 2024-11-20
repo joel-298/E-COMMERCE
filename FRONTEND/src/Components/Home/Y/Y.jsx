@@ -30,10 +30,12 @@ const Y = () => {
   // const navigate = useNavigate() ;
   const location = useLocation() ;
   const { title = "" } = location.state || {} ;
+  
+
   const navigate = useNavigate() ;
-  const [arr,setArr] = useState([]) ;
 
   // use state 
+  const [arr,setArr] = useState([]) ; // global
   const [topwears,setProducts_topwears] = useState([]) ;
   const [bottomwears,setProducts_bottomwears] = useState([]) ;
   const [footwears,setProducts_footwears] = useState([]) ;
@@ -46,7 +48,7 @@ const Y = () => {
       try {
         const response = await axios.post("http://localhost:4000/products/y" , {title}); 
         setArr(response.data.arr);
-        
+        console.log(arr); 
         const filterTopwears = arr.filter(product => product.category === 'Topwear') ; 
         setProducts_topwears(filterTopwears) ;
         const filterBottomwear = arr.filter(product => product.category === 'Bottomwear') ; 

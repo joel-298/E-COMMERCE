@@ -21,6 +21,7 @@ const X = () => {
         const response = await axios.post("http://localhost:4000/products/x", { title1 , title2 , type , category , size });
         console.log(response.data.arr);
         setArr(response.data.arr);
+        console.log(arr); 
       } catch (error) {
         console.error("Error while fetching data:", error);
       }
