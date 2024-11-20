@@ -1,25 +1,26 @@
 const express = require("express")
 const admin = express();
 const bcrypt = require("bcryptjs");
-const adminModel = require("../models/adminModel");
+const sellerModel = require("../models/sellerModel");
 
-admin.get("/",async(req,res)=>{
-    let data = await (adminModel).find();
+
+admin.get("/get", async (req,res)=>{                        // displaying all the sellers 
+    let data = await (sellerModel).find();
     res.send(data)
 })
 
-admin.post("/",async(req,res)=>{
+admin.post("/add", async (req,res)=>{                              // adding a sellet route
     let{name,email,password,image,description} = req.body
     if(!name || !email || !password || !image || !description){
         return res.send("All fields required");
     }
 
-    let data = await (adminModel).find({email:email});
+    let data = await (sellerModel).find({email:email});
 
     if(data.length == 0){
         const newpass = await bcrypt.hash(password.toString(),10);
     
-        const result = await adminModel.create({
+        const result = await sellerModel.create({
             name:name,
             email:email,
             password:newpass,
@@ -36,6 +37,10 @@ admin.post("/",async(req,res)=>{
     else{
         res.send("Seller Already Exists")
     }
-})
+});
+
+admin.delete("/delete" , async (req,res) => { // deleting a seller route
+
+});
 
 module.exports = admin

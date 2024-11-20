@@ -2,14 +2,11 @@ const express = require("express");
 const userModel = require("../models/usersModel");
 const signup = express();
 const bcrypt = require("bcryptjs");
-const adminModel = require("../models/adminModel");
+const adminModel = require("../models/sellerModel");
 
-signup.get("/",async(req,res)=>{
-    const data = await(userModel).find({category:"seller"});
-    res.send(data);
-})
 
-signup.post("/",async(req,res)=>{
+
+signup.post("/",async(req,res)=>{                                    // adding nre user to USER
     let {name,email,password} = req.body;
     if(!name || !email || !password){
         return res.send("All fields required");
@@ -38,7 +35,7 @@ signup.post("/",async(req,res)=>{
     }
 })
 
-signup.post("/login",async(req,res)=>{
+signup.post("/login",async(req,res)=>{                          // LOGIN check 
     let {email,password} = req.body
     if(!email || !password){
         return res.send("All fields required");
@@ -68,7 +65,7 @@ signup.post("/login",async(req,res)=>{
 })
 
 
-signup.post("/forgot",async(req,res)=>{
+signup.post("/forgot",async(req,res)=>{                        // FORGOT PASSWORD CHECK
     let {email,password,confirm} = req.body
 
     if(!email || !password || !confirm){

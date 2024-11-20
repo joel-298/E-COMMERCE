@@ -1,11 +1,177 @@
 import React from 'react'
-
+import styles from './Admin.module.css' ;
+import SUBNavbar from '../Navbar/SUBNavbar';
+import Footer from '../Footer/Footer';
 const Admin = () => {
   return (
-    <div>
-      This is the page of the admin where u can see the list of sellers and and the list of users ..... 
-    </div>
+    <>
+      <div className={styles.container}>
+        <SUBNavbar/>
+        <div className={styles.content}>
+          <div className={styles.child1}>
+            <div className={styles.sub_div_1}>
+              <h1 className={styles.heading}>Current Sellers</h1>
+              <button className={styles.add}>ADD SELLER</button>
+            </div>
+            <div className={styles.sub_div_2}>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+              <div className={styles.card}>
+                  <div className={styles.column1}>
+                    <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                    <p className={styles.p}>COMPANY NAME</p>
+                  </div>
+                  <div className={styles.column2}>
+                    <button className={styles.delete}>
+                      DELETE
+                    </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className={styles.child2}>
+            <div className={styles.sub_div_1}>
+                <h1 className={styles.heading}>Users</h1>
+              </div>
+              <div className={styles.sub_div_2}>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+                <div className={styles.card}>
+                    <div className={styles.column1}>
+                      <img src="https://i.pinimg.com/736x/5c/00/d6/5c00d625a46d4a6b660f857349ab4c70.jpg" alt="seller_img" className={styles.img}/>
+                      <p className={styles.p}>COMPANY NAME</p>
+                    </div>
+                    <div className={styles.column2}>
+                      <button className={styles.delete}>
+                        DELETE
+                      </button>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    </>
   )
 }
 
-export default Admin
+export default Admin ;

@@ -1,0 +1,170 @@
+/* Home.module.css */
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    box-sizing: border-box; /* Include padding in height calculation */
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+  
+}
+
+.content {
+    /* background-color: rgb(141, 121, 121); */
+    padding: 0vh;
+    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+.img{
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+}
+
+
+.child1{
+    /* background-color: rgb(207, 207, 207); */
+    display: block ;
+    margin-bottom: 50px;
+}
+.sub_div_1 {
+    /* background-color: red; */
+    display: flex;
+    padding-left:100px;
+    padding-right: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+.heading {
+    font-size: 40px;
+    font-weight: 300;
+    background-color: #d8e6f3fd;
+    width: 400px;
+    border-radius: 0.7vh;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    box-shadow: 0px 0px 30px -20px black;
+}
+.add{
+    width: 200px;
+    height: 50px;
+    font-size: 17px;
+    border-radius: 0.7vh;
+    border: none;
+    box-shadow: 0px 0px 10px -100x black;
+    font-weight: 100;
+}
+.add:hover{
+    background-color: rgba(54, 244, 44, 0.581);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.child2{
+    /* background-color: red; */
+    display: block;
+    margin-top: 50px;
+}
+.sub_div_2 {
+    /* background-color: red; */
+    display: flex;
+    padding-left:100px;
+    padding-right: 100px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+.card{
+    /* background-color: blue; */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 1vh;
+}
+.card:hover{
+    background-color: rgba(183, 183, 190, 0.546);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.column1 {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+}
+.p{
+    font-size: 26px;
+}
+
+.column2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delete{
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 0.7vh;
+    border: none;
+    box-shadow: 0px 0px -10px black;
+    font-weight: 100;
+    background-color: rgba(224, 129, 129, 0.62);
+}
+.delete:hover{
+    background-color: rgba(242, 18, 18, 0.83);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+@media (max-width: 1023px) {
+    .content {
+        margin-top: 10vh;
+    }
+    .sub_div_1 , .sub_div_2 {
+        /* background-color: blue; */
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .heading{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .content {
+        margin-top: 10vh;
+    }
+    .sub_div_1, .sub_div_2{
+        /* background-color: blue; */
+        flex-direction: column;
+        margin-bottom: 5vh;
+    }
+    .card{
+        background-color: rgb(207, 207, 210);
+        flex-direction: column;
+        width: auto;
+        padding: 20px;
+    }
+    .column1 {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+/*MEDIA QUERY FOR TABS*/
+@media screen and (min-width: 700px) and (min-height: 901px) {
+    .content{
+        margin-top: 8vh;
+    }
+    .heading{
+        width: 50%;
+    }
+}

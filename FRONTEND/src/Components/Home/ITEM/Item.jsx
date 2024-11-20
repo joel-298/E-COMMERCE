@@ -94,7 +94,7 @@ const Item = () => {
           <div className={styles.size}>
             <h3>Select Size</h3>
             <div className={styles.label}>
-              {obj.availableSizes?.map((size, idx) => (
+              {obj.availableSize?.map((size, idx) => (
                 <label key={idx}>{size}</label>
               ))}
             </div>
