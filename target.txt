@@ -1,4 +1,4 @@
-Priority : X(css) , Admin ,  Add to Cart , Search 
+Priority : X(css) , Admin (add,delete) (special navbar of admin),  Add to Cart , Search 
 
 Karan : Profile page, Signup / Login :- data will get fetched and protected routes will get Setup -> navigating user to Home , Form or Admin page 
 Kashish : Form(Seller) page and API :

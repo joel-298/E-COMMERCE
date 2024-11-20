@@ -4,12 +4,16 @@ const bcrypt = require("bcryptjs");
 const sellerModel = require("../models/sellerModel");
 
 
-admin.get("/get", async (req,res)=>{                        // displaying all the sellers 
-    let data = await (sellerModel).find();
-    res.send(data)
-})
+admin.get("/getSellers", async (req,res)=>{                        // displaying all the sellers 
+    try {
+        const data = await (sellerModel).find();
+        res.status(200).json({arr : data}) ; 
+    } catch (error) {
+        res.status(500).json({ message: "Error updating product", error: error.message });
+    }
+});
 
-admin.post("/add", async (req,res)=>{                              // adding a sellet route
+admin.post("/add", async (req,res)=>{                              // adding a seller route
     let{name,email,password,image,description} = req.body
     if(!name || !email || !password || !image || !description){
         return res.send("All fields required");

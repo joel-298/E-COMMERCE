@@ -1,14 +1,14 @@
 const express = require("express");
-const userModel = require("../models/usersModel");
 const signup = express();
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const userModel = require("../models/usersModel");
+const sellerModel = require("../models/sellerModel");
 const adminModel = require("../models/adminModel");
-const jwt = require("jsonwebtoken")
-const adminModel = require("../models/sellerModel");
 
 
 
-signup.post("/",async(req,res)=>{                                    // adding nre user to USER
+signup.post("/",async(req,res)=>{                                    // adding a new user to USER
     let {name,email,password} = req.body;
     if(!name || !email || !password){
         return res.send("All fields required");
@@ -37,54 +37,88 @@ signup.post("/",async(req,res)=>{                                    // adding n
     }
 })
 
-signup.post("/login",async(req,res)=>{                          // LOGIN check 
+signup.post("/login",async(req,res)=>{                          // LOGIN check -> includes admin , seller , user
     let {email,password} = req.body
-    const user = {
-        email,
-        password,
-    }
     if(!email || !password){
         return res.send("All fields required");
     }
-    
+
     // jwt.sign({user},"secret",{expiresIn:'3000s'},(err,token)=>{
     //     res.send(token)
     // })
 
-    let data = await (userModel).findOne({email:email});
+    // CHECK FROM ADMIN 
+    const data_admin = await(adminModel).findOne({email:email}) ;            // check from admin
+    if(data_admin) { 
+        if(data_admin.password === password) {
+            const payload = { id: data_admin._id, email: data_admin.email, category: data_admin.category };
+            const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
+            return res.status(200).json({
+                                            message:"ADMIN Logged in successfully",
+                                            token:token
+                                        });
+        }
+        else{
+            return res.status(401).json({
+                                            message:"WRONG PASSWORD ADMIN"
+                                        });
+        }
+    }
 
-    if(!data){
-        data = await (adminModel).findOne({email:email});
+    const data_seller = await (sellerModel).findOne({email:email});           // check from sellers
+    if(data_seller) {
+        const match = await bcrypt.compare(password,data_seller.password);
+        if(match == true){
+            const payload = { id: data_seller._id, email: data_seller.email, category: data_seller.category };
+            const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
+    
+            return res.status(200).json({
+                                        message:"SELLER Logged in successfully",
+                                        token:token
+                                    });
+        }
+        else{
+            return res.status(401).json({
+                                            message:"WRONG PASSWORD SELLER"
+                                        });
+        }
+    }
+
+    const data_user = await (userModel).findOne({email:email});           // check from sellers
+    if(data_user) {
+        const match = await bcrypt.compare(password,data_user.password);
+        if(match == true){
+            const payload = { id: data_user._id, email: data_user.email, category: data_user.category };
+            const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
+    
+            return res.status(200).json({
+                                            message:"USER Logged in successfully",
+                                            token:token
+                                        });
+        }
+        else{
+            return res.status(401).json({
+                                            message:"WRONG PASSWORD USER"
+                                        });
+        }
     }
 
 
-    if(!data){
-        res.status(404)
-        return res.send("User Not Found")
-    }
 
-    const match = await bcrypt.compare(password,data.password);
-    if(match == true){
-        const payload = { id: data._id, email: data.email, role: data.category || "user" };
-        const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
 
-        res.status(200);
-        res.send({
-            message:"Logged in successfully",
-            token:token
-        })
-    }
-    else{
-        res.send("Wrong Password");
-    }
+    // USER NOT FOUND
+    return res.status(404).json({
+        message: "User not found. Please sign up.",
+    });
 
-})
+
+});
 
 signup.post("/forgot",async(req,res)=>{                        // FORGOT PASSWORD CHECK
     let {email,password,confirm} = req.body
 
     if(!email || !password || !confirm){
-        return res.send("All fields required")
+        return res.send("All fields required");
     }
 
     if(password!=confirm){

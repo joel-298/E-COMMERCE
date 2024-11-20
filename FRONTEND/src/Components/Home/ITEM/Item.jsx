@@ -18,7 +18,7 @@ const Item = () => {
     const fetchItem = async () => {
       if (_id === -1) return; // Skip fetch if _id is invalid
       try {
-        const response = await axios.post("http://localhost:4000/seller/item", { _id });
+        const response = await axios.post("http://localhost:4000/products/item", { _id });
         const fetchedObj = response.data.obj;
         setItem(fetchedObj);
 

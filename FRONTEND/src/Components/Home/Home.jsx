@@ -42,7 +42,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/seller/get");
+        const response = await axios.get("http://localhost:4000/products/get");
         // console.log(response.data.arr) ;
         setArr(response.data.arr) ;
 

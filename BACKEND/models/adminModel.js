@@ -5,7 +5,6 @@ const adminSchema = mongoose.Schema({
         type:String,
         require:true
     },
-
     email:{
         type:String,
         require:true
@@ -18,7 +17,7 @@ const adminSchema = mongoose.Schema({
         type:String,
         require:true
     }
-})
+});
 
-const adminModel = mongoose.model("admin",adminSchema);
-module.exports = adminModel
+const adminModel = mongoose.model("admins",adminSchema);
+module.exports = adminModel;
