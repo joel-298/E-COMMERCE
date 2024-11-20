@@ -11,7 +11,7 @@ const Brands = () => {
   useEffect(()=> {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000//seller/brands") ;
+        const response = await axios.get("http://localhost:4000/admin/getSellers") ;
         setProducts(response.data.arr) ;
       } catch (error) {
         console.log("Error fetching data", error) ;

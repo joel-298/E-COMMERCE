@@ -1,21 +1,21 @@
 const express = require("express");
 require('./models/connections');
-const products = require('./models/productModels');
-const seller = require("./middlewares/seller");
 const app = express();
 const cors = require('cors');
 const signup = require("./middlewares/signup");
-// const login = require("./middlewares/login");
+const admin = require("./middlewares/admin");
+const seller = require("./middlewares/seller");
+const products = require("./middlewares/products");
+
 app.use(cors());
-
-
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// PRODUCTS
-app.use('/seller',seller);
-app.use("/signup",signup);
-// app.use("/login",login)
+
+app.use('/seller',seller);       // SELLER -> add , edit , delete (products)                 /seller   -> /add , /edit , /delete
+app.use('/products',products) ;  // PRODUCTS -> get , filter , item , BRANDS display         /products -> /get , /items , /y , /x
+app.use("/signup",signup);     // USERS -> signup , login , logout , jwt , verify 
+app.use("/admin",admin);         // ADMIN -> get , add , delete ---> (seller)                /admin    -> /getSellers , /add , /delete
 
 const PORT = 4000 ;
 app.listen(PORT,(err)=>{

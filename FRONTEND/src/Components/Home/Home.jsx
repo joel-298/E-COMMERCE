@@ -42,10 +42,9 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/seller/get");
-        // console.log(response.data.arr) ;
+        const response = await axios.get("http://localhost:4000/products/get");
         setArr(response.data.arr) ;
-
+        console.log(arr); 
         const filterTopwears = arr.filter(product => product.category === 'Topwear') ; 
         setProducts_topwears(filterTopwears) ;
         const filterBottomwear = arr.filter(product => product.category === 'Bottomwear') ; 

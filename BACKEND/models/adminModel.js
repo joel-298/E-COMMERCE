@@ -1,11 +1,10 @@
 const mongoose = require("mongoose")
 
-const userSchema = mongoose.Schema({
+const adminSchema = mongoose.Schema({
     name:{
         type:String,
         require:true
     },
-
     email:{
         type:String,
         require:true
@@ -17,9 +16,8 @@ const userSchema = mongoose.Schema({
     category:{
         type:String,
         require:true
-    },
-    cart:[]
-})
+    }
+});
 
-const userModel = mongoose.model("users",userSchema);
-module.exports = userModel ;
+const adminModel = mongoose.model("admins",adminSchema);
+module.exports = adminModel;
