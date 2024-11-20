@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose=require("mongoose");
 const productModel = require('../models/productModels');
+const authenticateToken = require("./jwt_verification");
 const seller = express.Router();
 
 
-seller.get("/get", async (req,res)=>{
+seller.get("/get",authenticateToken, async (req,res)=>{
     try {
         const all = await productModel.find();
         res.status(200).json({arr: all});

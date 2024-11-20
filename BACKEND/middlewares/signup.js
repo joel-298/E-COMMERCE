@@ -3,6 +3,7 @@ const userModel = require("../models/usersModel");
 const signup = express();
 const bcrypt = require("bcryptjs");
 const adminModel = require("../models/adminModel");
+const jwt = require("jsonwebtoken")
 
 signup.get("/",async(req,res)=>{
     const data = await(userModel).find({category:"seller"});
@@ -40,10 +41,18 @@ signup.post("/",async(req,res)=>{
 
 signup.post("/login",async(req,res)=>{
     let {email,password} = req.body
+    const user = {
+        email,
+        password,
+    }
     if(!email || !password){
         return res.send("All fields required");
     }
     
+    // jwt.sign({user},"secret",{expiresIn:'3000s'},(err,token)=>{
+    //     res.send(token)
+    // })
+
     let data = await (userModel).findOne({email:email});
 
     if(!data){
@@ -58,15 +67,20 @@ signup.post("/login",async(req,res)=>{
 
     const match = await bcrypt.compare(password,data.password);
     if(match == true){
-        console.log(data);
-        res.send("Logged in successfully")
+        const payload = { id: data._id, email: data.email, role: data.category || "user" };
+        const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
+
+        res.status(200);
+        res.send({
+            message:"Logged in successfully",
+            token:token
+        })
     }
     else{
         res.send("Wrong Password");
     }
 
 })
-
 
 signup.post("/forgot",async(req,res)=>{
     let {email,password,confirm} = req.body
@@ -93,6 +107,5 @@ signup.post("/forgot",async(req,res)=>{
     res.send("Password Changed Successfully")
 
 })
-
 
 module.exports = signup
