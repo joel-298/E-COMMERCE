@@ -1,8 +1,48 @@
 const express = require("express");
 const productModel = require('../models/productModels');
+const authenticateToken = require("./jwt_verification");
 const seller = express.Router();
 
 
+seller.get("/get",authenticateToken, async (req,res)=>{
+    try {
+        const all = await productModel.find();
+        res.status(200).json({arr: all});
+      } catch (error) {
+        res.status(500).json({message: "An error occurred while fetching products ..... ", error });
+      }
+})
+seller.post("/y", async (req, res) => {
+    const { title } = req.body;
+    try {
+      const FILTER = await productModel.find({gender: title});
+      res.status(200).json({ arr: FILTER });
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching products !", error });
+    }
+});
+seller.get("/brands", async (req,res)=>{
+    // we are going to work on this later
+})
+seller.post("/item", async (req,res)=>{
+    const {_id} = req.body ; 
+    try {
+         const item = await productModel.findOne({ _id : _id});
+         if (item) {
+             res.status(200).json({ obj: item });
+         } else {
+             res.status(404).json({ message: "Item not found!" });
+         }       
+    } catch(error) {
+        res.status(500).json({message: "Error fetching item !", error }) ;
+    } 
+});
+
+
+
+
+seller.post('/add', async (req, res) => {
+    try {
 
 seller.post('/add', async (req, res) => {            // seller -> adding item in products
     try { 
