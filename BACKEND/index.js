@@ -5,6 +5,7 @@ const seller = require("./middlewares/seller");
 const app = express();
 const cors = require('cors');
 const signup = require("./middlewares/signup");
+const admin = require("./middlewares/admin");
 // const login = require("./middlewares/login");
 app.use(cors());
 
@@ -15,7 +16,7 @@ app.use(express.json());
 // PRODUCTS
 app.use('/seller',seller);
 app.use("/signup",signup);
-// app.use("/login",login)
+app.use("/admin",admin)
 
 const PORT = 4000 ;
 app.listen(PORT,(err)=>{
