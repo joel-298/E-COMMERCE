@@ -1,0 +1,96 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-color: rgba(220, 225, 222, 1);
+    
+}
+.inputs{
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 20%;
+    box-shadow: 0 10px 35px rgba(21, 20, 20, 1);
+}
+.email{
+    width: 100%;
+    font-size: 20px;
+    line-height: 35px;
+}
+.email input{
+    width: 90%;
+    height: 35px;
+    outline: none;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 18px;
+}
+
+.password{
+    width: 100%;
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 15px;
+    position: relative;
+}
+.password input{
+    width: 90%;
+    height: 35px;
+    outline: none;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 18px;
+}
+.pass{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.eye{
+    position: absolute;
+    right: 10%;
+}
+
+.confirm{
+    width: 100%;
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 15px;
+    position: relative;
+}
+.confirm input{
+    width: 90%;
+    height: 35px;
+    outline: none;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 18px;
+}
+.btn{
+    width: 93%;
+    margin-top: 40px;
+    margin-left: 3px;
+    height: 40px;
+    margin-bottom: 25px;
+    background-color: rgb(28, 27, 27);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px){
+    .inputs{
+        width: 65%;
+    }
+}
+
+@media ((min-width: 600px) and (max-width: 1200px)){
+    .inputs{
+        width: 40%;
+    }
+}

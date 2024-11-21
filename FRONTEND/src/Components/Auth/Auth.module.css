@@ -23,26 +23,56 @@
 }
 .name{
     width: 100%;
+    font-size: 20px;
+    line-height: 35px;
 }
 .name input{
     width:80%;
-    height: 30px;
+    height: 40px;
     margin-bottom: 20px;
+    font-size: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    outline: none;
 }
 .email{
     width: 100%;
+    font-size: 20px;
+    line-height: 35px;
 }
 .email input{
     width:80%;
-    height: 30px;
+    height: 40px;
     margin-bottom: 20px;
+    font-size: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    outline: none;
+}
+.password{
+    font-size: 20px;
+    margin-bottom: 40px;
+    line-height: 35px;
 }
 .password input{
     width:80%;
-    height: 30px;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    outline: none;
+}
+.pass{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.eye{
+    position: absolute;
+    right: 20%;
 }
 .btn{
-    width: 81%;
+    width: 83%;
     display: flex;
     justify-content: center;
     height: 40px;
@@ -50,10 +80,11 @@
     background-color: rgb(28, 27, 27);
     color: white;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 27px;
+    border: none;
 }
 .check1{
-    margin-top: 30px;
+    margin-top: 10px;
     width: 82%;
     display: flex;
     justify-content: space-between;
@@ -82,6 +113,7 @@
     background: transparent;
     border: none;
     color: rgb(27, 49, 147);
+    cursor: pointer;
 }
 .cont{
     margin-bottom: 15px;
@@ -95,6 +127,8 @@
         padding-left: 0px;
         display: flex;
         justify-content: center;
+        padding-left: 30px;
+        padding-right: 30px;
     }
     .main{
         padding-left: 0px;
@@ -110,6 +144,9 @@
         width: 90%;
     }
     .btn{
-        width: 90%;
+        width: 94%;
+    }
+    .eye{
+        right: 10%;
     }
 }

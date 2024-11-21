@@ -2,8 +2,42 @@ import React from 'react'
 import { useState } from 'react'
 import styles from "./Auth.module.css"
 import SUBNavbar from '../Navbar/SUBNavbar'
+import { useRef } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Auth = () => {
+  const imgref = useRef()
+  const passref = useRef()
   const [current, setcurrent] = useState("Login")
+  const [form, setform] = useState({name:"",email:"",password:""})
+
+  const handleChange = (e)=>{
+    setform({...form, [e.target.name]:e.target.value})
+  }
+
+  const handleSubmit = ()=>{
+    console.log(form);
+  }
+
+  const handleLogin = ()=>{
+    console.log("I am login");
+  }
+
+  const navigate = useNavigate()
+  const handleForgot = ()=>{
+    navigate("/forgot")
+  }
+
+  const handleShow = ()=>{
+    if(imgref.current.src.includes("close_eye.svg")){
+      imgref.current.src = "open_eye.svg";
+      passref.current.type = "text";
+    }
+    else{
+      imgref.current.src = "close_eye.svg";
+      passref.current.type = "password";
+    }
+  }
   return (
     <>
     <SUBNavbar/>
@@ -17,27 +51,29 @@ const Auth = () => {
           <div className={styles.inputs}>
             {current === "Login" ? <div></div> : <div className={styles.name}>
               <label>UserName</label><br />
-              <input type="text" />
+              <input value={form.name} type="text" name='name' placeholder='Enter Username....' onChange={handleChange}/>
             </div>}
             <div className={styles.email}>
               <label>Email</label><br />
-              <input type="email" name="" />
+              <input value={form.email} type="email" name="email" placeholder='Enter Email....' onChange={handleChange} />
             </div>
             <div className={styles.password}>
               <label>Password</label><br />
-              <input type="password" name="" /><br />
-              {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 8 letters,numbers and symbols</span></div> : <span></span>}
-              {current === "Login" ? <div className={styles.check1}>
+              <div className={styles.pass}>
+                <input ref={passref} value={form.password} type="password" name="password" placeholder='Enter Password....' onChange={handleChange} /><br />
+                <img ref={imgref}  className={styles.eye} src="close_eye.svg" alt="" onClick={handleShow} />
+              </div>
+              {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 8 letters,numbers and symbols</span></div> : <div className={styles.check1}>
                 <div className={styles.check}>
                   <input type="checkbox" name="" />
                   <label>Remember me</label>
                 </div>
                 <div className={styles.frog}>
-                  <button className={styles.forgot}>Forgot Password?</button>
+                  <button className={styles.forgot} onClick={handleForgot}>Forgot Password?</button>
                 </div>
-              </div> : <div></div>}
+              </div>}
             </div>
-            <button className={styles.btn}>Sign UP</button>
+            {current === "Sign Up"?<button className={styles.btn} onClick={handleSubmit}>Sign Up</button>:<button className={styles.btn} onClick={handleLogin}>Login</button>}
           </div>
 
           {current === "Sign Up"?<button className={styles.acc} onClick={()=>setcurrent("Login")}>Already have an account?</button>:<button className={styles.acc} onClick={()=>setcurrent("Sign Up")}>No account yet?Sign Up</button>}
