@@ -13,6 +13,7 @@ import Forms from './Components/Forms/Forms'
 import Add from './Components/Forms/add/Add'
 import Edit from './Components/Forms/edit/Edit'
 import Y from './Components/Home/Y/Y'
+import AddSeller from './Components/Admin/Add/AddSeller'
 
 
 createRoot(document.getElementById('root')).render(
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/seller/edit" element={<Edit />} />
  
       <Route path="/admin" element={<Admin/>} />     
+      <Route path="/admin/add" element={<AddSeller/>} />    
     </Routes>
   </BrowserRouter>,
 );

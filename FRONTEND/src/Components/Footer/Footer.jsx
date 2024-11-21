@@ -7,15 +7,15 @@ const Footer = () => {
       <div className={styles.child1}>
         <div className={styles.box1}>
           <div className={styles.heading}>
-            <h1><img src="./Logo.png" alt="logo" className={styles.logo}/>&nbsp;URBAN CART</h1>
+            <h1><img src="/Logo.png" alt="logo" className={styles.logo}/>&nbsp;URBAN CART</h1>
             <h2>We have clothes that suits your style and which you're proud to wear. From women to men.</h2>
           </div>
           <div className={styles.social}>
-            <img src="./twitter.svg" alt="Twitter" />
-            <img src="./facebook.svg" alt="Facebook" />
-            <img src="./instagram.svg" alt="Instagram" />            
-            <img src="./linkedin.svg" alt="Linkedin" />
-            <img src="github.svg" alt="Github" />
+            <img src="/twitter.svg" alt="Twitter" />
+            <img src="/facebook.svg" alt="Facebook" />
+            <img src="/instagram.svg" alt="Instagram" />            
+            <img src="/linkedin.svg" alt="Linkedin" />
+            <img src="/github.svg" alt="Github" />
           </div>
         </div>
         <div className={styles.box2}>
@@ -55,11 +55,11 @@ const Footer = () => {
           <p>Urban Cart © 2024-2030, All Rights Reserved</p>
         </div>
         <div className={styles.sub_box2}>
-          <img src="./VISA.svg" alt="VisaCard" />
-          <img src="CARD.svg" alt="MasterCard" />
-          <img src="PAYPAL.svg" alt="PayPal" />
-          <img src="APPLEPAY.svg" alt="ApplePay" />
-          <img src="GPAY.svg" alt="GooglePay" />
+          <img src="/VISA.svg" alt="VisaCard" />
+          <img src="/CARD.svg" alt="MasterCard" />
+          <img src="/PAYPAL.svg" alt="PayPal" />
+          <img src="/APPLEPAY.svg" alt="ApplePay" />
+          <img src="/GPAY.svg" alt="GooglePay" />
         </div>
       </div>
     </div>
