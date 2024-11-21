@@ -64,35 +64,44 @@ const X = () => {
     <div className={styles.container}>
       <SUBNavbar />
       <div className={styles.content}>
-        <h1 className={styles.h1}>{title1}/{title2}</h1>
+        {/* <h1 className={styles.h1}>{title1}/{title2}</h1> */}
         <div className={styles.p1}>
           <h3>FILTERS</h3>
           <div className={styles.filter_box1}>
             <h4>STYLE</h4>
-            <label><input type="checkbox" value="Casual" onChange={(e) => handleFilterChange(e,"type")}/>Casual</label>
-            <label><input type="checkbox" value="Formal" onChange={(e) => handleFilterChange(e,"type")}/>Formal</label>
-            <label><input type="checkbox" value="Party" onChange={(e) => handleFilterChange(e,"type")}/>Party</label>
-            <label><input type="checkbox" value="Sports" onChange={(e) => handleFilterChange(e,"type")}/>Sports</label>      
+            <div className={styles.filter_checkbox_div}>
+              <label><input type="checkbox" value="Casual" onChange={(e) => handleFilterChange(e,"type")}/>Casual</label>
+              <label><input type="checkbox" value="Formal" onChange={(e) => handleFilterChange(e,"type")}/>Formal</label>
+              <label><input type="checkbox" value="Party" onChange={(e) => handleFilterChange(e,"type")}/>Party</label>
+              <label><input type="checkbox" value="Sports" onChange={(e) => handleFilterChange(e,"type")}/>Sports</label>  
+            </div>    
           </div>
           <div className={styles.filter_box2}>
             <h4>CATEGORY</h4>
-            <label><input type="checkbox" value="Topwear" onChange={(e) => handleFilterChange(e,"category")}/>Topwears</label>
-            <label><input type="checkbox" value="Bottomwear" onChange={(e) => handleFilterChange(e,"category")}/>Bottomwears</label>
-            <label><input type="checkbox" value="Footwear" onChange={(e) => handleFilterChange(e,"category")}/>Footwears</label>
-            <label><input type="checkbox" value="Accessories" onChange={(e) => handleFilterChange(e,"category")}/>Accessories</label>      
+            <div className={styles.filter_checkbox_div}>
+              <label><input type="checkbox" value="Topwear" onChange={(e) => handleFilterChange(e,"category")}/>Topwears</label>
+              <label><input type="checkbox" value="Bottomwear" onChange={(e) => handleFilterChange(e,"category")}/>Bottomwears</label>
+              <label><input type="checkbox" value="Footwear" onChange={(e) => handleFilterChange(e,"category")}/>Footwears</label>
+              <label><input type="checkbox" value="Accessories" onChange={(e) => handleFilterChange(e,"category")}/>Accessories</label> 
+            </div>     
           </div>
           <div className={styles.filter_box3}>
             <h4>SIZE</h4>
-            <label><input type="checkbox" value="XS" onChange={(e) => handleFilterChange(e,"size")}/>XS</label>
-            <label><input type="checkbox" value="S" onChange={(e) => handleFilterChange(e,"size")}/>S</label>
-            <label><input type="checkbox" value="M" onChange={(e) => handleFilterChange(e,"size")}/>M</label>
-            <label><input type="checkbox" value="L" onChange={(e) => handleFilterChange(e,"size")}/>L</label> 
-            <label><input type="checkbox" value="XL" onChange={(e) => handleFilterChange(e,"size")}/>XL</label> 
-            <label><input type="checkbox" value="XXL" onChange={(e) => handleFilterChange(e,"size")}/>XXL</label> 
-            <label><input type="checkbox" value="One Size" onChange={(e) => handleFilterChange(e,"size")}/>One Size</label> 
+            <div className={styles.filter_checkbox_div}>
+              <label><input type="checkbox" value="XS" onChange={(e) => handleFilterChange(e,"size")}/>XS</label>
+              <label><input type="checkbox" value="S" onChange={(e) => handleFilterChange(e,"size")}/>S</label>
+              <label><input type="checkbox" value="M" onChange={(e) => handleFilterChange(e,"size")}/>M</label>
+              <label><input type="checkbox" value="L" onChange={(e) => handleFilterChange(e,"size")}/>L</label> 
+              <label><input type="checkbox" value="XL" onChange={(e) => handleFilterChange(e,"size")}/>XL</label> 
+              <label><input type="checkbox" value="XXL" onChange={(e) => handleFilterChange(e,"size")}/>XXL</label> 
+              <label><input type="checkbox" value="One Size" onChange={(e) => handleFilterChange(e,"size")}/>One Size</label> 
+            </div>
           </div>
           <div className={styles.filter_box4}>
             <h4>PRICE</h4>
+            <div className={styles.filter_checkbox_div}>
+              
+            </div>
           </div>
         </div>
 
