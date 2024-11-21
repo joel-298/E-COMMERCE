@@ -14,9 +14,9 @@ admin.get("/getSellers", async (req,res)=>{                        // displaying
 });
 
 admin.post("/add", async (req,res)=>{                              // adding a seller route
-    let{name,email,password,image,description} = req.body
+    let{name,email,password,image,description} = req.body.obj
     if(!name || !email || !password || !image || !description){
-        return res.send("All fields required");
+        return res.status(400).json({message:"All fields required"});
     }
 
     let data = await (sellerModel).find({email:email});
@@ -33,13 +33,12 @@ admin.post("/add", async (req,res)=>{                              // adding a s
             category:"seller"
         })
      
-        res.status(201);
-        res.send(
-            message="Seller Added Successfully"
-        )
+        res.status(201).json({
+            message:"Seller Added Successfully"
+        });
     }
     else{
-        res.send("Seller Already Exists")
+        res.status(409).json({message:"Seller Already Exists"});
     }
 });
 

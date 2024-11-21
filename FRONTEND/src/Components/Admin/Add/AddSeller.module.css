@@ -13,10 +13,10 @@
 }
 
 .content {
-    /* background-color: rgb(141, 121, 121); */
+    background-color: rgb(141, 121, 121);
     padding: 0vh;
     padding-bottom: 2vh;
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
+    margin-top: 13vh;
 }
