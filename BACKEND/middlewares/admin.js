@@ -2,6 +2,7 @@ const express = require("express")
 const admin = express();
 const bcrypt = require("bcryptjs");
 const sellerModel = require("../models/sellerModel");
+const userModel = require("../models/usersModel");
 
 
 admin.get("/getSellers", async (req,res)=>{                        // displaying all the sellers 
@@ -9,7 +10,15 @@ admin.get("/getSellers", async (req,res)=>{                        // displaying
         const data = await (sellerModel).find();
         res.status(200).json({arr : data}) ; 
     } catch (error) {
-        res.status(500).json({ message: "Error updating product", error: error.message });
+        res.status(500).json({ message: "Error fetching data", error: error.message });
+    }
+});
+admin.get("/getUsers" , async (req,res) => {
+    try{
+        const data = await (userModel).find();
+        res.status(200).json({brr: data}) ;
+    } catch(error) {
+        res.status(500).json({ message: "Error ufetching data", error: error.message });       
     }
 });
 

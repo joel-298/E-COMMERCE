@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 
-const SUBNavbar = () => {
+const AdminNavbar = () => {
   useEffect(() => {
     // Handeling screen width and side bar ..... 
     const handleResize = () => {
@@ -70,14 +70,11 @@ const SUBNavbar = () => {
           <div className={styles.box1}>
             <img src="/Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
           </div>
-          <h1 onClick={()=>{navigate("/")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
+          <h1 onClick={()=>{navigate("/admin")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
         </div>
 
         <div className={styles.box3}>
-          <div className={styles.items} onClick={() => { navigate('/y' , {state : {title : "Female"}}) }}>Women</div>
-          <div className={styles.items} onClick={() => { navigate('/y' , {state : {title : "Male"}}) }}>Men</div>
-          <div className={styles.items} onClick={() => { navigate('/y' , {state : {title : "Kids"}}) }}>Kids</div>
-          <div className={styles.items}><a href="/#brands_section">Brands</a></div>
+          <div className={styles.items} onClick={() => { navigate('/admin') }}>Home</div>
         </div>
 
         <div className={styles.box4}>
@@ -89,8 +86,6 @@ const SUBNavbar = () => {
             {/* <input type="text" placeholder='Search items here' className={styles.input} value={query} onChange={handleInputChange}/> */}
             <input type="text" placeholder='Search items here' className={styles.input}/>
           </form>
-          <img src="/cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
-          <img src="/noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
           <img src="/Signout.svg" alt="signout" className={styles.signout} />
         </div>
 
@@ -100,10 +95,7 @@ const SUBNavbar = () => {
             <img src="/ARROW_LEFT.svg" alt="arrow_left" className={styles.cancel} onClick={handleCancleButton}/>
           </div>
           <div className={styles.sub_div2}>        
-            <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: {title : "Female"} }) , closeSideBar}}>Women</div></a>
-            <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: {title : "Male"} }) , closeSideBar}}>Men</div></a>
-            <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state:  {title : "Kids"} }) , closeSideBar}}>Kids</div></a>
-            <a  href="/#brands_section"><div className={styles.items_box5} onClick={closeSideBar}>Brands</div></a>
+            <a href="/admin"><div className={styles.items_box5} onClick={()=> { navigate('/admin') , closeSideBar}}>Home</div></a>
           </div>
         </div>
 
@@ -113,4 +105,4 @@ const SUBNavbar = () => {
   );
 };
 
-export default SUBNavbar;
+export default AdminNavbar;

@@ -178,9 +178,6 @@
         /* background-color: RED; */
         height: 30px;
     }
-    /* .container{
-        box-shadow: 0px 0px 60px -20px black;
-    } */
 }
 
 @media (max-width: 1023px) {
@@ -394,4 +391,12 @@ a{
 /*ADDING DISPLAY NONE*/
 .display_none {
     display: none; 
+}
+
+
+
+/*SIGNOUT BUTTON*/
+.box4 .signout {
+    border-radius: 0px;
+    display: none;
 }
