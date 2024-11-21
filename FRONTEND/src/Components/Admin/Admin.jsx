@@ -3,7 +3,9 @@ import styles from './Admin.module.css' ;
 import SUBNavbar from '../Navbar/SUBNavbar';
 import Footer from '../Footer/Footer';
 import axios from 'axios' ;
+import { useNavigate } from 'react-router-dom';
 const Admin = () => {
+  const navigate = useNavigate() ;
   const [arr, setProducts] = useState([]) ;
   useEffect(()=> {
     const fetchProducts = async () => {
@@ -25,7 +27,7 @@ const Admin = () => {
           <div className={styles.child1}>
             <div className={styles.sub_div_1}>
               <h1 className={styles.heading}>Current Sellers</h1>
-              <button className={styles.add}>ADD SELLER</button>
+              <button className={styles.add} onClick={()=> navigate("/admin/add")}>ADD SELLER</button>
             </div>
             <div className={styles.sub_div_2}>
               {arr.map((item, index)=> (

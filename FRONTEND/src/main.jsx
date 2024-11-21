@@ -13,7 +13,11 @@ import Forms from './Components/Forms/Forms'
 import Add from './Components/Forms/add/Add'
 import Edit from './Components/Forms/edit/Edit'
 import Y from './Components/Home/Y/Y'
+<<<<<<< HEAD
 import Forgot from './Components/Auth/Forgot'
+=======
+import AddSeller from './Components/Admin/Add/AddSeller'
+>>>>>>> f038c902ec8d8bda204089521dc05a0ac47457da
 
 
 createRoot(document.getElementById('root')).render(
@@ -34,8 +38,13 @@ createRoot(document.getElementById('root')).render(
       <Route path="/seller/add" element={<Add />} />
       <Route path="/seller/edit" element={<Edit />} />
  
+<<<<<<< HEAD
       <Route path="/admin" element={<Admin/>} />
       <Route path='/forgot' element={<Forgot/>}></Route>
+=======
+      <Route path="/admin" element={<Admin/>} />     
+      <Route path="/admin/add" element={<AddSeller/>} />    
+>>>>>>> f038c902ec8d8bda204089521dc05a0ac47457da
     </Routes>
   </BrowserRouter>,
 );

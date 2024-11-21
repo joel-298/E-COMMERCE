@@ -68,9 +68,9 @@ const SUBNavbar = () => {
       <div className={styles.container}>
         <div className={styles.box2}>
           <div className={styles.box1}>
-            <img src="./Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
+            <img src="/Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
           </div>
-          <h1 onClick={()=>{navigate("/")}}><img src="./Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
+          <h1 onClick={()=>{navigate("/")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
         </div>
 
         <div className={styles.box3}>
@@ -84,19 +84,19 @@ const SUBNavbar = () => {
           {/* <form className={styles.INPUT}  onSubmit={handleSubmit}> */}
           <form className={styles.INPUT}  action=''>
             <button className={styles.button} type='submit'>
-              <img src="./SEARCH1.svg" alt="search" className={styles.search} />
+              <img src="/SEARCH1.svg" alt="search" className={styles.search} />
             </button>
             {/* <input type="text" placeholder='Search items here' className={styles.input} value={query} onChange={handleInputChange}/> */}
             <input type="text" placeholder='Search items here' className={styles.input}/>
           </form>
-          <img src="./cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
-          <img src="./noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
+          <img src="/cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
+          <img src="/noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
         </div>
 
         <div className={styles.box5}>
           <div className={styles.sub_div1}>
-            <img src="./Logo.png" alt="Logo"  className={styles.logo}/>
-            <img src="./ARROW_LEFT.svg" alt="arrow_left" className={styles.cancel} onClick={handleCancleButton}/>
+            <img src="/Logo.png" alt="Logo"  className={styles.logo}/>
+            <img src="/ARROW_LEFT.svg" alt="arrow_left" className={styles.cancel} onClick={handleCancleButton}/>
           </div>
           <div className={styles.sub_div2}>        
             <a href="/y"><div className={styles.items_box5} onClick={()=> { navigate('/y', { state: {title : "Female"} }) , closeSideBar}}>Women</div></a>

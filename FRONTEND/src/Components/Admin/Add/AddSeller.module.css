@@ -1,0 +1,22 @@
+/* Home.module.css */
+.container {
+    height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%;
+    padding: 0vh; 
+    margin: 0%; 
+    box-sizing: border-box; /* Include padding in height calculation */
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+  
+}
+
+.content {
+    background-color: rgb(141, 121, 121);
+    padding: 0vh;
+    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 13vh;
+}

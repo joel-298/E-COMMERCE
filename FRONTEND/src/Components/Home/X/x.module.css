@@ -24,9 +24,12 @@
 
 .content {
     /* background-color: red; */
-    padding:0vh 2vh;
-    margin-top: 10vh;
+    margin-top: 12vh;
     margin-bottom: 7vh;
+    display:flex;
+    height:auto;
+    padding:10px; 
+    width:calc(100%-20px);
 }
 
 .content h1{
@@ -45,28 +48,58 @@
     font-size: 20px;
     font-weight: 100;
     padding: 10px 20px;
-    margin: auto;
-    margin-top: -10px;
-    margin-bottom: 30px;
-    width: 500px;
     border-radius: 2px;
     text-align: center;
+    width:20%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
 }
 .p1:hover{
     cursor: pointer;
     transition: 0.3s;
 }
+.content .p1 h3{
+    background-color: #d8e6f3fd;
+    padding: 10px;
+    margin: 0px;
+    font-weight: 300;
+    border-radius: 0.2vh;
+    box-shadow: 0px 0px 50px -15px black;
+}
+.filter_box1 , .filter_box2 , .filter_box3 , .filter_box4{ 
+    background-color:#cccccdfd;
+    padding: 10px;
+}
+.filter_box1 h4, .filter_box2 h4, .filter_box3 h4, .filter_box4 h4{
+    /* background-color: rgb(151, 155, 155); */
+    padding: 10px;
+    margin: 0px;
+    margin-bottom: 0px;
+    font-weight: 100;
+    border-radius: 0.2vh;
+    /* box-shadow: 0px 0px 50px -15px black; */
+}
+.filter_checkbox_div{
+    /* background-color: red; */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .onSale {
     background-color: rgba(116, 116, 120, 0.546);
     display: flex;
     flex-direction: column;
-    height: auto;
     padding: 0vh 3vh;
-    margin: 0vh 2vh;
-    margin-bottom: 2vh;
-    margin-top: -10px;
-
+    margin-left:2vh;
+    width:calc(100% - 20% - 10px - 2vh);
 }
 
 .onSale .box1 {
@@ -137,16 +170,51 @@
     /* background-color: #ffffff; */
 }
 
+/* 
+@media screen and (min-width: 1023px) {
+    .content {
+        margin-top:;
+    }
+} */
+
 /*MEDIA QUERY FOR TABS*/
 @media screen and (min-width: 700px) and (min-height: 901px) {
     .content {
-        margin-top: 8vh;
+        margin-top: 10vh;
         padding-top: 1vh;
+    }
+}
+@media screen and (min-width:767px) { 
+    .onSale {
+        max-height: 1300px;
+        overflow-y: scroll;  /* Enables vertical scrolling */
+        scroll-behavior: smooth;  /* Smooth scrolling */
+    }
+    /* Hide scrollbar */
+    .onSale::-webkit-scrollbar {
+        display: none;  /* For Chrome, Safari, and Opera */
+    }
+    .onSale {
+        -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+        scrollbar-width: none;  /* For Firefox */
     }
 }
 /*MEDIA QUERY FOR PHONES*/
 @media screen and (max-width: 767px) {  
+    .content{
+        flex-direction:column;
+        padding:10px;
+        row-gap:20px;
+    }
+    .content .p1{
+        width:calc(100% - 40px);
+    }
     .h1 {
-        margin-top: 30px;
+        margin-top: 20px;
+    }
+    .onSale {
+        margin:0px;
+        width:calc(100% - 20px - 3vh);
+        height:auto;
     }
 }

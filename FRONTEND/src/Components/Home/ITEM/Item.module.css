@@ -45,7 +45,7 @@
 }
 
 .box2 img {
-    border: 8px solid grey;  
+    border: 8px solid rgb(199, 197, 197);  
     height: calc(100% - 16px); 
     max-width: 100%;
 }
