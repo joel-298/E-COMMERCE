@@ -7,7 +7,6 @@ const sellerModel = require("../models/sellerModel");
 const adminModel = require("../models/adminModel");
 
 
-
 signup.post("/",async(req,res)=>{                                    // adding a new user to USER
     let {name,email,password} = req.body;
     if(!name || !email || !password){
@@ -28,8 +27,9 @@ signup.post("/",async(req,res)=>{                                    // adding a
         })
      
         res.status(201);
-        res.send(
-            message="Account Created Successfully"
+        res.send({
+            message:"Account Created Successfully"
+           }
         )
     }
     else{
@@ -55,7 +55,8 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
             const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
             return res.status(200).json({
                                             message:"ADMIN Logged in successfully",
-                                            token:token
+                                            token:token,
+                                            category:"admin"
                                         });
         }
         else{
@@ -74,7 +75,8 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
     
             return res.status(200).json({
                                         message:"SELLER Logged in successfully",
-                                        token:token
+                                        token:token,
+                                        category:"seller"
                                     });
         }
         else{
@@ -93,7 +95,8 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
     
             return res.status(200).json({
                                             message:"USER Logged in successfully",
-                                            token:token
+                                            token:token,
+                                            category:"user"
                                         });
         }
         else{
