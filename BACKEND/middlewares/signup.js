@@ -34,7 +34,7 @@ signup.post("/",async(req,res)=>{                                    // adding a
     }
 })
 
-signup.post("/login",async(req,res)=>{                          // LOGIN check -> includes admin , seller , user
+signup.post("/login", async(req,res)=>{                          // LOGIN check -> includes admin , seller , user
     let {email,password} = req.body
     if(!email || !password){
         return res.send({
@@ -147,6 +147,47 @@ signup.post("/forgot",async(req,res)=>{                        // FORGOT PASSWOR
 
     res.send("Password Changed Successfully")
 
-})
+});
+
+
+
+
+signup.post("/jwtverification", (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.status(400).json({ 
+            message: "Token is required", 
+            valid: false 
+        });
+    }
+
+    jwt.verify(token, "secret", (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ 
+                message: "Invalid or expired token", 
+                valid: false 
+            });
+        }
+
+        // Extract payload and validate category (user, admin, seller)
+        const { id, email, category } = decoded;
+        
+        if (!id || !email || !category) {
+            return res.status(400).json({ 
+                message: "Invalid token payload", 
+                valid: false 
+            });
+        }
+
+        // If valid
+        return res.status(200).json({ 
+            message: "Token is valid", 
+            valid: true, 
+            category, 
+            email 
+        });
+    });
+});
 
 module.exports = signup
