@@ -69,9 +69,9 @@ const Navbar = () => {
       <div className={styles.container}>
         <div className={styles.box2}>
           <div className={styles.box1}>
-            <img src="./Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
+            <img src="/Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
           </div>
-          <h1 onClick={()=>{navigate("/")}}><img src="./Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
+          <h1 onClick={()=>{navigate("/")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
         </div>
 
         <div className={styles.box3}>
@@ -85,13 +85,14 @@ const Navbar = () => {
           {/* <form className={styles.INPUT}  onSubmit={handleSubmit}> */}
           <form className={styles.INPUT}  action=''>
             <button className={styles.button} type='submit'>
-              <img src="./SEARCH1.svg" alt="search" className={styles.search} />
+              <img src="/SEARCH1.svg" alt="search" className={styles.search} />
             </button>
             {/* <input type="text" placeholder='Search items here' className={styles.input} value={query} onChange={handleInputChange}/> */}
             <input type="text" placeholder='Search items here' className={styles.input}/>
           </form>
-          <img src="./cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
-          <img src="./noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
+          <img src="/cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
+          <img src="/noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
+          <img src="/Signout.svg" alt="signout" className={styles.signout} />
         </div>
 
         <div className={styles.box5}>

@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 2vh;
-  
 }
 
 .content {
@@ -103,8 +102,10 @@
 }
 .p{
     font-size: 26px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
-
 .column2 {
     display: flex;
     align-items: center;
