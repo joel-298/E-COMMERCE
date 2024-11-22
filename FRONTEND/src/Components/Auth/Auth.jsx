@@ -35,20 +35,33 @@ const Auth = () => {
     axios.post("http://localhost:4000/signup/login",form)
     .then((response)=>{
       let x = response.data;
-      let y = x.category
       console.log(x)
-      console.log(y)
 
-      if(y=="user"){
-        navigate("/")
+      if(x.boolean === true){
+        let y = x.category
+        console.log(y)
+
+        //Storing token in local storage
+        localStorage.setItem('login',JSON.stringify({
+          login:true,
+          token:x.token,
+          category:y
+        }))
+
+        if(y=="user"){
+          navigate("/")
+        }
+  
+        if(y=="admin"){
+          navigate("/admin")
+        }
+  
+        if(y=="seller"){
+          navigate("/seller")
+        }
       }
-
-      if(y=="admin"){
-        navigate("/admin")
-      }
-
-      if(y=="seller"){
-        navigate("/seller")
+      else{
+        console.log(x.message);
       }
     })
   }

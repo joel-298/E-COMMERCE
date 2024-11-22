@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useRef } from 'react'
 import styles from "./Forgot.module.css"
+import axios from 'axios'
 
 const Forgot = () => {
     const img1Ref = useRef()
@@ -16,6 +17,10 @@ const Forgot = () => {
 
     const handleSubmit = ()=>{
         console.log(form);
+        axios.post("http://localhost:4000/signup/forgot",form)
+        .then((response)=>{
+            console.log(response);
+        })
     }
 
     const handleShow1 = ()=>{

@@ -56,12 +56,14 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
             return res.status(200).json({
                                             message:"ADMIN Logged in successfully",
                                             token:token,
-                                            category:"admin"
+                                            category:"admin",
+                                            boolean:true
                                         });
         }
         else{
-            return res.status(401).json({
-                                            message:"WRONG PASSWORD ADMIN"
+            return res.json({
+                                            message:"WRONG PASSWORD ADMIN",
+                                            boolean:false
                                         });
         }
     }
@@ -76,12 +78,14 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
             return res.status(200).json({
                                         message:"SELLER Logged in successfully",
                                         token:token,
-                                        category:"seller"
+                                        category:"seller",
+                                        boolean:true
                                     });
         }
         else{
-            return res.status(401).json({
-                                            message:"WRONG PASSWORD SELLER"
+            return res.json({
+                                            message:"WRONG PASSWORD SELLER",
+                                            boolean:false
                                         });
         }
     }
@@ -96,12 +100,14 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
             return res.status(200).json({
                                             message:"USER Logged in successfully",
                                             token:token,
-                                            category:"user"
+                                            category:"user",
+                                            boolean:true
                                         });
         }
         else{
-            return res.status(401).json({
-                                            message:"WRONG PASSWORD USER"
+            return res.json({
+                                            message:"WRONG PASSWORD USER",
+                                            boolean:false
                                         });
         }
     }
@@ -110,7 +116,7 @@ signup.post("/login",async(req,res)=>{                          // LOGIN check -
 
 
     // USER NOT FOUND
-    return res.status(404).json({
+    return res.json({
         message: "User not found. Please sign up.",
     });
 
