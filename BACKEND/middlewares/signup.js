@@ -27,10 +27,7 @@ signup.post("/",async(req,res)=>{                                    // adding a
         })
      
         res.status(201);
-        res.send({
-            message:"Account Created Successfully"
-           }
-        )
+        res.send("Account Created Successfully")
     }
     else{
         res.send("User Already Exists");
@@ -40,7 +37,10 @@ signup.post("/",async(req,res)=>{                                    // adding a
 signup.post("/login",async(req,res)=>{                          // LOGIN check -> includes admin , seller , user
     let {email,password} = req.body
     if(!email || !password){
-        return res.send("All fields required");
+        return res.send({
+            message:"All fields required",
+            boolean:false
+        });
     }
 
     // jwt.sign({user},"secret",{expiresIn:'3000s'},(err,token)=>{

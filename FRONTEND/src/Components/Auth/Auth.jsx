@@ -5,125 +5,214 @@ import SUBNavbar from '../Navbar/SUBNavbar'
 import { useRef } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Auth = () => {
   const imgref = useRef()
   const passref = useRef()
   const [current, setcurrent] = useState("Login")
-  const [form, setform] = useState({name:"",email:"",password:""})
+  const [form, setform] = useState({ name: "", email: "", password: "" })
 
-  const handleChange = (e)=>{
-    setform({...form, [e.target.name]:e.target.value})
+  const handleChange = (e) => {
+    setform({ ...form, [e.target.name]: e.target.value })
   }
 
   const navigate = useNavigate()
-  const handleSubmit = ()=>{
-    axios.post("http://localhost:4000/signup",form)
-    .then((response)=>{
-      let x = response.data.message;
-      console.log(x);
-      if(x=="Account Created Successfully"){
-        setform({ name: "", email: "", password: "" });
-        setcurrent("Login")
-      }
-      else{
-        console.log(x);
-      }
-    })
+  const handleSubmit = () => {
+    if(form.password.length > 3 && form.email.includes("@") && form.name.length>0){
+      axios.post("http://localhost:4000/signup", form)
+        .then((response) => {
+          let x = response.data;
+          console.log(x);
+          toast(x, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+          
+          if (x == "Account Created Successfully") {
+            setform({ name: "", email: "", password: "" });
+            setTimeout(() => {
+              setcurrent("Login")
+            }, 4000);
+          }
+        })
+    }
+
+    else if(form.password.length == 0){
+      toast("Minimum 3 digits required" , {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+
+    else if(form.name.length == 0){
+      toast("Username Required " , {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+
+    else{
+      toast("Enter a valid Email" , {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
   }
 
-  const handleLogin = ()=>{
-    axios.post("http://localhost:4000/signup/login",form)
-    .then((response)=>{
-      let x = response.data;
-      console.log(x)
+  const handleLogin = () => {
+    axios.post("http://localhost:4000/signup/login", form)
+      .then((response) => {
+        let x = response.data;
+        console.log(x)
 
-      if(x.boolean === true){
-        let y = x.category
-        console.log(y)
+        if (x.boolean === true) {
+          let y = x.category
+          console.log(y)
 
-        //Storing token in local storage
-        localStorage.setItem('login',JSON.stringify({
-          login:true,
-          token:x.token,
-          category:y
-        }))
+          //Toastify
+          toast(x.message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
 
-        if(y=="user"){
-          navigate("/")
+            setTimeout(() => {
+              localStorage.setItem('login', JSON.stringify({
+                login: true,
+                token: x.token,
+                category: y
+              }))
+    
+              if (y == "user") {
+                navigate("/")
+              }
+    
+              if (y == "admin") {
+                navigate("/admin")
+              }
+    
+              if (y == "seller") {
+                navigate("/seller")
+              }
+            }, 3000);
         }
-  
-        if(y=="admin"){
-          navigate("/admin")
+
+        else {
+          toast(x.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
-  
-        if(y=="seller"){
-          navigate("/seller")
-        }
-      }
-      else{
-        console.log(x.message);
-      }
-    })
+      })
   }
 
-  const handleForgot = ()=>{
+  const handleForgot = () => {
     navigate("/forgot")
   }
 
-  const handleShow = ()=>{
-    if(imgref.current.src.includes("close_eye.svg")){
+  const handleShow = () => {
+    if (imgref.current.src.includes("close_eye.svg")) {
       imgref.current.src = "open_eye.svg";
       passref.current.type = "text";
     }
-    else{
+    else {
       imgref.current.src = "close_eye.svg";
       passref.current.type = "password";
     }
   }
   return (
     <>
-    {/* <SUBNavbar/> */}
-    <div className={styles.main}>
-      <div className={styles.left}>
-        <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BS1x3W8mVGPbyty4BYx6EmQKxcKf4pXqgUBA3jAumYDKpjtN0s-mAZoPSm1Y3k8VF~QcsWkkEW7QifihBER4eGvFu2wwz9J9~6r9Mi09Fmb0SCCZnKLLNobzS8bj9yRZRn9XEIPqlehonrOg-neXTn3GubMQYP5sagiGFAa3gTRS9h~s1~uItwoQS8CjbYxzuo8RNbRErNHxgfByS7QdALsp-QtL7duSd6~eR1gbhWCF3Sj1xQwK4U2Pk~SYN2N9gSquG5A5POIkqOV2XjcS20i47TIY29qJ747FF2FtldXLdqiRkChGdxDkoQ6mRtWLvnzwL2nQc1pGJFeCzPXT7A__" alt="Welcome" />
-      </div>
-      <div className={styles.right}>
-        <div>
-          <h1 className={styles.heading}>{current}</h1>
-          <div className={styles.inputs}>
-            {current === "Login" ? <div></div> : <div className={styles.name}>
-              <label>UserName</label><br />
-              <input value={form.name} type="text" name='name' placeholder='Enter Username....' onChange={handleChange}/>
-            </div>}
-            <div className={styles.email}>
-              <label>Email</label><br />
-              <input value={form.email} type="email" name="email" placeholder='Enter Email....' onChange={handleChange} />
-            </div>
-            <div className={styles.password}>
-              <label>Password</label><br />
-              <div className={styles.pass}>
-                <input ref={passref} value={form.password} type="password" name="password" placeholder='Enter Password....' onChange={handleChange} /><br />
-                <img ref={imgref}  className={styles.eye} src="close_eye.svg" alt="" onClick={handleShow} />
-              </div>
-              {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 8 letters,numbers and symbols</span></div> : <div className={styles.check1}>
-                <div className={styles.check}>
-                  <input type="checkbox" name="" />
-                  <label>Remember me</label>
-                </div>
-                <div className={styles.frog}>
-                  <button className={styles.forgot} onClick={handleForgot}>Forgot Password?</button>
-                </div>
+      {/* <SUBNavbar/> */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition="Bounce" />
+      <ToastContainer />
+      <div className={styles.main}>
+        <div className={styles.left}>
+          <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BS1x3W8mVGPbyty4BYx6EmQKxcKf4pXqgUBA3jAumYDKpjtN0s-mAZoPSm1Y3k8VF~QcsWkkEW7QifihBER4eGvFu2wwz9J9~6r9Mi09Fmb0SCCZnKLLNobzS8bj9yRZRn9XEIPqlehonrOg-neXTn3GubMQYP5sagiGFAa3gTRS9h~s1~uItwoQS8CjbYxzuo8RNbRErNHxgfByS7QdALsp-QtL7duSd6~eR1gbhWCF3Sj1xQwK4U2Pk~SYN2N9gSquG5A5POIkqOV2XjcS20i47TIY29qJ747FF2FtldXLdqiRkChGdxDkoQ6mRtWLvnzwL2nQc1pGJFeCzPXT7A__" alt="Welcome" />
+        </div>
+        <div className={styles.right}>
+          <div>
+            <h1 className={styles.heading}>{current}</h1>
+            <div className={styles.inputs}>
+              {current === "Login" ? <div></div> : <div className={styles.name}>
+                <label>UserName</label><br />
+                <input value={form.name} type="text" name='name' placeholder='Enter Username....' onChange={handleChange} />
               </div>}
+              <div className={styles.email}>
+                <label>Email</label><br />
+                <input value={form.email} type="email" name="email" placeholder='Enter Email....' onChange={handleChange} />
+              </div>
+              <div className={styles.password}>
+                <label>Password</label><br />
+                <div className={styles.pass}>
+                  <input ref={passref} value={form.password} type="password" name="password" placeholder='Enter Password....' onChange={handleChange} /><br />
+                  <img ref={imgref} className={styles.eye} src="close_eye.svg" alt="" onClick={handleShow} />
+                </div>
+                {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 3 letters,numbers and symbols</span></div> : <div className={styles.check1}>
+                  <div className={styles.check}>
+                    <input type="checkbox" name="" />
+                    <label>Remember me</label>
+                  </div>
+                  <div className={styles.frog}>
+                    <button className={styles.forgot} onClick={handleForgot}>Forgot Password?</button>
+                  </div>
+                </div>}
+              </div>
+              {current === "Sign Up" ? <button className={styles.btn} onClick={handleSubmit}>Sign Up</button> : <button className={styles.btn} onClick={handleLogin}>Login</button>}
             </div>
-            {current === "Sign Up"?<button className={styles.btn} onClick={handleSubmit}>Sign Up</button>:<button className={styles.btn} onClick={handleLogin}>Login</button>}
-          </div>
 
-          {current === "Sign Up"?<button className={styles.acc} onClick={()=>setcurrent("Login")}>Already have an account?</button>:<button className={styles.acc} onClick={()=>setcurrent("Sign Up")}>No account yet?Sign Up</button>}
+            {current === "Sign Up" ? <button className={styles.acc} onClick={() => setcurrent("Login")}>Already have an account?</button> : <button className={styles.acc} onClick={() => setcurrent("Sign Up")}>No account yet?Sign Up</button>}
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }
 
-export default Auth ; 
+export default Auth; 
