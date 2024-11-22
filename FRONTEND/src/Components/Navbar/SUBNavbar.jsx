@@ -5,6 +5,18 @@ import styles from './Navbar.module.css';
 
 const SUBNavbar = () => {
   useEffect(() => {
+    // change icon based on login or not
+    const getTokenData = () => JSON.parse(localStorage.getItem('login'));
+    const tokenData = getTokenData();
+    if (!tokenData || !tokenData.token) {
+      document.querySelector(`.${styles.signout}`).classList.add(styles.display_none);
+      document.querySelector(`.${styles.avatar}`).classList.remove(styles.display_none) ;
+    }
+    else{
+      document.querySelector(`.${styles.signout}`).classList.remove(styles.display_none);
+      document.querySelector(`.${styles.avatar}`).classList.add(styles.display_none) ;     
+    }
+    
     // Handeling screen width and side bar ..... 
     const handleResize = () => {
       const box5 = document.querySelector(`.${styles.box5}`);

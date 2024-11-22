@@ -18,8 +18,8 @@ const userSchema = mongoose.Schema({
         type:String,
         require:true
     },
-    cart:[]
-})
+    cart:[{type: mongoose.Schema.Types.Mixed}] // Allows flexibility to store products objects
+});
 
 const userModel = mongoose.model("users",userSchema);
 module.exports = userModel ;

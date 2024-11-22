@@ -5,6 +5,21 @@ import styles from './Navbar.module.css';
 
 const AdminNavbar = () => {
   useEffect(() => {
+    // change icon based on login or not
+    const tokenData = JSON.parse(localStorage.getItem('login'));
+
+    const signoutElem = document.querySelector(`.${styles.signout}`);
+    const avatarElem = document.querySelector(`.${styles.avatar}`);
+    if (signoutElem && avatarElem) {
+      if (!tokenData.token) {
+        signoutElem.classList.add(styles.display_none);
+        avatarElem.classList.remove(styles.display_none);
+      } else {
+        signoutElem.classList.remove(styles.display_none);
+        avatarElem.classList.add(styles.display_none);
+      }
+    }
+
     // Handeling screen width and side bar ..... 
     const handleResize = () => {
       const box5 = document.querySelector(`.${styles.box5}`);
