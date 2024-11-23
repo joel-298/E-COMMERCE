@@ -3,6 +3,7 @@ const admin = express();
 const bcrypt = require("bcryptjs");
 const sellerModel = require("../models/sellerModel");
 const userModel = require("../models/usersModel");
+const productModel = require("../models/productModels");
 
 
 admin.get("/getSellers", async (req,res)=>{                        // displaying all the sellers 
@@ -52,7 +53,11 @@ admin.post("/add", async (req,res)=>{                              // adding a s
 });
 
 admin.delete("/delete" , async (req,res) => { // deleting a seller route
-
+    let {email,companyName} = req.body;
+    let data = await(sellerModel).deleteOne({email:email});
+    let data2 = await(productModel).deleteOne({companyName:companyName});
+    console.log(data2);
+    res.send(data);
 });
 
 module.exports = admin
