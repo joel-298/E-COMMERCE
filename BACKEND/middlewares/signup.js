@@ -72,7 +72,7 @@ signup.post("/login", async(req,res)=>{                          // LOGIN check 
     if(data_seller) {
         const match = await bcrypt.compare(password,data_seller.password);
         if(match == true){
-            const payload = { id: data_seller._id, email: data_seller.email, category: data_seller.category };
+            const payload = { id: data_seller._id, name : data_seller.name , email: data_seller.email, category: data_seller.category, description: data_seller.description , image: data_seller.image };
             const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
     
             return res.status(200).json({
@@ -90,11 +90,11 @@ signup.post("/login", async(req,res)=>{                          // LOGIN check 
         }
     }
 
-    const data_user = await (userModel).findOne({email:email});           // check from sellers
+    const data_user = await (userModel).findOne({email:email});           // check from Users
     if(data_user) {
         const match = await bcrypt.compare(password,data_user.password);
         if(match == true){
-            const payload = { id: data_user._id, email: data_user.email, category: data_user.category };
+            const payload = { id: data_user._id, name: data_user.name, email: data_user.email, category: data_user.category };
             const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
     
             return res.status(200).json({
@@ -111,9 +111,6 @@ signup.post("/login", async(req,res)=>{                          // LOGIN check 
                                         });
         }
     }
-
-
-
 
     // USER NOT FOUND
     return res.json({
@@ -171,23 +168,53 @@ signup.post("/jwtverification", (req, res) => {
         }
 
         // Extract payload and validate category (user, admin, seller)
-        const { id, email, category } = decoded;
-        
-        if (!id || !email || !category) {
-            return res.status(400).json({ 
-                message: "Invalid token payload", 
-                valid: false 
+        const { category } = decoded;
+
+        if(category == "admin") {             // admin
+            const { email } = decoded;
+            return res.status(200).json({ 
+                message: "Token is valid", 
+                valid: true, 
+                category, 
+                email 
             });
         }
-
-        // If valid
-        return res.status(200).json({ 
-            message: "Token is valid", 
-            valid: true, 
-            category, 
-            email 
-        });
+        else if (category == "seller") {     // seller
+            const { name , email , description , image  } = decoded;
+            return res.status(200).json({ 
+                message: "Token is valid", 
+                valid: true, 
+                name , 
+                email ,
+                description , 
+                category, 
+                image
+            });
+        }
+        else{                                 // user
+            const { name , email } = decoded;
+            return res.status(200).json({ 
+                message: "Token is valid", 
+                valid: true,
+                name, 
+                email ,
+                category
+            });
+        }
     });
 });
 
 module.exports = signup
+
+
+
+
+
+
+
+// (req,res) => {
+//     const {name} = req.body ; // company name 
+
+//     const array = findPoryd (companyName: name) 
+//     res.jason({arr: array}) ;
+// }

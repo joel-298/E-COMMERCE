@@ -37,8 +37,8 @@ const ProtectedRoute = ({ category, children }) => {
       return false;
     }
   };
-  
-  const isValid = verifyToken(); // 1
+
+const isValid = verifyToken(); // 1
   if (!isValid) {                    // 3
     return <Navigate to="/auth" />;
   }
