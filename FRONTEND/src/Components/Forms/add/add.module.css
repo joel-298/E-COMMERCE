@@ -1,0 +1,234 @@
+/* add.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    /* padding: 20px; */
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .content {
+    /* padding-top: 20vh; */
+    margin-top: 16vh;
+    width: 80%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    margin-bottom: 20px;
+    
+  }
+  
+  .box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333333;
+    /* background-color: red; */
+  }
+  
+  .box input {
+    width: 95%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .box input:focus {
+    outline: none;
+    border-color: #009dff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+  }
+  
+  .radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .radio label {
+    /* font-size: 14px; */
+    color: #555555;
+    display: flex;
+    align-items: center;
+  }
+  
+  .radio input {
+    margin-right: 5px;
+  }
+  .radio label{
+    font-size: 2.4vh;
+    font-weight: 200;
+  }
+  
+  .buttonBox{
+    /* background-color: #009dff; */
+    /* width: 200vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button {
+    background-color: #7da2bd;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 3vh;
+    transition: background-color 0.3s ease;
+    /* margin-left: 100px; */
+  }
+  
+
+  
+  .button:hover {
+    background-color: #cbced0;
+    color: #333333;
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+
+
+  @media (max-width: 1024px) { /* For tablets and medium screens */
+  
+    .content {
+      /* background-color: #009dff; */
+      /* margin-top: 10vh; */
+      padding: 15px;
+      width: 90%; /* Reduces the content width */
+    }
+    .radio label{
+        font-size: 10px;
+        font-weight: 200;
+      }
+  
+    .box input {
+      width: 95%; /* Ensures inputs take full width */
+    }
+  
+    .button {
+      width: 70%; /* Adjusts button size */
+    }
+  }
+  
+  @media (max-width: 768px) { /* For smaller tablets and large phones */
+    .content {
+      width: 95%; /* Further reduces content width */
+    }
+  
+    .radio {
+      gap: 8px; /* Adjusts spacing between radio buttons */
+    }
+    .radio label{
+        font-size: 2vh;
+        font-weight: 200;
+      }
+  
+    .button {
+      width: 80%; /* Further adjusts button size */
+    }
+  }
+  
+  @media (max-width: 480px) { /* For mobile phones */
+    .content {
+      margin-top: 13vh; /* Brings content closer to the top */
+      padding: 10px;
+    }
+  
+    .box label {
+      font-size: 1.6vh; /* Smaller labels for mobile */
+    }
+  
+    .box input {
+      padding: 6px 10px; /* Adjust input padding for smaller screens */
+    }
+  
+    .radio label {
+      font-size: 1.8vh; /* Smaller font for radio buttons */
+    }
+  
+    .button {
+      width: 90%; /* Maximizes button width on mobile */
+      font-size: 2.5vh; /* Adjusts font size */
+    }
+  }
+  
+
+  @media (max-width: 360px) { /* For very small mobile devices */
+    /* .container {
+      padding: 5px;
+    } */
+  
+    .content {
+      margin-top: 13vh; /* Reduces top margin */
+      padding: 8px;
+      width: 95%; /* Maximizes content width */
+    }
+  
+    .box label {
+      font-size: 1.4vh; /* Smaller labels for tight spaces */
+    }
+  
+    .box input {
+      padding: 5px 8px; /* Compact input padding */
+      font-size: 12px; /* Adjust input text size */
+    }
+  
+    .radio label {
+      font-size: 1.5vh; /* Adjust radio label font size */
+    }
+  
+    .button {
+      width: 95%; /* Almost full width for the button */
+      font-size: 2.2vh; /* Scaled-down font size */
+      padding: 8px 10px; /* Compact button padding */
+    }
+  }
+  
+  @media (max-width: 320px) { /* For ultra-small devices */
+    .content {
+      margin-top: 4vh; /* Further reduces top margin */
+      padding: 5px;
+    }
+  
+    .box label {
+      font-size: 1.2vh; /* Labels fit better on very small screens */
+    }
+  
+    .box input {
+      padding: 4px 6px; /* Minimized padding for inputs */
+      font-size: 11px; /* Smaller text inside inputs */
+    }
+  
+    .radio {
+      gap: 5px; /* Reduces spacing between radio buttons */
+      flex-direction: column; /* Stack options vertically */
+    }
+  
+    .button {
+      width: 100%; /* Full-width button for easy access */
+      font-size: 2vh; /* Compact font size for button */
+      padding: 6px 8px; /* Adjust button padding */
+    }
+  }
+  
+  
