@@ -16,10 +16,11 @@ const Auth = () => {
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value })
   }
+  console.log(form);
 
   const navigate = useNavigate()
   const handleSubmit = () => {
-    if(form.password.length > 3 && form.email.includes("@") && form.name.length>0){
+    if(form.password.length > 3 && form.email.includes("@gmail.com") && form.name.length>0){
       axios.post("http://localhost:4000/signup", form)
         .then((response) => {
           let x = response.data;
@@ -44,7 +45,7 @@ const Auth = () => {
         })
     }
 
-    else if(form.password.length == 0){
+    else if(form.password.length < 3){
       toast("Minimum 3 digits required" , {
         position: "top-right",
         autoClose: 3000,

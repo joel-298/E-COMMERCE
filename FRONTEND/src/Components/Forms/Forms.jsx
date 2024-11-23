@@ -23,6 +23,19 @@ const Forms = () => {
 
     fetchProducts(); // Fetch products when the component loads
   },[token])
+
+  // LOCALSTORAGE : gettoken 
+  // VERIFY axios : response 
+
+  // response.message: "Token is valid", 
+  // response.valid: true, 
+  // response.name ,                           // company Name : items fetch according to company name : axios ("hreep", {name : response.name})   // setAarray(x.arr)
+  // response.email ,
+  // response.description , 
+  // response.category, 
+  // response.image
+
+
   return (
     <div>
       {/* all products displayed filtered on the basis of companyName throught token present in localhost */}
