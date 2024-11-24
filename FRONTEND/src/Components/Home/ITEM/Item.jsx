@@ -80,12 +80,9 @@ const Item = () => {
       else{
         document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none) ;
         document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none) ;
-      }
-      
-       
-
-   
-    },[SelectedSize,user_id])  ;                     
+      }   
+    },[SelectedSize,user_id])  ;       
+                  
     const handleSize = (size) => {
       set_SelectedSize(size); 
       const getUserId = async () => {

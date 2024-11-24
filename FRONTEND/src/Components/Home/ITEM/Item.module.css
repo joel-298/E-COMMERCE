@@ -265,3 +265,6 @@
 .active_size{
     background-color: rgba(128, 128, 128, 0.506);
 }
+.selected_item_bg{
+    background-color: rgba(128, 128, 128, 0.506);
+}

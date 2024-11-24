@@ -70,20 +70,16 @@ user.post("/cart", async (req, res) => {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
-
-      // Step 1: Initialize an empty array to store the result
       const result = [];
 
       // Step 2: Loop over each item in the user's cart
       for (let cartItem of user.cart) {
         // Fetch the product based on the product ID from the cart
         const product = await productModel.findById(cartItem._id);
-
         // If the product is not found, continue to the next item
         if (!product) {
           continue;
         }
-
         // Step 3: Push the product and selected size to the result array
         result.push({
           product: product, // The product fetched from productModel
@@ -93,12 +89,42 @@ user.post("/cart", async (req, res) => {
 
       // Step 4: Return the result array to the frontend
       return res.json({ cart: result });
-
     } catch (error) {
       console.error("Error fetching cart:", error);
       return res.status(500).json({ message: "Internal server error" });  // Handle any errors that occur
     }
 });
+
+
+user.delete("/delete", async (req, res) => {
+    const { id, size, user_id } = req.query;
+  
+    if (!id || !size || !user_id) {
+      return res.json({ message: "Missing required parameters" });
+    }
+  
+    try {
+      // Find the user by user_id
+      const user = await userModel.findById(user_id);
+      if (!user) {
+        return res.json({ message: "User not found" });
+      }
+      console.log(user.cart);
+  
+      // Filter the cart to exclude the item matching both the product _id and SelectedSize
+      const updatedCart = user.cart.filter((item) => item._id != id || item.sizeSelected != size);     // D O U B T : why we didnt use && here
+  
+      // Update the user's cart in the database
+      user.cart = updatedCart;
+      await user.save();
+  
+      return res.json({ message: "Data deleted successfully" });
+    } catch (error) {
+      console.error("Error while deleting data:", error);
+      return res.json({ message: "Error while deleting data" });
+    }
+});
+  
 
 
 

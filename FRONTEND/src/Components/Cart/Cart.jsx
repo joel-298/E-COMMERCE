@@ -7,8 +7,8 @@ import axios from 'axios' ;
 const Cart = () => {
   const tokenData = JSON.parse(localStorage.getItem("login")); // user token
   const [user_id, setUserId] = useState("") ; // USER ID
-  const [cart , setCart] = useState([]) ;
-  const getUserId = async () => {
+  const [cart , setCart] = useState([]) ;     // CART ARRAY 
+  const getUserId = async () => {                                     // Function to get user id
     const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;)
     setUserId(response.data.id) ;
   } ;
@@ -20,6 +20,8 @@ const Cart = () => {
           const response = await axios.post("http://localhost:4000/user/cart", { user_id : user_id});
           console.log(response.data.cart);  // Log the cart array received from the backend
           setCart(response.data.cart); // You can also store the cart data in state for rendering later
+          // SET TOTAL COST : 
+          // can u write a functino of toal cost ? i.e total cost of adding discounted price of every object in cart array like mentioned in line number 79
         }
         getCart() ;
       } catch (error) {
@@ -28,6 +30,37 @@ const Cart = () => {
     }
 
   },[user_id]);
+
+  // TOTAL COST
+  const [totalCost , setTotalCost] = useState(0) ; // TOTAL COST
+  const calculateTotalCost = () => {                                 
+    let total = 0;
+    cart.forEach(item => {
+      const discountedPrice = item.product.originalPrice - (item.product.originalPrice * (item.product.discountPercent / 100));
+      total += discountedPrice;
+    });
+    setTotalCost(total.toFixed(2)); // Updating the state with the calculated total
+  };
+  useEffect(() => {                    // Recalculate total cost whenever cart changes
+    if (cart.length > 0) {
+      calculateTotalCost();
+    }
+  }, [cart]);
+
+  // HANDLE DELETE FUNCTIONALITY
+  const handleDelete =  async (id , size) => {
+    try {
+      if(user_id !== "") {
+        const response = await axios.delete("http://localhost:4000/user/delete" , {params : {id : id , size : size , user_id: user_id}} );
+        alert(response.data.message) ;
+        window.location.reload() ;
+      }
+    } catch (error) {
+      console.log("Error while deleting product")
+    }
+  };
+
+
 
 
   return (
@@ -53,7 +86,7 @@ const Cart = () => {
                         <h2 className={styles.h2}>Size selected : {item.SelectedSize}</h2>
                       </div>
                       <div className={styles.child1_box2}>
-                        <img src="/Delete.svg" alt="delete_icon" />
+                        <img src="/Delete.svg" alt="delete_icon" onClick={()=>handleDelete(item.product._id, item.SelectedSize)}/>
                       </div>
                     </div>
                     <div className={styles.child2}>
@@ -70,7 +103,8 @@ const Cart = () => {
               );
             })}
             <div className={styles.total}>
-                <p>TOTAL</p>
+                <h1 className={styles.totalCost}>TOTAL COST : ₹ {totalCost}</h1> 
+                <button className={styles.paynow}>BUY NOW</button>
             </div>
           </div>
 
