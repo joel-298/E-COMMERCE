@@ -27,7 +27,7 @@ const Auth = () => {
           console.log(x);
           toast(x, {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -48,7 +48,7 @@ const Auth = () => {
     else if(form.password.length < 3){
       toast("Minimum 3 digits required" , {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -61,7 +61,7 @@ const Auth = () => {
     else if(form.name.length == 0){
       toast("Username Required " , {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -74,7 +74,7 @@ const Auth = () => {
     else{
       toast("Enter a valid Email" , {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -98,7 +98,7 @@ const Auth = () => {
           //Toastify
           toast(x.message, {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -131,7 +131,7 @@ const Auth = () => {
         else {
           toast(x.message, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
