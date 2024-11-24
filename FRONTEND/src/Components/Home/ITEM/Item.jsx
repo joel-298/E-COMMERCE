@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Item = () => {
   const location = useLocation();
-  const { _id = -1 } = location.state || {}; // Extracting _id from state
+  const { _id = -1 } = location.state || {}; // Extracting _id from state (product id)
   const [obj, setItem] = useState({});
   const [index, setIndex] = useState(0);
   const [imageArray, setImageArray] = useState([]);
@@ -47,49 +47,65 @@ const Item = () => {
     setIndex((currentIndex) => (currentIndex < imageArray.length - 1 ? currentIndex + 1 : currentIndex));
   };
 
+    // ADD TO CART 
+
+    const tokenData = JSON.parse(localStorage.getItem('login')) ;
+    const [user_id , setUserId] = useState("") ; 
+    const [SelectedSize , set_SelectedSize] = useState("") ;                        // SIZE SELECTED    
+    useEffect(()=>{
+      if(SelectedSize !== "" && user_id !== ""){           // IF BOTH VALUES HAVE APPEARED  ................ v  e  r  y      i  m  p  o  r  t  a  n  t
+        console.log(SelectedSize); 
+        console.log(user_id) ;
+
+        // now at this point size has been selected along with the user id 
+        try {
+          const check = async () => {
+            const response = await axios.post("http://localhost:4000/user/check" , {SelectedSize: SelectedSize , _id : _id , user_id : user_id}) ;
+            if(response.data.value) { // value is already present
+              alert("Value already present in the cart , Go to cart or select anyother size");
+              document.querySelector(`.${styles.cart_button}`).classList.add(styles.display_none) ;
+              document.querySelector(`.${styles.go_to_cart_button}`).classList.remove(styles.display_none) ;
+            }
+            else{ // value is not present
+              document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none) ;
+              document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none) ;
+            }
+          }
+          check() ;
+        } catch (error) {
+          console.log("Error while checking", error) ;
+        }
+      }
+      // else if (user_id === "" || SelectedSize === ""){
+      else{
+        document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none) ;
+        document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none) ;
+      }
+      
+       
+
+   
+    },[SelectedSize,user_id])  ;                     
+    const handleSize = (size) => {
+      set_SelectedSize(size); 
+      const getUserId = async () => {
+        const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;
+        setUserId(response.data.id) ;
+      }
+      getUserId() ;
+    }
 
 
-  // ADD TO CART 
-  const tokenData = JSON.parse(localStorage.getItem('login'));
-  const [SelectedSize , set_SelectedSize] = useState("") ;
-  useEffect(()=>{ 
-    if(SelectedSize !== "") {
-      if(tokenData){
-        if(tokenData.category == "user"){       // POST OF CHECK CART REQ.
-          document.querySelector(`.${styles.go_to_cart_button}`).classList.remove(styles.display_none);  
-          document.querySelector(`.${styles.cart_button}`).classList.add(styles.display_none);
-        }
-        else{
-          document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none);
-          document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none);
-        }
-      }
-      else{
-        document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none);
-        document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none);
+  const addToCart_function = async () => { 
+    if(SelectedSize !== "" && user_id !== ""){
+      try {
+        const response = await axios.post("http://localhost:4000/user/add_to_cart", {SelectedSize : SelectedSize , user_id : user_id , _id : _id}) ;
+        alert(response.data);
+      } catch (error) {
+        console.log("Error while adding to cart" , error) ;
       }
     }
-    else{
-      if(tokenData){
-        if(tokenData.category == "user"){
-          document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none);
-          document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none);
-        }
-        else {
-          document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none);
-          document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none);
-        }
-      }
-      else{
-        document.querySelector(`.${styles.go_to_cart_button}`).classList.add(styles.display_none);
-        document.querySelector(`.${styles.cart_button}`).classList.remove(styles.display_none);
-      }
-    }
-  },[SelectedSize]);
-  const handleSize = (size) => {
-    set_SelectedSize(size) ;
   }
-
   // onClick ADD TO CART  
   const AddToBag = () => { 
     if(tokenData) {
@@ -99,6 +115,9 @@ const Item = () => {
         }
         else{
           // POST REQ TO BACKEND (PUSH TO CART)
+          addToCart_function() ;
+          document.querySelector(`.${styles.cart_button}`).classList.add(styles.display_none) ;
+          document.querySelector(`.${styles.go_to_cart_button}`).classList.remove(styles.display_none) ;
         }
       }
       else{
@@ -180,78 +199,3 @@ const Item = () => {
 };
 
 export default Item;
-
-
-
-  // ADD TO CART LOGIC 
-  // function to gettoken and decode it ... GETTOKEN_&_DECODE()
-  // SELECT SIZE USESTATE("")
-  // useEffect with dependency of changing useState of SIZE {   
-        // USESTATE("NOT NULL"){  
-          // token is present 
-            // USER:
-              // POST OF CHECK CART REQ.
-              // document.query ATC
-              // document.query GTC
-            // NOT USER
-              // document.query display add to cart only
-          // token is not present 
-            // document.query display add to cart only
-        // }
-        // USESTATE("ISNULL"){
-          // token is present 
-            // USER:
-              // document.query display add to cart only
-            // NOT USER
-              // document.query display add to cart only
-          // token is not present
-            // document.query display add to cart only
-        // }
-
-  // }
-  // onCLICK SIZE  => change the useState only 
-
-  // onClick ADD TO CART  
-  // FUNCTION   {
-          // TOKEN
-            // USER 
-              // USESTATE(NULL) 
-                // please select size 
-              // USESTATE NOT NULL 
-                // POST REQ to SERVER(userid, productid , size) 
-                // receive response 
-                // document.query ATC display none
-                // document.query GTO display 
-            // NOT USER 
-              // alert functionality for users only
-          // NOT TOKEN
-            // redirect to auth page
-
-  // }
-
-
-
-
-
-
-
-  // ONCLICK SIZE :  -> check is token is present and category is user => GETTOKEN_&_DECODE()
-  //       LOGGED IN           if (IS USER)   POST(userid , productid, size selected)     //------------ 1
-  //                           else(NOT USER) -> change to selected size useState     
-  
-  //      NOT LOGGED IN      -> change to selected size useState  
-
-  // ---------(1) response from the server is ITEM WITH PARTICULAR SIZE IS 
-  //                     PRESENT (IN CART)  ---> document.query selector (MOVE TO BAG) 
-  //                     NOT PRESENT (IN CART)-> document.query selector (ADD TO CART)
-  //                     -> change to selected size useState     
-
-  // ONCLICK ADD_TO_CART :-> check LOGGED IN OR NOT AND USER IS PRESENT OR NOT
-  // LOGGED IN         is USER      SIZENOTSELECTED -> alert(please slect the size) 
-  //                                SIZESELECTED    -> POST (userid, productid , sizeSlected)   push req 
-  //                                                       |
-  //                                                       ----> document.queryselector G.T.C display  //------------2) redirect to cart page
-  //                                                       ----> document.queryselector A.T.C hidden   
-  //                  not USER     redirect to auth page 
-  // NOT LOGGED IN                 redirect to auth page
- 

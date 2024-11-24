@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Cart.module.css' ;
 import SUBNavbar from '../Navbar/SUBNavbar';
 import Footer from '../Footer/Footer';
-
+import axios from 'axios' ;
 
 const Cart = () => {
+  const tokenData = JSON.parse(localStorage.getItem("login")); // user token
+  const [user_id, setUserId] = useState("") ; // USER ID
+  const [cart , setCart] = useState([]) ;
+  const getUserId = async () => {
+    const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;)
+    setUserId(response.data.id) ;
+  } ;
+  useEffect(()=>{
+    getUserId() ;
+    if(user_id !== "") {
+      try {
+        const getCart = async () => {
+          const response = await axios.post("http://localhost:4000/user/cart", { user_id : user_id});
+          console.log(response.data.cart);  // Log the cart array received from the backend
+          setCart(response.data.cart); // You can also store the cart data in state for rendering later
+        }
+        getCart() ;
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    }
+
+  },[user_id]);
+
+
   return (
     <>
       <div className={styles.container}>
@@ -14,34 +39,36 @@ const Cart = () => {
             <h1 className={styles.heading_h1}>SHOPPING BAG</h1>
           </div>
           <div className={styles.cards}> {/* INSIDE OF THIS BOX WE WILL APPLY THE MAP FUNCTION */}
-
-            <div className={styles.card}>                {/*CARD 1*/}
-              <div className={styles.sub_div1}>
-                <img src="/newArrivals.png" alt="item_image" className={styles.image}/>
-              </div>
-              <div className={styles.sub_div2}> 
-                <div className={styles.child1}>
-                  <div className={styles.child1_box1}>
-                    <h1 className={styles.h1}>companyName</h1>
-                    <h2 className={styles.h2}>name</h2>
-                    <h2 className={styles.h2}>availableSize : or size selected</h2>
+            {cart.map((item,index) => {
+              return ( 
+                <div className={styles.card} key={index}>                {/*CARD 1*/}
+                  <div className={styles.sub_div1}>
+                    <img src={item.product.image} alt="item_image" className={styles.image}/>
                   </div>
-                  <div className={styles.child1_box2}>
-                    <img src="/Delete.svg" alt="delete_icon" />
+                  <div className={styles.sub_div2}> 
+                    <div className={styles.child1}>
+                      <div className={styles.child1_box1}>
+                        <h1 className={styles.h1}>{item.product.companyName}</h1>
+                        <h2 className={styles.h2}>{item.product.name}</h2>
+                        <h2 className={styles.h2}>Size selected : {item.SelectedSize}</h2>
+                      </div>
+                      <div className={styles.child1_box2}>
+                        <img src="/Delete.svg" alt="delete_icon" />
+                      </div>
+                    </div>
+                    <div className={styles.child2}>
+                      <div className={styles.child2_box1}>
+                        <h2 className={styles.price}><span className={styles.span}>₹ {item.product.originalPrice}</span>  | ₹{(item.product.originalPrice - (item.product.originalPrice * (item.product.discountPercent / 100))).toFixed(2)}</h2>
+                        <h2 className={styles.price}>{item.product.discountPercent}%</h2>
+                      </div>
+                      <div className={styles.child2_box2}>
+                        <button className={styles.decrease}>-</button>1<button className={styles.increase}>+</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className={styles.child2}>
-                  <div className={styles.child2_box1}>
-                    <h2 className={styles.price}><span className={styles.span}>₹ originalPrice</span>  | ₹ Discount Price</h2>
-                    <h2 className={styles.price}> Discount percent</h2>
-                  </div>
-                  <div className={styles.child2_box2}>
-                    <button className={styles.decrease}>-</button>1<button className={styles.increase}>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+              );
+            })}
             <div className={styles.total}>
                 <p>TOTAL</p>
             </div>

@@ -153,7 +153,7 @@ signup.post("/jwtverification", (req, res) => {
     const { token } = req.body;
 
     if (!token) {
-        return res.status(400).json({ 
+        return res.json({ 
             message: "Token is required", 
             valid: false 
         });
@@ -161,7 +161,7 @@ signup.post("/jwtverification", (req, res) => {
 
     jwt.verify(token, "secret", (err, decoded) => {
         if (err) {
-            return res.status(401).json({ 
+            return res.json({ 
                 message: "Invalid or expired token", 
                 valid: false 
             });

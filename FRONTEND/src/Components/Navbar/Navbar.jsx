@@ -72,6 +72,7 @@ const Navbar = () => {
     localStorage.removeItem('login');
     alert("You have been logged out successfully!") ;
     navigate("/") ;
+    window.location.reload() ;
   }
   // SEARCH BAR : 
   // const [query, setQuery] = useState('');
