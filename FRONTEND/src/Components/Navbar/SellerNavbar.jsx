@@ -5,17 +5,21 @@ import styles from './Navbar.module.css';
 
 const SellerNavbar = () => {
   useEffect(() => {
-  // change icon based on login or not
-  const getTokenData = () => JSON.parse(localStorage.getItem('login'));
-  const tokenData = getTokenData();
-  if (!tokenData || !tokenData.token) {
-    document.querySelector(`.${styles.signout}`).classList.add(styles.display_none);
-    document.querySelector(`.${styles.avatar}`).classList.remove(styles.display_none) ;
-  }
-  else{
-    document.querySelector(`.${styles.signout}`).classList.remove(styles.display_none);
-    document.querySelector(`.${styles.avatar}`).classList.add(styles.display_none) ;     
-  }
+    // change icon based on login or not
+    const tokenData = JSON.parse(localStorage.getItem('login'));
+
+    const signoutElem = document.querySelector(`.${styles.signout}`);
+    const avatarElem = document.querySelector(`.${styles.avatar}`);
+    if (signoutElem && avatarElem) {
+      if (!tokenData.token) {
+        signoutElem.classList.add(styles.display_none);
+        avatarElem.classList.remove(styles.display_none);
+      } else {
+        signoutElem.classList.remove(styles.display_none);
+        avatarElem.classList.add(styles.display_none);
+      }
+    }
+
     // Handeling screen width and side bar ..... 
     const handleResize = () => {
       const box5 = document.querySelector(`.${styles.box5}`);
@@ -57,12 +61,11 @@ const SellerNavbar = () => {
 
 
   const navigate = useNavigate();
-  const handleCartClick = () => {
-    navigate('/cart');
-  };
-  const handleAvatarClick = () => {
-    navigate('/auth');
-  };
+  const handleLogout = () => {
+    localStorage.removeItem('login');
+    alert("You have been logged out successfully!") ;
+    navigate("/") ;
+  }
 
   // SEARCH BAR : 
   // const [query, setQuery] = useState('');
@@ -85,7 +88,7 @@ const SellerNavbar = () => {
         </div>
 
         <div className={styles.box3}>
-          <div className={styles.items} onClick={() => { navigate('/seller') }}>Home</div>
+          <div className={styles.items} onClick={() => { navigate('/admin') }}>Home</div>
         </div>
 
         <div className={styles.box4}>
@@ -97,7 +100,7 @@ const SellerNavbar = () => {
             {/* <input type="text" placeholder='Search items here' className={styles.input} value={query} onChange={handleInputChange}/> */}
             <input type="text" placeholder='Search items here' className={styles.input}/>
           </form>
-          <img src="/Signout.svg" alt="signout" className={styles.signout} />
+          <img src="/Signout.svg" alt="signout" className={styles.signout} onClick={handleLogout}/>
         </div>
 
         <div className={styles.box5}>
@@ -115,5 +118,6 @@ const SellerNavbar = () => {
     </>
   );
 };
+
 
 export default SellerNavbar;

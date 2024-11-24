@@ -52,12 +52,44 @@ admin.post("/add", async (req,res)=>{                              // adding a s
     }
 });
 
-admin.delete("/delete" , async (req,res) => { // deleting a seller route
-    let {email,companyName} = req.body;
-    let data = await(sellerModel).deleteOne({email:email});
-    let data2 = await(productModel).deleteOne({companyName:companyName});
-    console.log(data2);
-    res.send(data);
+admin.delete("/delete" , async (req,res) => { // deleting a seller route : THOURGH QUERY
+    const {email,companyName} = req.query;
+    try {
+        await(sellerModel).deleteOne({email});
+    } catch (error) {
+        console.log("error while deleting seller account", error) ;
+    }
+    try {
+        await(productModel).deleteOne({companyName});
+    } catch (error) {
+        console.log("error while deleting all products from seller account", error) ;
+    }
+    res.status(200).json({message:"Seller account deleted successfully"}) ;
 });
 
-module.exports = admin
+module.exports = admin ; 
+
+
+
+
+
+
+
+
+
+
+// When to Use Each Method
+//1) req.query: When you need to send optional or non-sensitive information in a GET or DELETE request.
+// Example: Filters, sort options, page numbers.
+
+//2) req.body: When dealing with sensitive or complex data that should not be part of the URL.
+// Example: Login credentials, form submissions, JSON payloads.
+
+//3) req.params: When the data is inherently part of the route, such as an ID or a resource name.
+// Example: /users/:userId.
+
+//4) req.headers: When sending metadata or authentication tokens.
+// Example: Authorization tokens for secured routes.
+
+//5) req.cookies: When dealing with persistent user-specific data.
+// Example: Session IDs, user preferences.

@@ -65,6 +65,13 @@ const SUBNavbar = () => {
     navigate('/auth');
   };
 
+    // LOGOUT BUTTON :
+    const handleLogout = () => {
+      localStorage.removeItem('login');
+      alert("You have been logged out successfully!") ;
+      navigate("/") ;
+    }
+
   // SEARCH BAR : 
   // const [query, setQuery] = useState('');
   // const handleInputChange = (event) => {
@@ -103,7 +110,7 @@ const SUBNavbar = () => {
           </form>
           <img src="/cart.svg" alt="cart" className={styles.cart} onClick={handleCartClick} />
           <img src="/noavatar.svg" alt="avatar" className={styles.avatar} onClick={handleAvatarClick} />
-          <img src="/Signout.svg" alt="signout" className={styles.signout} />
+          <img src="/Signout.svg" alt="signout" className={styles.signout} onClick={handleLogout} />
         </div>
 
         <div className={styles.box5}>

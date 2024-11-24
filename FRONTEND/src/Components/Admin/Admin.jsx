@@ -25,7 +25,15 @@ const Admin = () => {
   }, [arr,brr]) ;
 
 
-  // create a delete axios request ... 
+  // create a delete axios request ... in request send ( name , company name )
+  const handleDelete = async (companyName , email) => {
+    try {
+      const response = await axios.delete("http://localhost:4000/admin/delete", { params : {email : email , companyName : companyName } }) ; // sending data through params 
+      alert(response.data.message) ;
+    } catch (error) {
+      console.log("Error while deleting", error) ;
+    }
+  };
 
   return (
     <>
@@ -45,7 +53,7 @@ const Admin = () => {
                       <p className={styles.p}>{item.name}</p>
                     </div>
                     <div className={styles.column2}>
-                      <button className={styles.delete}>
+                      <button className={styles.delete} onClick={()=> {handleDelete(item.name, item.email)}}>
                         DELETE
                       </button>
                     </div>
@@ -55,7 +63,7 @@ const Admin = () => {
           </div>
           <hr />
           <div className={styles.child2}>
-            <div className={styles.sub_div_1}>
+            {/* <div className={styles.sub_div_1}>
                 <h1 className={styles.heading}>Users</h1>
               </div>
               <div className={styles.sub_div_2}>
@@ -72,7 +80,7 @@ const Admin = () => {
                         </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
           </div>
         </div>
         <Footer/>

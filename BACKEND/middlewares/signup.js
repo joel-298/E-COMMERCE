@@ -192,10 +192,11 @@ signup.post("/jwtverification", (req, res) => {
             });
         }
         else{                                 // user
-            const { name , email } = decoded;
+            const { id , name , email } = decoded;
             return res.status(200).json({ 
                 message: "Token is valid", 
                 valid: true,
+                id, 
                 name, 
                 email ,
                 category
