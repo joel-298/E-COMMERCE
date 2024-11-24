@@ -61,12 +61,11 @@ const SellerNavbar = () => {
 
 
   const navigate = useNavigate();
-  const handleCartClick = () => {
-    navigate('/cart');
-  };
-  const handleAvatarClick = () => {
-    navigate('/auth');
-  };
+  const handleLogout = () => {
+    localStorage.removeItem('login');
+    alert("You have been logged out successfully!") ;
+    navigate("/") ;
+  }
 
   // SEARCH BAR : 
   // const [query, setQuery] = useState('');
@@ -101,7 +100,7 @@ const SellerNavbar = () => {
             {/* <input type="text" placeholder='Search items here' className={styles.input} value={query} onChange={handleInputChange}/> */}
             <input type="text" placeholder='Search items here' className={styles.input}/>
           </form>
-          <img src="/Signout.svg" alt="signout" className={styles.signout} />
+          <img src="/Signout.svg" alt="signout" className={styles.signout} onClick={handleLogout}/>
         </div>
 
         <div className={styles.box5}>
