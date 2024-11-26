@@ -84,6 +84,16 @@ const Item = () => {
     },[SelectedSize,user_id])  ;       
                   
     const handleSize = (size) => {
+      // Change background color of selected size
+      const buttons = document.querySelectorAll(`.${styles.label} button`);
+      buttons.forEach((button) => {
+        if (button.textContent === size) {
+          button.style.backgroundColor = 'rgba(128, 128, 128, 0.506)' ; 
+        } else {
+          button.style.backgroundColor = ''; // Reset others
+        }
+      });
+      // ------------------------------
       set_SelectedSize(size); 
       const getUserId = async () => {
         const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;
