@@ -4,6 +4,7 @@ import styles from "./Forgot.module.css"
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SUBNavbar from '../Navbar/SUBNavbar';
 
 const Forgot = () => {
     const img1Ref = useRef()
@@ -73,6 +74,7 @@ const Forgot = () => {
                 transition="Bounce"
             />
             <ToastContainer />
+            <SUBNavbar/>
             <div className={styles.main}>
                 <div className={styles.inputs}>
                     <h1 className={styles.heading}>Change Password</h1>
