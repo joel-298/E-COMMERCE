@@ -87,14 +87,19 @@
     background-color: white;
 }
 
-/* 
+@media (max-width: 1023px) {
+    .content {
+        margin-top: 8vh;
+    }
+}
 @media screen and (max-width: 767px) {
-    .h2{
-        width: 100%;
-        border-radius: 0%;
+    .content {
+        margin-top: 8vh;
     }
-    .form{
-        width: 100%;
-        border-radius: 0%;
+}
+/*MEDIA QUERY FOR TABS*/
+@media screen and (min-width: 700px) and (min-height: 901px) {
+    .content{
+        margin-top: 6vh;
     }
-} */
+}

@@ -93,7 +93,6 @@ const Forms = () => {
     <>
     <SellerNavbar/>
     <div className={styles.container}>
-      <SellerNavbar />
       <div className={styles.companyDetails}>
         {companyDetails.image && (
           <img src={companyDetails.image} alt={companyDetails.name} />
@@ -133,7 +132,6 @@ const Forms = () => {
           <p>No products available or failed to load products.</p>
         )}
       </div>
-      <Footer />
     </div>
     <Footer/>
   </>
