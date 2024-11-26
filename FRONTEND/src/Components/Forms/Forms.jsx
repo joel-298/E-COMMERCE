@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './forms.module.css'
-import Footer from '../../Footer/Footer';
+import SellerNavbar from '../Navbar/SellerNavbar';
+import Footer from '../Footer/Footer';
 
 const Forms = () => {
   const [products, setProducts] = useState([]);
@@ -89,6 +90,8 @@ const Forms = () => {
   };
 
   return (
+    <>
+    <SellerNavbar/>
     <div className={styles.container}>
       <SellerNavbar />
       <div className={styles.companyDetails}>
@@ -132,6 +135,8 @@ const Forms = () => {
       </div>
       <Footer />
     </div>
+    <Footer/>
+  </>
   );
 };
 

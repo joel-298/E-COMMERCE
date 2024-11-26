@@ -83,8 +83,8 @@ const SUBNavbar = () => {
         });
         setTimeout(() => {
           navigate("/") ;
+          window.location.reload() ;
         }, 3000);
-      window.location.reload() ;
     }
 
   // SEARCH BAR : 

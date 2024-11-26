@@ -159,7 +159,7 @@ const Auth = () => {
   }
   return (
     <>
-      {/* <SUBNavbar/> */}
+      <SUBNavbar/>
       <ToastContainer
         position="top-right"
         autoClose={5000}

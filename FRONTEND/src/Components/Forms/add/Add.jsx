@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import styles from "./add.module.css"
-
 import Footer from '../../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
+import SellerNavbar from '../../Navbar/SellerNavbar';
 
 
 
@@ -111,7 +111,7 @@ const Add = () => {
   return (
    <>
       <div className={styles.container}>
-        {/* <SellerNavbar /> */}
+        <SellerNavbar/>
 
 
 

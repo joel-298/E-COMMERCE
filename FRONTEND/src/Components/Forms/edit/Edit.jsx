@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from "./edit.module.css"
 import Footer from '../../Footer/Footer';
+import SellerNavbar from '../../Navbar/SellerNavbar';
 
 const Edit = () => {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ const Edit = () => {
 
  return (
     <div className={styles.container}>
-      {/* {sellernavbar} */}
+      <SellerNavbar/>
       <div className={styles.content}>
         <h1>Edit Product</h1>
         <form onSubmit={handleSubmit} className={styles.form}>

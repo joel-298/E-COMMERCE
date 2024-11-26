@@ -7,6 +7,7 @@
     background: #f4f4f9;
     font-family: 'Arial', sans-serif;
     box-sizing: border-box;
+    margin: 0%; 
   }
   
   /* Company details section */
@@ -163,7 +164,6 @@
       grid-template-columns: 1fr;
     }
   }
-  
   @media (max-width: 480px) {
     .companyDetails button,
     .editButton,
@@ -180,4 +180,23 @@
       font-size: 12px;
     }
   }
-  
+
+/*MEDIA QUERY FOR LAPTOPS AND LARGER SCREEN*/
+/* @media (max-width: 1023px) {
+  .companyDetails{
+        margin-top: 13vh;
+    }
+} */
+/*MEDIA QUERY FOR PHONES*/
+/* @media screen and (max-width: 767px) {
+  .companyDetails {
+        margin-top: 13vh;
+    }
+} */
+/*MEDIA QUERY FOR TABS*/
+/* @media screen and (min-width: 700px) and (min-height: 901px) {
+  .companyDetails {
+        margin-top: 13vh;
+    }
+}
+   */
