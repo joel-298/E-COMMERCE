@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './forms.module.css'
+import Footer from '../../Footer/Footer';
 
 const Forms = () => {
   const [products, setProducts] = useState([]);
@@ -89,6 +90,7 @@ const Forms = () => {
 
   return (
     <div className={styles.container}>
+      <SellerNavbar />
       <div className={styles.companyDetails}>
         {companyDetails.image && (
           <img src={companyDetails.image} alt={companyDetails.name} />
@@ -128,6 +130,7 @@ const Forms = () => {
           <p>No products available or failed to load products.</p>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
