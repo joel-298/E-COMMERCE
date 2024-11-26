@@ -92,7 +92,7 @@ const Cart = () => {
                     <div className={styles.child2}>
                       <div className={styles.child2_box1}>
                         <h2 className={styles.price}><span className={styles.span}>₹ {item.product.originalPrice}</span>  | ₹{(item.product.originalPrice - (item.product.originalPrice * (item.product.discountPercent / 100))).toFixed(2)}</h2>
-                        <h2 className={styles.price}>{item.product.discountPercent}%</h2>
+                        <h2 className={styles.price}>{item.product.discountPercent}% Off</h2>
                       </div>
                       <div className={styles.child2_box2}>
                         <button className={styles.decrease}>-</button>1<button className={styles.increase}>+</button>
@@ -102,12 +102,11 @@ const Cart = () => {
                 </div>
               );
             })}
+          </div>
             <div className={styles.total}>
                 <h1 className={styles.totalCost}>TOTAL COST : ₹ {totalCost}</h1> 
                 <button className={styles.paynow}>BUY NOW</button>
             </div>
-          </div>
-
         </div>
         <Footer/>
       </div>

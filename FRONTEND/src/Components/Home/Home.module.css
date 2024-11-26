@@ -293,17 +293,16 @@
 
 .shop_now img{
     width: 100%;
-
 }
 .shop_now_sub_div{
     background-color: yellowgreen;
+    position:absolute;
     z-index: 1;
     color: white;
-    width: 80%;
-    display: flex;
-    flex-direction: column; 
+    width: 100%;
+    height: 400px;
     display: none;
-    /* margin-top: -70vh; */
+    flex-direction: column; 
 }
 
 .shop_now_sub_div p{
