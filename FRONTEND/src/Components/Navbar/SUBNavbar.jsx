@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SUBNavbar = () => {
   useEffect(() => {
@@ -68,8 +69,21 @@ const SUBNavbar = () => {
     // LOGOUT BUTTON :
     const handleLogout = () => {
       localStorage.removeItem('login');
-      alert("You have been logged out successfully!") ;
-      navigate("/") ;
+      // alert("You have been logged out successfully!") ;
+      // navigate("/") ;
+      toast("You have been logged out successfully!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/") ;
+        }, 3000);
       window.location.reload() ;
     }
 
@@ -84,6 +98,19 @@ const SUBNavbar = () => {
   // };
   return (
     <>
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition="Bounce" />
+      <ToastContainer />
     <div className={styles.outer_container}>
       <div className={styles.container}>
         <div className={styles.box2}>
