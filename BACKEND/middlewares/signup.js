@@ -95,7 +95,7 @@ signup.post("/login", async(req,res)=>{                          // LOGIN check 
         const match = await bcrypt.compare(password,data_user.password);
         if(match == true){
             const payload = { id: data_user._id, name: data_user.name, email: data_user.email, category: data_user.category };
-            const token = jwt.sign(payload, "secret", { expiresIn: "3000s" });
+            const token = jwt.sign(payload, "secret", { expiresIn: "1h" });
     
             return res.status(200).json({
                                             message:"USER Logged in successfully",

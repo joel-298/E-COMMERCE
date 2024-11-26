@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import styles from "./add.module.css"
-import SellerNavbar from '../../Navbar/SellerNavbar';
+
 import Footer from '../../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Add = () => {
@@ -14,6 +16,49 @@ const Add = () => {
     gender:'',totalQuantityAvailable:'',category:'',type:'',image:'',image2:'',
     image3:'',image4:'',image5:''
   })
+  const navigate = useNavigate();
+
+  // function to get token from localstorage
+  const getTokenData = () => {
+    const tokenData = localStorage.getItem('login'); // getting the object
+    if (!tokenData) {
+      console.error("No token data found in localStorage.");
+      return null;
+    }
+    return JSON.parse(tokenData);
+  };
+
+  useEffect(() => {
+    const setCompanyNameFromToken = async () => {
+      const tokenData = getTokenData(); // Retrieve token data
+      if (!tokenData || !tokenData.token) {
+        console.error("No token found in localStorage.");
+        return;
+      }
+  
+      const token = tokenData.token;
+  
+      try {
+        // Verify the token with the server
+        const response = await axios.post("http://localhost:4000/signup/jwtverification", { token });
+  
+        if (response.data.valid) {
+          // Assuming the response contains companyName, update the formData state
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            companyName: response.data.name, // Adjust the key as per your API response
+          }));
+        } else {
+          console.error("Invalid token.");
+        }
+      } catch (error) {
+        console.error("Token verification failed:", error.response?.data || error.message);
+      }
+    };
+  
+    setCompanyNameFromToken();
+  }, [getTokenData]);
+  
 
   // function to handle inputs
   const handleChange = (e) => {
@@ -55,6 +100,7 @@ const Add = () => {
         },
       });
       alert('Product saved successfully');
+      navigate("/seller");
       console.log('Response',response.data);
     } catch (error) {
       console.error('error: ',error.response?.data || error.message);
@@ -65,7 +111,9 @@ const Add = () => {
   return (
    <>
       <div className={styles.container}>
-        <SellerNavbar />
+        {/* <SellerNavbar /> */}
+
+
 
         <div className={styles.content}>
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -82,10 +130,6 @@ const Add = () => {
               <input type="number" name="discountPercent" value={formData.discountPercent} onChange={handleChange} />
             </div>
             <div className={styles.box}>
-              <label>COMPANY NAME: </label>
-              <input type="text" name="companyName" id="" value={formData.companyName} onChange={handleChange}/>
-            </div>
-            <div className={styles.box}>
               <label>DESCRIPTION: </label>
               <input type="text" name="description" value={formData.description} onChange={handleChange} />
             </div>
@@ -97,7 +141,7 @@ const Add = () => {
             <div className={styles.box}>
               <label>AVAILABLE SIZES: </label>
               <div className={styles.radio}>
-                {['XS','S','M','L','XL','XXL','XXXL'].map((size)=>(
+                {['XS','S','M','L','XL','XXL','XXXL',"One Size"].map((size)=>(
                   <label key={size}>
                     <input type="checkbox" name="availableSize" value={size} checked={formData.availableSize.includes(size)} onChange={handleChange} />
                     {size}

@@ -1,0 +1,183 @@
+/* Overall container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Company details section */
+  .companyDetails {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .companyDetails img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .companyDetails h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .companyDetails p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .companyDetails button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .companyDetails button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Products grid container */
+.content {
+    display: grid; /* Use grid layout for better flexibility */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Dynamically adjust columns */
+    gap: 20px; /* Add spacing between grid items */
+    width: 100%; /* Ensure the container spans the available width */
+    max-width: 800px; /* Limit the maximum width for alignment */
+    margin: 0 auto; /* Center the grid within its container */
+    padding: 10px; /* Add padding for better spacing around edges */
+  }
+  
+  
+  /* Product card */
+  .box {
+    background: white;
+    padding: 40px;
+    padding-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+  }
+  
+  .box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .box img {
+    /* max-width: 100%; */
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  
+  .box h2 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .box p {
+    font-size: 18px;
+    color: #555;
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
+  /* Buttons inside product card */
+  .buttonBox {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .editButton,
+  .deleteButton {
+    padding: 8px 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editButton {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #218838;
+  }
+  
+  .deleteButton {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #c82333;
+
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .companyDetails {
+      padding: 15px;
+    }
+  
+    .companyDetails h1 {
+      font-size: 20px;
+    }
+  
+    .companyDetails p {
+      font-size: 14px;
+    }
+  
+    .content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .companyDetails button,
+    .editButton,
+    .deleteButton {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  
+    .box h2 {
+      font-size: 18px;
+    }
+  
+    .box p {
+      font-size: 12px;
+    }
+  }
+  
