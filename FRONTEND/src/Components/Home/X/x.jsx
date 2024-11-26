@@ -97,12 +97,6 @@ const X = () => {
               <label><input type="checkbox" value="One Size" onChange={(e) => handleFilterChange(e,"size")}/>One Size</label> 
             </div>
           </div>
-          <div className={styles.filter_box4}>
-            <h4>PRICE</h4>
-            <div className={styles.filter_checkbox_div}>
-              
-            </div>
-          </div>
         </div>
 
         <div className={styles.onSale} id="onSale_section">

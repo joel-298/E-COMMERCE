@@ -223,13 +223,14 @@
 /*MEDIA QUERY FOR TABS*/
 @media screen and (min-width: 700px) and (min-height: 901px) {
     .content {
-        margin-top: 8vh;
+        margin-top: 5vh;
     }
 }
 /*MEDIA QUERY FOR PHONES*/
 @media screen and (max-width : 767px) {
     .content {
         flex-direction: column;
+        margin-top: 6.7vh;
     }
     .child1 {
         width: 100%; 

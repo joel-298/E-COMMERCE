@@ -13,7 +13,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 -ms-overflow-style: none;  /* For Internet Explorer and Edge */
 scrollbar-width: none;  /* For Firefox */
 }
-
+*{
+    font-family: 'Arial', sans-serif;
+}
 
 #root {
     height: 100%; /* Ensures the root takes full height */
