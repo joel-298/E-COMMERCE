@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { Link } from 'react-scroll';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
   
@@ -70,9 +72,23 @@ const Navbar = () => {
   // LOGOUT BUTTON :
   const handleLogout = () => {
     localStorage.removeItem('login');
-    alert("You have been logged out successfully!") ;
-    navigate("/") ;
-    window.location.reload() ;
+    // alert("You have been logged out successfully!") ;
+    // navigate("/") ;
+    toast("You have been logged out successfully!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+      setTimeout(() => {
+        navigate("/") ;
+        window.location.reload() ;
+      }, 3000);
+    // window.location.reload() ;
   }
   // SEARCH BAR : 
   // const [query, setQuery] = useState('');
@@ -85,6 +101,19 @@ const Navbar = () => {
   // };
   return (
     <>
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition="Bounce" />
+      <ToastContainer />
     <div className={styles.outer_container}>
       <div className={styles.container}>
         <div className={styles.box2}>
