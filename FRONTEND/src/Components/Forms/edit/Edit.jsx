@@ -130,7 +130,10 @@ const Edit = () => {
               <div className={styles.radio}>
                 {['Topwear','Bottomwear','Footwear','Accessories'].map((category)=>(
                   <label key={category}>
-                    <input type="radio" name="category" value={formData.category}  onChange={handleInputChange} />
+                    <input type="radio" name="category" 
+                      value={category} // The value to set in the state
+                      checked={formData.category === category} // Check if the current value matches the state
+                      onChange={handleInputChange} />
                     {category}
                   </label>
                 ))}
@@ -159,7 +162,7 @@ const Edit = () => {
                     <input
                       type="checkbox"
                       name="availableSize"
-                      value={size} // Use the size directly
+                      value={size}
                       checked={formData.availableSize.includes(size)} // Check if the size is in the array
                       onChange={handleInputChange}
                     />
@@ -175,9 +178,9 @@ const Edit = () => {
           <div className={styles.box}>
               <label>GENDER: </label>
               <div className={styles.radio}>
-                {['Male','Female','kids'].map((gender)=>(
+                {['Male','Female','Kids'].map((gender)=>(
                   <label key={gender}>
-                    <input type="radio" name="gender" value={formData.gender} onChange={handleInputChange}  />
+                    <input type="radio" name="gender" value={gender} checked={formData.gender === gender} onChange={handleInputChange}  />
                     {gender}
                   </label>
                   
