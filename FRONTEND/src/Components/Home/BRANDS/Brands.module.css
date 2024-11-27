@@ -25,7 +25,7 @@
 .content {
     /* background-color: red; */
     padding:0vh 2vh;
-    margin-top: 10vh;
+    margin-top: 6vh;
     margin-bottom: 7vh;
 }
 .p {
@@ -71,12 +71,15 @@
 /*MEDIA QUERY FOR TABS*/
 @media screen and (min-width: 700px) and (min-height: 901px) {
     .content {
-        margin-top: 8vh;
+        margin-top: 4vh;
         padding-top: 1vh;
     }
 }
 /*MEDIA QUERY FOR PHONES*/
 @media screen and (max-width: 767px) {
+    .content{
+        margin-top: 6vh;
+    }
     .child img{
         height: 280px;
         width: 250px;

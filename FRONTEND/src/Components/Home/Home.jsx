@@ -78,12 +78,7 @@ const Home = () => {
         </div>
 
         <div className={styles.shop_now}>
-          <img src="./Background.png" alt="background image" />
-          <div className={styles.shop_now_sub_div}>
-            <h1>Your Cozy Era</h1>
-            <p>Get peak comfy-chic with new winter essentials.</p>
-            <button><Link to="category" smooth={true} duration={100}>SHOP NOW</Link></button>
-          </div>
+          <Link to="category" smooth={true} duration={100} ><img src="./Background.png" alt="background image" /></Link>
         </div>
 
 

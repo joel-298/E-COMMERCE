@@ -1,6 +1,7 @@
 .contanier {
     width: 96%;
-    background-color: #1F2421;
+    /* background-color: #1F2421; */
+    background-color: #000000;
     margin: 0vh auto;
     display: flex;
     padding: 2%;

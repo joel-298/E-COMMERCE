@@ -19,7 +19,7 @@
     padding-bottom: 2vh;
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
+    margin-top: 6vh;
 }
 .content h1{
     /* background-color: rgb(206, 103, 0); */
@@ -331,7 +331,7 @@
 
 @media (max-width: 1023px) {
     .content {
-        margin-top: 8vh;
+        margin-top: 6vh;
     }
     .container2 {
         display: none;
@@ -339,7 +339,7 @@
 }
 @media screen and (max-width: 767px) {
     .content {
-        margin-top: 10vh;
+        margin-top: 6vh;
     }
     .Brands .productImage {
         height: 320px;
@@ -352,6 +352,6 @@
         margin-top:-12vh ;
     }
     .content{
-        margin-top: 8vh;
+        margin-top: 4vh;
     }
 }
