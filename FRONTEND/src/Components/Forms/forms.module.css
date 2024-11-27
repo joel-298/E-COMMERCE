@@ -113,19 +113,22 @@
   /* Buttons inside product card */
   .buttonBox {
     margin-top: 15px;
+    height: 40px;
     display: flex;
+    /* font-size: xx-large; */
+    /* background-color: #0056b3; */
     justify-content: center;
     gap: 10px;
   }
   
   .editButton,
   .deleteButton {
-    padding: 8px 16px;
-    font-size: 18px;
     border: none;
+    width: 40%;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: xx-large;
   }
   
   .editButton {

@@ -82,7 +82,7 @@ const Forms = () => {
     try {
       await axios.delete(`http://localhost:4000/seller/delete/${id}`);
       alert("Product deleted successfully!");
-      setProducts((prev) => prev.filter((product) => product._id !== id));
+      setProducts((prev) => prev.filter((product) => product._id !== id));  // Update state
     } catch (error) {
       console.error("Error deleting product:", error.message);
       alert("Failed to delete product.");
