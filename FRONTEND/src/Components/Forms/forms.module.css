@@ -19,6 +19,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     max-width: 600px;
+    margin-top: 10vh;
     width: 100%;
   }
   
@@ -146,57 +147,225 @@
 
   }
   
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .companyDetails {
-      padding: 15px;
-    }
-  
-    .companyDetails h1 {
-      font-size: 20px;
-    }
-  
-    .companyDetails p {
-      font-size: 14px;
-    }
-  
-    .content {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (max-width: 480px) {
-    .companyDetails button,
-    .editButton,
-    .deleteButton {
-      font-size: 12px;
-      padding: 8px 12px;
-    }
-  
-    .box h2 {
-      font-size: 18px;
-    }
-  
-    .box p {
-      font-size: 12px;
-    }
+  /* Responsive Design */
+
+/* For large screens (desktops and laptops) */
+@media (min-width: 1024px) {
+  .container {
+    padding: 40px; /* Add extra padding for larger screens */
   }
 
-/*MEDIA QUERY FOR LAPTOPS AND LARGER SCREEN*/
-/* @media (max-width: 1023px) {
-  .companyDetails{
-        margin-top: 13vh;
-    }
-} */
-/*MEDIA QUERY FOR PHONES*/
-/* @media screen and (max-width: 767px) {
   .companyDetails {
-        margin-top: 13vh;
-    }
-} */
-/*MEDIA QUERY FOR TABS*/
-/* @media screen and (min-width: 700px) and (min-height: 901px) {
-  .companyDetails {
-        margin-top: 13vh;
-    }
+    max-width: 700px; /* Increase maximum width */
+    margin-bottom: 40px;
+  }
+
+  .companyDetails h1 {
+    font-size: 28px; /* Increase heading size */
+  }
+
+  .companyDetails p {
+    font-size: 18px; /* Increase paragraph font size */
+  }
+
+  .content {
+    max-width: 1000px; /* Expand content width */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger grid items */
+  }
+
+  .box h2 {
+    font-size: 32px;
+  }
+
+  .box p {
+    font-size: 20px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
 }
-   */
+
+/* For medium screens (tablets) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  .companyDetails {
+    padding: 20px;
+  }
+
+  .companyDetails h1 {
+    font-size: 24px;
+  }
+
+  .companyDetails p {
+    font-size: 16px;
+  }
+
+  .content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Reduce gap between items */
+  }
+
+  .box h2 {
+    font-size: 24px;
+  }
+
+  .box p {
+    font-size: 16px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+/* For small screens (phones and smaller tablets) */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .companyDetails {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .companyDetails h1 {
+    font-size: 20px;
+  }
+
+  .companyDetails p {
+    font-size: 14px;
+  }
+
+  .content {
+    grid-template-columns: 1fr; /* Single-column layout */
+  }
+
+  .box h2 {
+    font-size: 20px;
+  }
+
+  .box p {
+    font-size: 14px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+/* For extra-small screens (mobile phones) */
+@media (max-width: 480px) {
+  
+
+  .companyDetails {
+    padding: 10px;
+  }
+
+  .companyDetails h1 {
+    font-size: 18px;
+  }
+
+  .companyDetails p {
+    font-size: 12px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .box {
+    padding: 20px; /* Reduce padding inside cards */
+  }
+
+  .box h2 {
+    font-size: 16px;
+  }
+
+  .box p {
+    font-size: 12px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+/* For ultra-small screens (very small devices) */
+@media (max-width: 320px) {
+  /* .container {
+    padding: 5px;
+  } */
+
+  /* .companyDetails {
+    padding: 8px;
+  } */
+
+  .companyDetails h1 {
+    font-size: 16px;
+  }
+
+  .companyDetails p {
+    font-size: 10px;
+  }
+
+  .box h2 {
+    font-size: 14px;
+  }
+
+  .box p {
+    font-size: 10px;
+  }
+
+  /* .editButton,
+  .deleteButton {
+    font-size: 10px;
+    padding: 4px 8px;
+  } */
+}
+
+
+@media (min-width: 315px) {
+  /* .container {
+    padding: 5px;
+  } */
+
+  .companyDetails {
+    padding: 8px;
+  }
+
+  .companyDetails h1 {
+    font-size: 16px;
+  }
+
+  .companyDetails p {
+    font-size: 10px;
+  }
+
+  .box h2 {
+    font-size: 14px;
+  }
+
+  .box p {
+    font-size: 10px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
