@@ -99,7 +99,7 @@ const AddSeller = () => {
               Description :
               &nbsp;<input className={styles.input} type="text" name="description" value={formData.description} onChange={handleChange} />
             </label>
-            <button type="submit" className={styles.button}>Submit</button>
+            <button type="submit" className={styles.button}>CREATE</button>
           </form>
         </div>
         <Footer />

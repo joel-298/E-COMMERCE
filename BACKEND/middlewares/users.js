@@ -59,6 +59,7 @@ user.post("/add_to_cart", async (req, res) => {
     }
 });
 
+
 user.post("/cart", async (req, res) => {
     const { user_id } = req.body;  
     if (!user_id) {
@@ -70,24 +71,31 @@ user.post("/cart", async (req, res) => {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
+
       const result = [];
+      const updatedCart = [];
 
       // Step 2: Loop over each item in the user's cart
       for (let cartItem of user.cart) {
-        // Fetch the product based on the product ID from the cart
         const product = await productModel.findById(cartItem._id);
-        // If the product is not found, continue to the next item
-        if (!product) {
+        if (!product) {  
           continue;
         }
+        if (!product.availableSize.includes(cartItem.sizeSelected)) {
+          continue;
+        }
+              // Add valid items to the updated cart
+        updatedCart.push(cartItem);
         // Step 3: Push the product and selected size to the result array
         result.push({
           product: product, // The product fetched from productModel
           SelectedSize: cartItem.sizeSelected // The selected size from the cart
         });
       }
+    // Step 4: Update the user's cart in the database
+      await userModel.findByIdAndUpdate(user_id, { cart: updatedCart });
 
-      // Step 4: Return the result array to the frontend
+      // Step 5: Return the result array to the frontend
       return res.json({ cart: result });
     } catch (error) {
       console.error("Error fetching cart:", error);

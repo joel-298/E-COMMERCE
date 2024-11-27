@@ -98,7 +98,7 @@ const Forms = () => {
           <img src={companyDetails.image} alt={companyDetails.name} />
         )}
         <h1>{companyDetails.name}</h1>
-        <p>{companyDetails.description}</p>
+        <h1>{companyDetails.description}</h1>
         <button onClick={() => navigate('/seller/add')}>Add Products</button>
       </div>
 
@@ -107,10 +107,10 @@ const Forms = () => {
         {products.length > 0 ? (
           products.map((product) => (
             <div key={product._id} className={styles.box}>
-              <h2>{product.name}</h2>
-              <p>Company: {product.companyName}</p>
-              <p>Category: {product.category}</p>
-              <p>Price: ${product.originalPrice}</p>
+              <h1 className={styles.h2}>{product.name}</h1>
+              <h2>Company: {product.companyName}</h2>
+              <h2>Category: {product.category}</h2>
+              <h2>Price: ₹{product.originalPrice}</h2>
               <img src={product.image} alt={product.name} />
               <div className={styles.buttonBox}>
                 <button className={styles.editButton} onClick={() => navigate('/seller/edit', { state: { id: product._id } })}>

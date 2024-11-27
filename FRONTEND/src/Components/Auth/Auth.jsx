@@ -175,7 +175,7 @@ const Auth = () => {
       <ToastContainer />
       <div className={styles.main}>
         <div className={styles.left}>
-          <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BS1x3W8mVGPbyty4BYx6EmQKxcKf4pXqgUBA3jAumYDKpjtN0s-mAZoPSm1Y3k8VF~QcsWkkEW7QifihBER4eGvFu2wwz9J9~6r9Mi09Fmb0SCCZnKLLNobzS8bj9yRZRn9XEIPqlehonrOg-neXTn3GubMQYP5sagiGFAa3gTRS9h~s1~uItwoQS8CjbYxzuo8RNbRErNHxgfByS7QdALsp-QtL7duSd6~eR1gbhWCF3Sj1xQwK4U2Pk~SYN2N9gSquG5A5POIkqOV2XjcS20i47TIY29qJ747FF2FtldXLdqiRkChGdxDkoQ6mRtWLvnzwL2nQc1pGJFeCzPXT7A__" alt="Welcome" />
+          <img src="https://s3-alpha-sig.figma.com/img/b714/2d2e/3f2a891eeabaf2fda76b8379bedd84ad?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=M~y1MedzA7UmKS5TM3YEZZ4XxKOpz3CJuSOR5ysfvz-8y5ycK2GsnP7YgbikRzlVprd29x87fZ7ZjkvXByKDc55HpzOoHtTg~hTIy1dLCtvlVaGt3-pdxx7LqURNX05E-asO8F8iOg1aHfD4vV5ZtWWSru4raBWXSFLiclk-cXZx-VuSKhCRX9wSu2SrIu9D7H5rfK4kevAttY9Srd5eTPUlCHxyW5i1EHhW-TZHd-Kw9cv9ok0HVrrgnSzldqtHSk~J5iR~kouD-mm2b3AetNzd14IK0rYavFNGiusrxHCi25K~3dNwMnqleg1ar-o0SHKioSmnvLZ055rWa0S2Ng__" alt="Welcome" className={styles.login_img}/>
         </div>
         <div className={styles.right}>
           <div>
