@@ -21,11 +21,14 @@ const Edit = () => {
   //The handleInputChange function updates the state (formData) whenever the user types or changes the value of an input field in the form.
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (type === 'checkbox') {
+  
+    if (type === 'checkbox' && name === 'availableSize') {
       setFormData((prev) => {
         if (checked) {
+          // Add the new size if it is checked
           return { ...prev, availableSize: [...prev.availableSize, value] };
         } else {
+          // Remove the size if it is unchecked
           return {
             ...prev,
             availableSize: prev.availableSize.filter((size) => size !== value),
@@ -33,9 +36,11 @@ const Edit = () => {
         }
       });
     } else {
+      // Handle other input types
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
+  
 
   
 
@@ -133,7 +138,7 @@ const Edit = () => {
             </div>
 
 
-          <div className={styles.box}>
+          {/* <div className={styles.box}>
               <label>AVAILABLE SIZES: </label>
               <div className={styles.radio}>
                 {['XS','S','M','L','XL','XXL','XXXL',"One Size"].map((size)=>(
@@ -143,7 +148,27 @@ const Edit = () => {
                   </label>
                 ))}
               </div>
-            </div>      
+            </div>       */}
+
+
+            <div className={styles.box}>
+              <label>AVAILABLE SIZES: </label>
+              <div className={styles.radio}>
+                {['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'One Size'].map((size) => (
+                  <label key={size}>
+                    <input
+                      type="checkbox"
+                      name="availableSize"
+                      value={size} // Use the size directly
+                      checked={formData.availableSize.includes(size)} // Check if the size is in the array
+                      onChange={handleInputChange}
+                    />
+                    {size}
+                  </label>
+                ))}
+              </div>
+            </div>
+
 
 
 
