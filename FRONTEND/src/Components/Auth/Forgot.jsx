@@ -74,7 +74,7 @@ const Forgot = () => {
                 transition="Bounce"
             />
             <ToastContainer />
-            <SUBNavbar/>
+            {/* <SUBNavbar/> */}
             <div className={styles.main}>
                 <div className={styles.inputs}>
                     <h1 className={styles.heading}>Change Password</h1>
