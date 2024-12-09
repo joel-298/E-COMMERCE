@@ -107,7 +107,8 @@ const Item = () => {
     if(SelectedSize !== "" && user_id !== ""){
       try {
         const response = await axios.post("http://localhost:4000/user/add_to_cart", {SelectedSize : SelectedSize , user_id : user_id , _id : _id}) ;
-        alert(response.data);
+        // alert(response.data);
+        alert("Added to cart") ;
       } catch (error) {
         console.log("Error while adding to cart" , error) ;
       }

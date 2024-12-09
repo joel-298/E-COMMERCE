@@ -14,6 +14,8 @@ admin.get("/getSellers", async (req,res)=>{                        // displaying
         res.status(500).json({ message: "Error fetching data", error: error.message });
     }
 });
+
+
 admin.get("/getUsers" , async (req,res) => {
     try{
         const data = await (userModel).find();
@@ -22,6 +24,8 @@ admin.get("/getUsers" , async (req,res) => {
         res.status(500).json({ message: "Error ufetching data", error: error.message });       
     }
 });
+
+
 
 admin.post("/add", async (req,res)=>{                              // adding a seller route
     let{name,email,password,image,description} = req.body.obj
