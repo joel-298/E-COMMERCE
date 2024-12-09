@@ -195,7 +195,7 @@ const Auth = () => {
                   <input ref={passref} value={form.password} type="password" name="password" placeholder='Enter Password....' onChange={handleChange} /><br />
                   <img ref={imgref} className={styles.eye} src="close_eye.svg" alt="" onClick={handleShow} />
                 </div>
-                {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 3 letters,numbers and symbols</span></div> : <div className={styles.check1}>
+                {current === "Sign Up" ? <div className={styles.cont}><span>It must be a combination of minimum 4 letters,numbers and symbols</span></div> : <div className={styles.check1}>
                   <div className={styles.check}>
                     <input type="checkbox" name="" />
                     <label>Remember me</label>
