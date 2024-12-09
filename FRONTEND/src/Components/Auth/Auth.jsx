@@ -45,8 +45,8 @@ const Auth = () => {
         })
     }
 
-    else if(form.password.length < 3){
-      toast("Minimum 3 digits required" , {
+    else if(form.password.length <= 3){
+      toast("Minimum 4 digits in password required" , {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -159,7 +159,7 @@ const Auth = () => {
   }
   return (
     <>
-      <SUBNavbar/>
+      {/* <SUBNavbar/> */}
       <ToastContainer
         position="top-right"
         autoClose={5000}
