@@ -109,6 +109,8 @@ const Item = () => {
         const response = await axios.post("https://e-commerce-k1rr.onrender.com/user/add_to_cart", {SelectedSize : SelectedSize , user_id : user_id , _id : _id}) ;
         // alert(response.data);
         alert("Added to cart") ;
+        document.querySelector(`.${styles.cart_button}`).classList.add(styles.display_none) ;
+        document.querySelector(`.${styles.go_to_cart_button}`).classList.remove(styles.display_none) ;
       } catch (error) {
         console.log("Error while adding to cart" , error) ;
       }
