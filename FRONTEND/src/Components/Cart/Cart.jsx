@@ -54,7 +54,6 @@ const Cart = () => {
       if(user_id !== "") {
         const response = await axios.delete("https://e-commerce-k1rr.onrender.com/user/delete" , {params : {id : id , size : size , user_id: user_id}} );
         alert(response.data.message) ;
-        useNavigate("/cart");
       }
     } catch (error) {
       console.log("Error while deleting product")
