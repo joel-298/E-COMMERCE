@@ -18,7 +18,7 @@ const Item = () => {
     const fetchItem = async () => {
       if (_id === -1) return; // Skip fetch if _id is invalid
       try {
-        const response = await axios.post("http://localhost:4000/products/item", { _id });
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/products/item", { _id });
         const fetchedObj = response.data.obj;
         setItem(fetchedObj);
 
@@ -60,7 +60,7 @@ const Item = () => {
         // now at this point size has been selected along with the user id 
         try {
           const check = async () => {
-            const response = await axios.post("http://localhost:4000/user/check" , {SelectedSize: SelectedSize , _id : _id , user_id : user_id}) ;
+            const response = await axios.post("https://e-commerce-k1rr.onrender.com/user/check" , {SelectedSize: SelectedSize , _id : _id , user_id : user_id}) ;
             if(response.data.value) { // value is already present
               alert("Value already present in the cart , Go to cart or select anyother size");
               document.querySelector(`.${styles.cart_button}`).classList.add(styles.display_none) ;
@@ -96,7 +96,7 @@ const Item = () => {
       // ------------------------------
       set_SelectedSize(size); 
       const getUserId = async () => {
-        const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;
         setUserId(response.data.id) ;
       }
       getUserId() ;
@@ -106,7 +106,7 @@ const Item = () => {
   const addToCart_function = async () => { 
     if(SelectedSize !== "" && user_id !== ""){
       try {
-        const response = await axios.post("http://localhost:4000/user/add_to_cart", {SelectedSize : SelectedSize , user_id : user_id , _id : _id}) ;
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/user/add_to_cart", {SelectedSize : SelectedSize , user_id : user_id , _id : _id}) ;
         // alert(response.data);
         alert("Added to cart") ;
       } catch (error) {

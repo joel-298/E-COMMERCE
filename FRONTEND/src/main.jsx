@@ -28,7 +28,7 @@ const ProtectedRoute = ({ category, children }) => {
 
   const verifyToken = async () => { //2
     try {
-      const response = await axios.post('http://localhost:4000/signup/jwtverification', {
+      const response = await axios.post('https://e-commerce-k1rr.onrender.com/signup/jwtverification', {
         token: tokenData.token,
       });
       return response.data.valid;

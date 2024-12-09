@@ -40,7 +40,7 @@ const Add = () => {
   
       try {
         // Verify the token with the server
-        const response = await axios.post("http://localhost:4000/signup/jwtverification", { token });
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/signup/jwtverification", { token });
   
         if (response.data.valid) {
           // Assuming the response contains companyName, update the formData state
@@ -94,7 +94,7 @@ const Add = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/seller/add',formData,{
+      const response = await axios.post('https://e-commerce-k1rr.onrender.com/seller/add',formData,{
         headers:{
           'Content-Type':'application/json',
         },

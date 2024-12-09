@@ -9,7 +9,7 @@ const Cart = () => {
   const [user_id, setUserId] = useState("") ; // USER ID
   const [cart , setCart] = useState([]) ;     // CART ARRAY 
   const getUserId = async () => {                                     // Function to get user id
-    const response = await axios.post("http://localhost:4000/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;)
+    const response = await axios.post("https://e-commerce-k1rr.onrender.com/signup/jwtverification" , { token: tokenData ? tokenData.token : null, }); // Conditional token assignment}) ;)
     setUserId(response.data.id) ;
   } ;
   useEffect(()=>{
@@ -17,7 +17,7 @@ const Cart = () => {
     if(user_id !== "") {
       try {
         const getCart = async () => {
-          const response = await axios.post("http://localhost:4000/user/cart", { user_id : user_id});
+          const response = await axios.post("https://e-commerce-k1rr.onrender.com/user/cart", { user_id : user_id});
           console.log(response.data.cart);  // Log the cart array received from the backend
           setCart(response.data.cart); // You can also store the cart data in state for rendering later
           // SET TOTAL COST : 
@@ -51,7 +51,7 @@ const Cart = () => {
   const handleDelete =  async (id , size) => {
     try {
       if(user_id !== "") {
-        const response = await axios.delete("http://localhost:4000/user/delete" , {params : {id : id , size : size , user_id: user_id}} );
+        const response = await axios.delete("https://e-commerce-k1rr.onrender.com/user/delete" , {params : {id : id , size : size , user_id: user_id}} );
         alert(response.data.message) ;
         window.location.reload() ;
       }

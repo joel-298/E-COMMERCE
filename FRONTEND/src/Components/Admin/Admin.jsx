@@ -12,10 +12,10 @@ const Admin = () => {
   useEffect(()=> {
     const fetch_Sellers_Users = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/admin/getSellers") ;
+        const response = await axios.get("https://e-commerce-k1rr.onrender.com/admin/getSellers") ;
         setSellers(response.data.arr) ;
 
-        const response2 = await axios.get("http://localhost:4000/admin/getUsers") ;
+        const response2 = await axios.get("https://e-commerce-k1rr.onrender.com/admin/getUsers") ;
         setUsers(response2.data.brr) ;
       } catch (error) {
         console.log("Error fetching data", error) ;
@@ -28,7 +28,7 @@ const Admin = () => {
   // create a delete axios request ... in request send ( name , company name )
   const handleDelete = async (companyName , email) => {
     try {
-      const response = await axios.delete("http://localhost:4000/admin/delete", { params : {email : email , companyName : companyName } }) ; // sending data through params 
+      const response = await axios.delete("https://e-commerce-k1rr.onrender.com/admin/delete", { params : {email : email , companyName : companyName } }) ; // sending data through params 
       alert(response.data.message) ;
     } catch (error) {
       console.log("Error while deleting", error) ;

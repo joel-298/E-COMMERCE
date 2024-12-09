@@ -18,7 +18,7 @@ const X = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:4000/products/x", { title1 , title2 , type , category , size });
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/products/x", { title1 , title2 , type , category , size });
         console.log(response.data.arr);
         setArr(response.data.arr);
         console.log(arr); 

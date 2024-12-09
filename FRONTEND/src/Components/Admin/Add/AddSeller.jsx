@@ -30,7 +30,7 @@ const AddSeller = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/admin/add', { obj: formData });
+      const response = await axios.post('https://e-commerce-k1rr.onrender.com/admin/add', { obj: formData });
       // alert(response.data.message); // Alert backend message
       toast(response.data.messag, {
         position: "top-right",

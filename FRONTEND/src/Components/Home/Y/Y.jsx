@@ -46,7 +46,7 @@ const Y = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.post("http://localhost:4000/products/y" , {title}); 
+        const response = await axios.post("https://e-commerce-k1rr.onrender.com/products/y" , {title}); 
         setArr(response.data.arr);
         console.log(arr); 
         const filterTopwears = arr.filter(product => product.category === 'Topwear') ; 
