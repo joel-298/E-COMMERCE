@@ -112,7 +112,7 @@ const AdminNavbar = () => {
           <div className={styles.box1}>
             <img src="/Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
           </div>
-          <h1 onClick={()=>{navigate("/admin")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
+          <h1 onClick={()=>{navigate("/")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
         </div>
 
         <div className={styles.box3}>
