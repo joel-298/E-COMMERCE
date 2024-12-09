@@ -46,7 +46,7 @@ const Auth = () => {
     }
 
     else if(form.password.length <= 3){
-      toast("Minimum 3 digits required" , {
+      toast("Minimum 4 digits in password required" , {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
