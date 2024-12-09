@@ -3,6 +3,7 @@ import styles from './Cart.module.css' ;
 import SUBNavbar from '../Navbar/SUBNavbar';
 import Footer from '../Footer/Footer';
 import axios from 'axios' ;
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const tokenData = JSON.parse(localStorage.getItem("login")); // user token
@@ -53,7 +54,7 @@ const Cart = () => {
       if(user_id !== "") {
         const response = await axios.delete("https://e-commerce-k1rr.onrender.com/user/delete" , {params : {id : id , size : size , user_id: user_id}} );
         alert(response.data.message) ;
-        Navigate("/cart");
+        useNavigate("/cart");
       }
     } catch (error) {
       console.log("Error while deleting product")
