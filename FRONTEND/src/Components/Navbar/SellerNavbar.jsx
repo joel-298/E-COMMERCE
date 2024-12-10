@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SellerNavbar = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     // change icon based on login or not
     const tokenData = JSON.parse(localStorage.getItem('login'));
@@ -61,7 +62,6 @@ const SellerNavbar = () => {
   }
 
 
-  const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('login');
     // alert("You have been logged out successfully!") ;
@@ -110,7 +110,7 @@ const SellerNavbar = () => {
           <div className={styles.box1}>
             <img src="/Vector.svg" alt="nav_icon" className={styles.nav_icon} onClick={handleNavClick}/>
           </div>
-          <h1 onClick={()=>{navigate("/seller")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
+          <h1 onClick={()=>{navigate("/")}}><img src="/Logo.png" alt="logo_image" className={styles.logo} />&nbsp;URBAN CART</h1>
         </div>
 
         <div className={styles.box3}>
