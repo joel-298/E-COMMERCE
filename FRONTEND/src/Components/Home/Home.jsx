@@ -62,7 +62,7 @@ const Home = () => {
     fetchProducts() ;
 
    // setBrands(Sellers) ;
-  }, [arr]);
+  }, []);
 
   return (
     <div className={styles.container}>
